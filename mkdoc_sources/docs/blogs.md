@@ -5,7 +5,7 @@
 ## Gradient Class Activation Map (Grad-CAM) Summary
 ![GradCam](img/blog/GradCam/GradCam.png)
 
-[Details](MyBlogs/GradCam.md)
+[The following note demonstrates the logic procedure of how a GradCam is computed. For ...](MyBlogs/GradCam.md)
 
 **********
 
@@ -19,3 +19,7 @@
 *************
 
 ## Blog Title 4
+
+*************
+
+## Blog Title 5
