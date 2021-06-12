@@ -11,19 +11,19 @@
         <meta name="author" content="Liqiang.ding">
       
       
-      <link rel="icon" href="img/liqiang_square.jpg">
+      <link rel="icon" href="../img/liqiang_square.jpg">
       <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
     
     
       
-        <title>Liqiang Ding</title>
+        <title>Gradient Class Activation Map (Grad-CAM) Summary - Liqiang Ding</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -41,10 +41,10 @@
       
     
     
-      <link rel="manifest" href="manifest.webmanifest" crossorigin="use-credentials">
+      <link rel="manifest" href="../manifest.webmanifest" crossorigin="use-credentials">
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
     
       
@@ -63,7 +63,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="light-blue" data-md-color-accent="blue">
   
     
-    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-my-home-page" class="md-skip">
+        <a href="#gradient-class-activation-map-grad-cam-summary" class="md-skip">
           Skip to content
         </a>
       
@@ -82,7 +82,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="index.html" title="Liqiang Ding" class="md-header__button md-logo" aria-label="Liqiang Ding" data-md-component="logo">
+    <a href="../index.html" title="Liqiang Ding" class="md-header__button md-logo" aria-label="Liqiang Ding" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Gradient Class Activation Map (Grad-CAM) Summary
             
           </span>
         </div>
@@ -175,7 +175,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="index.html" title="Liqiang Ding" class="md-nav__button md-logo" aria-label="Liqiang Ding" data-md-component="logo">
+    <a href="../index.html" title="Liqiang Ding" class="md-nav__button md-logo" aria-label="Liqiang Ding" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -205,21 +205,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
         Home
       </a>
-      
     </li>
   
 
@@ -232,7 +222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="about.html" class="md-nav__link">
+      <a href="../about.html" class="md-nav__link">
         About
       </a>
     </li>
@@ -247,7 +237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="blogs.html" class="md-nav__link">
+      <a href="../blogs.html" class="md-nav__link">
         Blogs
       </a>
     </li>
@@ -262,7 +252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="projects.html" class="md-nav__link">
+      <a href="../projects.html" class="md-nav__link">
         Projects
       </a>
     </li>
@@ -277,7 +267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="pub.html" class="md-nav__link">
+      <a href="../pub.html" class="md-nav__link">
         Publications
       </a>
     </li>
@@ -303,6 +293,82 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#assumption" class="md-nav__link">
+    Assumption
+  </a>
+  
+    <nav class="md-nav" aria-label="Assumption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#class-activation-mapping" class="md-nav__link">
+    Class Activation Mapping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#procedure" class="md-nav__link">
+    Procedure
+  </a>
+  
+    <nav class="md-nav" aria-label="Procedure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-choose-the-penultimate-layer" class="md-nav__link">
+    1. Choose the penultimate layer.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-compute-the-class-specific-loss-ie-loss-of-ycyc-on-the-last-layer-of-the-model" class="md-nav__link">
+    2. Compute the class-specific loss (i.e. loss of y^{c}y^{c}) on the last layer of the model.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-compute-the-gradients-of-ycyc-respect-to-the-penultimate-layers-activation-map-akak" class="md-nav__link">
+    3. Compute the gradients of y^cy^c respect to the penultimate layer's activation map A^KA^K.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-elemently-wise-multpile-the-the-gradient-with-the-activation-map" class="md-nav__link">
+    4. Elemently-wise multpile the the gradient with the Activation map.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-remove-any-negative-results-by-applying-the-relu-function-over-the-result" class="md-nav__link">
+    5. Remove any negative results by applying the Relu function over the result.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -313,20 +379,44 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/Lionelding/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/Lionelding/edit/master/docs/MyBlogs/GradCam.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="welcome-to-my-home-page">Welcome to My Home Page<a class="headerlink" href="#welcome-to-my-home-page" title="Permanent link">&para;</a></h1>
-<p><img alt="liqiang" src="img/liqiang.jpg" /></p>
-<p>Welcome to my personal website! </p>
-<p>My name is Liqiang Ding. </p>
-<p><img alt="Twitter" src="" />
-<img alt="Linkedin" src="" />
-![Goolge Scholar]
-![Youtube]
-Github</p>
+                <h1 id="gradient-class-activation-map-grad-cam-summary">Gradient Class Activation Map (Grad-CAM) Summary<a class="headerlink" href="#gradient-class-activation-map-grad-cam-summary" title="Permanent link">&para;</a></h1>
+<p><img alt="GradCam" src="/img/blog/GradCam/GradCam.png" /></p>
+<p>The following note demonstrates the logic procedure of how a GradCam is computed. For details, please see: <a href="https://arxiv.org/pdf/1610.02391v1.pdf">Grad-CAM: Why did you say that? Visual Explanations from Deep Networks via Gradient-based Localization</a></p>
+<h2 id="assumption">Assumption<a class="headerlink" href="#assumption" title="Permanent link">&para;</a></h2>
+<h3 id="class-activation-mapping">Class Activation Mapping<a class="headerlink" href="#class-activation-mapping" title="Permanent link">&para;</a></h3>
+<p>
+<script type="math/tex">
+y^{c} = \sum\limits_{k} w^k_c \frac{1}{Z} \sum\limits_{i} \sum\limits_{j} A^k_{ij}
+</script>
+</p>
+<p>The penultimate layer produces <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> activation map <span><span class="MathJax_Preview">A^K</span><script type="math/tex">A^K</script></span> with width <span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> and height <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
+<p>The feature goes through <span><span class="MathJax_Preview">\frac{1}{Z} \sum\limits_{i} \sum\limits_{j}</span><script type="math/tex">\frac{1}{Z} \sum\limits_{i} \sum\limits_{j}</script></span>, which is called <code>global averaged pooled</code>, and then linearly transforemd to <span><span class="MathJax_Preview">y^{c}</span><script type="math/tex">y^{c}</script></span> for each class <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>.</p>
+<h2 id="procedure">Procedure<a class="headerlink" href="#procedure" title="Permanent link">&para;</a></h2>
+<h3 id="1-choose-the-penultimate-layer">1. Choose the penultimate layer.<a class="headerlink" href="#1-choose-the-penultimate-layer" title="Permanent link">&para;</a></h3>
+<p>This is the layer where we want to visualize the activation map. The reason why it is called the penultimate layer is because the last layer of a model is usually the layer computing class-specific loss (i.e. Sigmoid loss, softmax loss, etc). The penultimate layer is a layer, which is before the last layer, that we want to compute the loss respect to. </p>
+<h3 id="2-compute-the-class-specific-loss-ie-loss-of-ycyc-on-the-last-layer-of-the-model">2. Compute the class-specific loss (i.e. loss of <span><span class="MathJax_Preview">y^{c}</span><script type="math/tex">y^{c}</script></span>) on the last layer of the model.<a class="headerlink" href="#2-compute-the-class-specific-loss-ie-loss-of-ycyc-on-the-last-layer-of-the-model" title="Permanent link">&para;</a></h3>
+<h3 id="3-compute-the-gradients-of-ycyc-respect-to-the-penultimate-layers-activation-map-akak">3. Compute the gradients of <span><span class="MathJax_Preview">y^c</span><script type="math/tex">y^c</script></span> respect to the penultimate layer's activation map <span><span class="MathJax_Preview">A^K</span><script type="math/tex">A^K</script></span>.<a class="headerlink" href="#3-compute-the-gradients-of-ycyc-respect-to-the-penultimate-layers-activation-map-akak" title="Permanent link">&para;</a></h3>
+<p>
+<script type="math/tex">
+\alpha^c_k = \frac{1}{Z} \sum\limits_{i} \sum\limits_{j} \frac{\partial y^c}{\partial A^k_{ij}}
+</script>
+</p>
+<p>The dimension of the gradients is then reduced from <code>(batch_size, u, v, channel)</code>to <code>(channel)</code> by averaging the values in the first three axises. In the paper, this dimension reduction is called <code>global-average-pooling</code>.</p>
+<p>This result denoted as <span><span class="MathJax_Preview">\alpha^c_k</span><script type="math/tex">\alpha^c_k</script></span> represents a partial linearization of the penultimate layer to the loss, which captures the importance of the activation <span><span class="MathJax_Preview">A^k</span><script type="math/tex">A^k</script></span> for a target <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span>. </p>
+<h3 id="4-elemently-wise-multpile-the-the-gradient-with-the-activation-map">4. Elemently-wise multpile the the gradient with the Activation map.<a class="headerlink" href="#4-elemently-wise-multpile-the-the-gradient-with-the-activation-map" title="Permanent link">&para;</a></h3>
+<h3 id="5-remove-any-negative-results-by-applying-the-relu-function-over-the-result">5. Remove any negative results by applying the Relu function over the result.<a class="headerlink" href="#5-remove-any-negative-results-by-applying-the-relu-function-over-the-result" title="Permanent link">&para;</a></h3>
+<p>Only interested in the positive influence on the class of interest. (i.e. Pixels whose intensity should increase in order to increase <span><span class="MathJax_Preview">y^{c}</span><script type="math/tex">y^{c}</script></span>)</p>
+<p>
+<script type="math/tex">
+L^c_{Grad-CAM} = Relu(\sum\limits_{k} \alpha^c_k A^k)
+</script>
+</p>
+<!-- Here is how to render the goddamn math equation: https://github.com/mkdocs/mkdocs/issues/253 -->
                 
               
               
@@ -342,26 +432,6 @@ Github</p>
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-      
-        
-        <a href="about.html" class="md-footer__link md-footer__link--next" aria-label="Next: About" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              About
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -426,10 +496,10 @@ Github</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
       
         <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
       
