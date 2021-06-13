@@ -8,7 +8,7 @@ markldown_extensions:
 nav:
   - Home: index.md
   - About Myself: about.md
-  - Blogs: blogs.md
+  - Technical Blogs: blogs.md
   - Projects: projects.md
   - Research & Publication: pub.md
   - Time Capsule Studio: gallery.md
