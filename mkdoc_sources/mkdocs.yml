@@ -1,16 +1,18 @@
 site_name: Liqiang Ding
 site_author: Liqiang.ding
-copyright: "Copyright &copy; 2019 - 2020 Liqiang Ding"
+copyright: "Copyright &copy; 2019 - 2021 Liqiang Ding"
 repo_name: Liqiang's Github
 repo_url: https://github.com/Lionelding
 markldown_extensions:
   - smarty
 nav:
   - Home: index.md
-  - About: about.md
+  - About Myself: about.md
   - Blogs: blogs.md
   - Projects: projects.md
-  - Publications: pub.md
+  - Research & Publication: pub.md
+  - Time Capsule Studio: gallery.md
+  - Grande Bibliothèque: read.md
 
 theme: 
   name: "material"
