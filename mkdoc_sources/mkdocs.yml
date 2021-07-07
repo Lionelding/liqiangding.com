@@ -8,6 +8,7 @@ markldown_extensions:
 nav:
   - Home: index.md
   - About Myself: about.md
+  - Education: education.md
   - Technical Blogs: blogs.md
   - Projects: projects.md
   - Research & Publication: pub.md
