@@ -8,7 +8,7 @@ markldown_extensions:
 nav:
   - Home: index.md
   - About Myself: about.md
-  - Education: education.md
+  - Listen and Learn: listen_and_learn.md
   - Technical Blogs: blogs.md
   - Projects: projects.md
   - Research & Publication: pub.md
