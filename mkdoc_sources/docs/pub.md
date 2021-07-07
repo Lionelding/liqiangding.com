@@ -1,11 +1,13 @@
 # My Research Interests
 
+My research focuses on representation learning with 3D data, self-supervised learning, few-shot learning, and domain adaption.  
+
 [Google scholar](https://scholar.google.ca/citations?user=P87La54AAAAJ&hl=en)
 
 
 **********
 ### **Task Adaptive Metric Space for Medium-Shot Medical Image Classification**
-![img](./img/TAMS.PNG)
+![img](./img/TAMS.png)
 
 * 22th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI), 2019
 * [Full paper](https://link.springer.com/chapter/10.1007/978-3-030-32239-7_17)
@@ -13,7 +15,7 @@
 
 **********
 ### **Artificial Intelligence for Real-Time Multiple Polyp Detection with Identification, Tracking, and Optical Biopsy During Colonoscopy**
-![img](./img/polyp.PNG)
+![img](./img/polyp.png)
 
 * Journal of Gastroenterology, 2019
 * [Full paper](https://www.researchgate.net/publication/332884708_256_-_Artificial_Intelligence_for_Real-Time_Multiple_Polyp_Detection_with_Identification_Tracking_and_Optical_Biopsy_During_Colonoscopy)
