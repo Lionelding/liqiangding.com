@@ -40,10 +40,19 @@
         <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/education.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="475">
-                <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+              <first_editor relative-caret-position="361">
+                <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docs/education.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="423">
+              <caret line="386" selection-start-line="386" selection-end-line="386" />
             </state>
           </provider>
         </entry>
@@ -83,6 +92,7 @@
       <find>twitter</find>
       <find>footer</find>
       <find>attr</find>
+      <find>.png</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -199,12 +209,12 @@
       <option name="presentableId" value="Default" />
       <updated>1623515326313</updated>
       <workItem from="1623515328107" duration="29546000" />
-      <workItem from="1625610327626" duration="3763000" />
+      <workItem from="1625610327626" duration="4001000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33309000" />
+    <option name="totallyTimeSpent" value="33547000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="-362" width="2560" height="1412" extended-state="0" />
@@ -398,11 +408,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docs/education.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="386" selection-start-line="386" selection-end-line="386" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/education.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="475">
-            <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+          <first_editor relative-caret-position="361">
+            <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
           </first_editor>
           <second_editor />
         </state>

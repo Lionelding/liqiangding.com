@@ -17,7 +17,7 @@ img {
 
 <img style="float: middle;" src="./img/seq.png", width="900" height="600">
 
-<img style="float: middle;" src="./img/gan1.pgn", width="900" height="600">
+<img style="float: middle;" src="./img/gan1.jpg", width="900" height="600">
 
 <img style="float: middle;" src="./img/GAN_certificate.png", width="900" height="600">
 
