@@ -41,6 +41,9 @@
 
 **********
 ### **Generation of spatial-temporal panoramas with a single moving camera**
+
+![img](./img/3d_stiching.png)
+
 * 13th Conference on Computer and Robot Vision (CRV), 2016
 * [Full paper](https://ieeexplore.ieee.org/document/7801534)
 * [Video](https://www.youtube.com/watch?v=tUYozU_NIIk)

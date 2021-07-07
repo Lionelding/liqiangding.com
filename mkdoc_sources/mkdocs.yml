@@ -12,8 +12,8 @@ nav:
   - Technical Blogs: blogs.md
   - Personal Projects: projects.md
   - Research & Publication: pub.md
-  - Time Capsule Studio: gallery.md
-  - Grande Bibliothèque: read.md
+#  - Time Capsule Studio: gallery.md
+#  - Grande Bibliothèque: read.md
 
 theme: 
   name: "material"
