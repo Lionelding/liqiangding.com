@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7e0e4221-84f1-4d06-adc7-da6f76c6f1fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mkdoc_sources/docs/education.md" beforeDir="false" afterPath="$PROJECT_DIR$/mkdoc_sources/docs/listen_and_learn.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mkdoc_sources/docs/projects.md" beforeDir="false" afterPath="$PROJECT_DIR$/mkdoc_sources/docs/projects.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkdoc_sources/docs/gallery.md" beforeDir="false" afterPath="$PROJECT_DIR$/mkdoc_sources/docs/gallery.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkdoc_sources/docs/pub.md" beforeDir="false" afterPath="$PROJECT_DIR$/mkdoc_sources/docs/pub.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mkdoc_sources/mkdocs.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mkdoc_sources/mkdocs.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +19,7 @@
         <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/index.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="37">
+              <first_editor relative-caret-position="38">
                 <caret line="2" selection-start-line="2" selection-end-line="10" selection-end-column="8" />
               </first_editor>
               <second_editor />
@@ -32,7 +32,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="114">
-                <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+                <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
               </first_editor>
               <second_editor />
             </state>
@@ -43,8 +43,8 @@
         <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/blogs.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="38">
-                <caret line="2" selection-start-line="2" selection-end-line="9" selection-end-column="10" />
+              <first_editor relative-caret-position="171">
+                <caret line="9" column="10" selection-start-line="9" selection-end-line="9" selection-end-column="10" />
               </first_editor>
               <second_editor />
             </state>
@@ -54,18 +54,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mkdoc_sources/mkdocs.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+            <state relative-caret-position="266">
+              <caret line="14" column="23" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/projects.md">
+        <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/pub.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="462">
-                <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+              <first_editor relative-caret-position="668">
+                <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
               </first_editor>
               <second_editor />
             </state>
@@ -73,8 +73,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/img/efficientpython.jpg">
-          <provider selected="true" editor-type-id="images" />
+        <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/gallery.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor>
+                <caret column="23" selection-start-column="23" selection-end-column="23" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/projects.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="798">
+                <caret line="42" selection-start-line="42" selection-end-line="42" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -94,13 +113,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/mkdoc_sources/docs/index.md" />
-        <option value="$PROJECT_DIR$/mkdoc_sources/docs/pub.md" />
         <option value="$PROJECT_DIR$/mkdoc_sources/docs/backup.md" />
         <option value="$PROJECT_DIR$/mkdoc_sources/docs/about.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/mkdoc_sources/docs/education.md" />
-        <option value="$PROJECT_DIR$/mkdoc_sources/mkdocs.yml" />
         <option value="$PROJECT_DIR$/mkdoc_sources/docs/projects.md" />
+        <option value="$PROJECT_DIR$/mkdoc_sources/docs/blogs.md" />
+        <option value="$PROJECT_DIR$/mkdoc_sources/mkdocs.yml" />
+        <option value="$PROJECT_DIR$/mkdoc_sources/docs/gallery.md" />
+        <option value="$PROJECT_DIR$/mkdoc_sources/docs/pub.md" />
       </list>
     </option>
   </component>
@@ -202,22 +223,22 @@
       <option name="presentableId" value="Default" />
       <updated>1623515326313</updated>
       <workItem from="1623515328107" duration="29546000" />
-      <workItem from="1625610327626" duration="8469000" />
+      <workItem from="1625610327626" duration="10829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38015000" />
+    <option name="totallyTimeSpent" value="40375000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="-362" width="2560" height="1412" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.15289913" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.15289913" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.41207153" />
+      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.41207153" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Python Console" order="4" />
@@ -313,16 +334,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/pub.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="266">
-            <caret line="14" selection-start-line="14" selection-end-line="14" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/backup.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -353,24 +364,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/gallery.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/listen_and_learn.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="114">
-            <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/about.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -381,10 +374,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/img/efficientpython.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/projects.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="798">
+            <caret line="42" selection-start-line="42" selection-end-line="42" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/gallery.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="23" selection-start-column="23" selection-end-column="23" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/listen_and_learn.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="114">
+            <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/index.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="37">
+          <first_editor relative-caret-position="38">
             <caret line="2" selection-start-line="2" selection-end-line="10" selection-end-column="8" />
           </first_editor>
           <second_editor />
@@ -394,8 +420,8 @@
     <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/blogs.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="38">
-            <caret line="2" selection-start-line="2" selection-end-line="9" selection-end-column="10" />
+          <first_editor relative-caret-position="171">
+            <caret line="9" column="10" selection-start-line="9" selection-end-line="9" selection-end-column="10" />
           </first_editor>
           <second_editor />
         </state>
@@ -403,19 +429,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mkdoc_sources/mkdocs.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="12" lean-forward="true" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+        <state relative-caret-position="266">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/img/efficientpython.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/projects.md">
+    <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/pub.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="462">
-            <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <first_editor relative-caret-position="668">
+            <caret line="45" column="4" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="4" />
           </first_editor>
           <second_editor />
         </state>
