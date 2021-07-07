@@ -13,14 +13,14 @@ img {
 </style>
 
 
-<img style="float: middle;" src="./img/MLops1.PNG", width="900" height="600">
+<img style="float: middle;" src="./img/MLops1.png", width="900" height="600">
 
-<img style="float: middle;" src="./img/seq.PNG", width="900" height="600">
+<img style="float: middle;" src="./img/seq.png", width="900" height="600">
 
-<img style="float: middle;" src="./img/gan1.PNG", width="900" height="600">
+<img style="float: middle;" src="./img/gan1.pgn", width="900" height="600">
 
-<img style="float: middle;" src="./img/GAN_certificate.PNG", width="900" height="600">
+<img style="float: middle;" src="./img/GAN_certificate.png", width="900" height="600">
 
-<img style="float: middle;" src="./img/CNN.PNG", width="900" height="600">
+<img style="float: middle;" src="./img/CNN.png", width="900" height="600">
 
-<img style="float: middle;" src="./img/prob1.PNG", width="900" height="600">
+<img style="float: middle;" src="./img/prob1.png", width="900" height="600">
