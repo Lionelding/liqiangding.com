@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7e0e4221-84f1-4d06-adc7-da6f76c6f1fe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/mkdoc_sources/docs/education.md" beforeDir="false" afterPath="$PROJECT_DIR$/mkdoc_sources/docs/education.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkdoc_sources/docs/img/gan1.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,8 +41,8 @@
         <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/education.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="361">
-                <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+              <first_editor relative-caret-position="399">
+                <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
               </first_editor>
               <second_editor />
             </state>
@@ -209,22 +210,22 @@
       <option name="presentableId" value="Default" />
       <updated>1623515326313</updated>
       <workItem from="1623515328107" duration="29546000" />
-      <workItem from="1625610327626" duration="4001000" />
+      <workItem from="1625610327626" duration="4225000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33547000" />
+    <option name="totallyTimeSpent" value="33771000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="-362" width="2560" height="1412" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.15289913" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.15289913" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" visible="true" weight="0.41207153" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.41207153" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Python Console" order="4" />
@@ -418,8 +419,8 @@
     <entry file="file://$PROJECT_DIR$/mkdoc_sources/docs/education.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="361">
-            <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+          <first_editor relative-caret-position="399">
+            <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
           </first_editor>
           <second_editor />
         </state>
