@@ -1,5 +1,5 @@
 
-# PythonWow
+# PythonWoW
 ![PythonWoW](img/workshop.jpeg)
 
 As a machine learning developer/researcher, I encountered many python related questions from time to time. The majority of them are straightforward, but some are subtle to understand, and hard to be applied properly in real practise. During the process for searching answers, I realized that it usually becomes super clear if I write them down with my own examples and understanding.
@@ -36,11 +36,6 @@ I also write them down together with my own interpretation in separate files, wh
 Anyway, I will be very glad if you find these examples are helpful for your projects, or you just have some fun reading them. Please feel free to send me an email if you find a mistake or you don't agree with my interpretations.
 
 [Click me for details](https://github.com/Lionelding/EfficientPython)
-
-**********
-# Image Stitching for 3D Panorama Video.
-<iframe width="720" height="480" src="https://www.youtube.com/watch?v=Cmsu0I27DCQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 
 **********
 # Frequency
