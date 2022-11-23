@@ -1,4 +1,9 @@
 # liqiangding.com
 My website
 
-so slow
+# build 
+```bash
+mkdocs build
+cd ..
+cp -r ./mkdoc_sources/site/* docs/ 
+```
