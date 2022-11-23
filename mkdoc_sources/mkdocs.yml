@@ -1,0 +1,76 @@
+site_name: Liqiang Ding
+site_author: Liqiang.ding
+copyright: "Copyright &copy; 2019 - 2021 Liqiang Ding"
+repo_name: Liqiang's Github
+repo_url: https://github.com/Lionelding
+markldown_extensions:
+  - smarty
+nav:
+  - Home: index.md
+  - About Myself: about.md
+  - Listen and Learn: listen_and_learn.md
+  - Technical Blogs: blogs.md
+  - Personal Projects: projects.md
+  - Research & Publication: pub.md
+#  - Time Capsule Studio: gallery.md
+#  - Grande Bibliothèque: read.md
+
+theme: 
+  name: "material"
+  palette:
+    primary: "light blue"
+    accent: "blue"
+  font:
+    text: "IBM Plex Serif"
+    code: "IBM Plex Mono"
+  hljs_languages:
+    - python
+  favicon: img/liqiang_square.jpg
+
+extra_css:
+  - stylesheets/extra.css
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/Lionelding
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/liqiang_ding
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/liqiang-ding-0431
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/user/947973
+  manifest: manifest.webmanifest
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed
+  - pymdownx.tilde
+  - mdx_math:
+      enable_dollar_delimiter: True #for use of inline $..$
+  - fenced_code
+  - codehilite
+  - footnotes
+
+# Required to load the MathJax javascript for the mdx_math.py
+extra_javascript: ['https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML']
