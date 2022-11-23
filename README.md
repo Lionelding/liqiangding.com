@@ -1,2 +1,0 @@
-# liqiangding.com
-My website
