@@ -15,7 +15,7 @@
     
     
       
-        <title>Normalizing Flow and Its Friends - Liqiang Ding</title>
+        <title>**Normalizing Flows and Its Friends (Part 1)** - Liqiang Ding</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#normalizing-flow-and-its-friends" class="md-skip">
+        <a href="#normalizing-flows-and-its-friends-part-1" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Normalizing Flow and Its Friends
+              **Normalizing Flows and Its Friends (Part 1)**
             
           </span>
         </div>
@@ -315,35 +315,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    1.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    2.
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3.
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -356,16 +327,148 @@
                 
                   
 
-  <a href="https://github.com/Lionelding/edit/master/docs/MyBlogs/nf.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/Lionelding/edit/master/docs/MyBlogs/nf1.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-<h1 id="normalizing-flow-and-its-friends">Normalizing Flow and Its Friends<a class="headerlink" href="#normalizing-flow-and-its-friends" title="Permanent link">&para;</a></h1>
-<h2 id="1">1.<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<h2 id="2">2.<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
-<h2 id="3">3.<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h1 id="normalizing-flows-and-its-friends-part-1"><strong>Normalizing Flows and Its Friends (Part 1)</strong><a class="headerlink" href="#normalizing-flows-and-its-friends-part-1" title="Permanent link">&para;</a></h1>
+<p>Here is some pre-requisite knowledge required before we move to Normalizing Flows.</p>
+<hr />
+<h1 id="1-jacobian-matrix"><strong>1. Jacobian Matrix</strong><a class="headerlink" href="#1-jacobian-matrix" title="Permanent link">&para;</a></h1>
+<p>Jacobian is a just matrix containing all partial derivatives between each input and output.
+It looks scary, but in fact, it is just a fancy name for a partial derivative matrix.</p>
+<p><strong>For example, if</strong></p>
+<div class="arithmatex">
+<div class="MathJax_Preview">z = \begin{bmatrix} z_{1} \\ z_{2}  \end{bmatrix}</div>
+<script type="math/tex; mode=display">z = \begin{bmatrix} z_{1} \\ z_{2}  \end{bmatrix}</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">x = \begin{bmatrix} x_{1} \\ x_{2}  \end{bmatrix}</div>
+<script type="math/tex; mode=display">x = \begin{bmatrix} x_{1} \\ x_{2}  \end{bmatrix}</script>
+</div>
+<p><strong>and</strong></p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    z = f(x)
+</div>
+<script type="math/tex; mode=display">
+    z = f(x)
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    x = f^{-1}(z)
+</div>
+<script type="math/tex; mode=display">
+    x = f^{-1}(z)
+</script>
+</div>
+<p><strong>then,</strong></p>
+<div class="arithmatex">
+<div class="MathJax_Preview"> 
+    J_{f} = \begin{bmatrix} \frac{\partial x_{1}}{\partial z_{1}} &amp; \frac{\partial x_{1}}{\partial z_{2}}  \\ 
+                            \frac{\partial x_{2}}{\partial z_{1}} &amp; \frac{\partial x_{2}}{\partial z_{2}}  \end{bmatrix}
+</div>
+<script type="math/tex; mode=display"> 
+    J_{f} = \begin{bmatrix} \frac{\partial x_{1}}{\partial z_{1}} & \frac{\partial x_{1}}{\partial z_{2}}  \\ 
+                            \frac{\partial x_{2}}{\partial z_{1}} & \frac{\partial x_{2}}{\partial z_{2}}  \end{bmatrix}
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview"> 
+    J_{f^{-1}} = \begin{bmatrix} \frac{\partial z_{1}}{\partial x_{1}} &amp; \frac{\partial z_{1}}{\partial x_{2}}  \\ 
+                                 \frac{\partial z_{2}}{\partial x_{1}} &amp; \frac{\partial z_{2}}{\partial x_{2}}  \end{bmatrix}
+</div>
+<script type="math/tex; mode=display"> 
+    J_{f^{-1}} = \begin{bmatrix} \frac{\partial z_{1}}{\partial x_{1}} & \frac{\partial z_{1}}{\partial x_{2}}  \\ 
+                                 \frac{\partial z_{2}}{\partial x_{1}} & \frac{\partial z_{2}}{\partial x_{2}}  \end{bmatrix}
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    J_{f} J_{f^{-1}} = I
+</div>
+<script type="math/tex; mode=display">
+    J_{f} J_{f^{-1}} = I
+</script>
+</div>
+<hr />
+<h1 id="2-determinant"><strong>2. Determinant</strong><a class="headerlink" href="#2-determinant" title="Permanent link">&para;</a></h1>
+<p>Determinant is a scalar value, which describes the area/volume enclosed by all the vectors in a matrix.</p>
+<p><strong>For example, if</strong></p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+A = \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+</script>
+</div>
+<p>then, </p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    det(A) = ad - bc
+</div>
+<script type="math/tex; mode=display">
+    det(A) = ad - bc
+</script>
+</div>
+<p>The most important thing is that:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    det(A) = {\frac{1}{A^{-1}}}
+</div>
+<script type="math/tex; mode=display">
+    det(A) = {\frac{1}{A^{-1}}}
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    det(J_{f}) = {\frac{1}{J_{f^{-1}}}}
+</div>
+<script type="math/tex; mode=display">
+    det(J_{f}) = {\frac{1}{J_{f^{-1}}}}
+</script>
+</div>
+<p>In a 2D space, it looks like this:</p>
+<p><img alt="determinant" src="../../img/blog/nf/determinant.png" /></p>
+<hr />
+<h1 id="3-change-of-variable-theorem"><strong>3. Change of Variable Theorem</strong><a class="headerlink" href="#3-change-of-variable-theorem" title="Permanent link">&para;</a></h1>
+<p><img alt="Change of Variable 1" src="../../img/blog/nf/change_of_variable_1.png" /></p>
+<p><img alt="Change of Variable 2" src="../../img/blog/nf/change_of_variable_2.png" /></p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    p(x') \mid det {\begin{bmatrix} \Delta x_{11} &amp; \Delta x_{21} \\ 
+                            \Delta x_{12} &amp; \Delta x_{22} \end{bmatrix}} \mid = \pi(z') \Delta {z_{1}}  \Delta {z_{2}}
+</div>
+<script type="math/tex; mode=display">
+    p(x') \mid det {\begin{bmatrix} \Delta x_{11} & \Delta x_{21} \\ 
+                            \Delta x_{12} & \Delta x_{22} \end{bmatrix}} \mid = \pi(z') \Delta {z_{1}}  \Delta {z_{2}}
+</script>
+</div>
+<p>and this becomes to</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    p(x') \mid det(J_{f}) \mid = \pi(z')  
+</div>
+<script type="math/tex; mode=display">
+    p(x') \mid det(J_{f}) \mid = \pi(z')  
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    p(x') = \pi(z') \mid {det(J_{f^{-1}})} \mid
+</div>
+<script type="math/tex; mode=display">
+    p(x') = \pi(z') \mid {det(J_{f^{-1}})} \mid
+</script>
+</div>
+<h2 id="referemces">Referemces<a class="headerlink" href="#referemces" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=uXY18nzdSsM&amp;t=169s">https://www.youtube.com/watch?v=uXY18nzdSsM&amp;t=169s</a></li>
+</ol>
 
 
 

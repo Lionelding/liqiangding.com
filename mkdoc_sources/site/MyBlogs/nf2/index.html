@@ -10,19 +10,19 @@
         <meta name="author" content="Liqiang.ding">
       
       
-      <link rel="icon" href="../img/liqiang_square.jpg">
+      <link rel="icon" href="../../img/liqiang_square.jpg">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Technical Blogs - Liqiang Ding</title>
+        <title>**Normalizing Flows and Its Friends (Part 2)** - Liqiang Ding</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.472b142f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.472b142f.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.08040f6c.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.08040f6c.min.css">
         
           
           
@@ -43,9 +43,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -84,7 +84,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Liqiang Ding" class="md-header__button md-logo" aria-label="Liqiang Ding" data-md-component="logo">
+    <a href="../.." title="Liqiang Ding" class="md-header__button md-logo" aria-label="Liqiang Ding" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Technical Blogs
+              **Normalizing Flows and Its Friends (Part 2)**
             
           </span>
         </div>
@@ -182,7 +182,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Liqiang Ding" class="md-nav__button md-logo" aria-label="Liqiang Ding" data-md-component="logo">
+    <a href="../.." title="Liqiang Ding" class="md-nav__button md-logo" aria-label="Liqiang Ding" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -213,7 +213,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -228,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         About Myself
       </a>
     </li>
@@ -243,7 +243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../listen_and_learn/" class="md-nav__link">
+      <a href="../../listen_and_learn/" class="md-nav__link">
         Listen and Learn
       </a>
     </li>
@@ -256,62 +256,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Technical Blogs
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../blogs/" class="md-nav__link">
         Technical Blogs
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#normalizing-flows-and-its-friends-part-2" class="md-nav__link">
-    Normalizing Flows and Its Friends (Part 2)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#normalizing-flows-and-its-friends-part-1" class="md-nav__link">
-    Normalizing Flows and Its Friends (Part 1)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gradient-class-activation-map-grad-cam-summary" class="md-nav__link">
-    Gradient Class Activation Map (Grad-CAM) Summary
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -324,7 +273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/" class="md-nav__link">
+      <a href="../../projects/" class="md-nav__link">
         Personal Projects
       </a>
     </li>
@@ -339,7 +288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pub/" class="md-nav__link">
+      <a href="../../pub/" class="md-nav__link">
         Research & Publication
       </a>
     </li>
@@ -363,35 +312,8 @@
   
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#normalizing-flows-and-its-friends-part-2" class="md-nav__link">
-    Normalizing Flows and Its Friends (Part 2)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#normalizing-flows-and-its-friends-part-1" class="md-nav__link">
-    Normalizing Flows and Its Friends (Part 1)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gradient-class-activation-map-grad-cam-summary" class="md-nav__link">
-    Gradient Class Activation Map (Grad-CAM) Summary
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -405,34 +327,13 @@
                 
                   
 
-  <a href="https://github.com/Lionelding/edit/master/docs/blogs.md" title="Edit this page" class="md-content__button md-icon">
+  <a href="https://github.com/Lionelding/edit/master/docs/MyBlogs/nf2.md" title="Edit this page" class="md-content__button md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
   </a>
 
 
-  <h1>Technical Blogs</h1>
-
-<hr />
-<h2 id="normalizing-flows-and-its-friends-part-2"><strong>Normalizing Flows and Its Friends (Part 2)</strong><a class="headerlink" href="#normalizing-flows-and-its-friends-part-2" title="Permanent link">&para;</a></h2>
-<p><img alt="Normalizing Flows" src="../img/blog/nf/nf.png" /></p>
-<div class="admonition keywords">
-<p class="admonition-title">Keywords</p>
-<p>flow-based model, RealNVP</p>
-</div>
-<p><a href="../MyBlogs/nf2/"><img alt="👉" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f449.svg" title=":point_right:" /> Full Articale <img alt="👈" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f448.svg" title=":point_left:" /></a></p>
-<hr />
-<h2 id="normalizing-flows-and-its-friends-part-1"><strong>Normalizing Flows and Its Friends (Part 1)</strong><a class="headerlink" href="#normalizing-flows-and-its-friends-part-1" title="Permanent link">&para;</a></h2>
-<p><img alt="Normalizing Flows" src="../img/blog/nf/nf.png" /></p>
-<div class="admonition keywords">
-<p class="admonition-title">Keywords</p>
-<p>Jacobian Matrix, Determinant, Change of Variable Theorem</p>
-</div>
-<p><a href="../MyBlogs/nf1/"><img alt="👉" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f449.svg" title=":point_right:" /> Full Articale <img alt="👈" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f448.svg" title=":point_left:" /></a></p>
-<hr />
-<h2 id="gradient-class-activation-map-grad-cam-summary"><strong>Gradient Class Activation Map (Grad-CAM) Summary</strong><a class="headerlink" href="#gradient-class-activation-map-grad-cam-summary" title="Permanent link">&para;</a></h2>
-<p><img alt="GradCam" src="../img/blog/GradCam/GradCam.png" /></p>
-<p><a href="../MyBlogs/GradCam/">The following note demonstrates the logic procedure of how a GradCam is computed. For ...</a></p>
+<h1 id="normalizing-flows-and-its-friends-part-2"><strong>Normalizing Flows and Its Friends (Part 2)</strong><a class="headerlink" href="#normalizing-flows-and-its-friends-part-2" title="Permanent link">&para;</a></h1>
 
 
 
@@ -448,42 +349,6 @@
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="../listen_and_learn/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Listen and Learn" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Listen and Learn
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../projects/" class="md-footer__link md-footer__link--next" aria-label="Next: Personal Projects" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Personal Projects
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -550,10 +415,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
         <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
       
