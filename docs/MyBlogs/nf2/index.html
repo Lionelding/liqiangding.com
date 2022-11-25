@@ -334,6 +334,170 @@
 
 
 <h1 id="normalizing-flows-and-its-friends-part-2"><strong>Normalizing Flows and Its Friends (Part 2)</strong><a class="headerlink" href="#normalizing-flows-and-its-friends-part-2" title="Permanent link">&para;</a></h1>
+<h1 id="what-is-normalizing-flows">What is normalizing flows?<a class="headerlink" href="#what-is-normalizing-flows" title="Permanent link">&para;</a></h1>
+<p><img alt="Triplet" src="../../img/blog/nf/triplet.png" /></p>
+<p>One type of generative models is flow-based models, which explicitly learns the mapping between a group of samples <span class="arithmatex"><span class="MathJax_Preview">x_{1}</span><script type="math/tex">x_{1}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">x_{2}</span><script type="math/tex">x_{2}</script></span>, ..., <span class="arithmatex"><span class="MathJax_Preview">x_{n}</span><script type="math/tex">x_{n}</script></span> to their latent distribution <span class="arithmatex"><span class="MathJax_Preview">p(x)</span><script type="math/tex">p(x)</script></span>. </p>
+<p><code>Normalizing flows</code> is one example of flow-based models.</p>
+<h1 id="why-normalizing-flows">Why normalizing flows?<a class="headerlink" href="#why-normalizing-flows" title="Permanent link">&para;</a></h1>
+<p>Given some real world data samples, we are always interested in learning its underlying distributions.
+Knowing the exact data distribution <span class="arithmatex"><span class="MathJax_Preview">p(x)</span><script type="math/tex">p(x)</script></span> is helpful in some scenarios such as sampling data and identifying bias. </p>
+<div class="admonition objective">
+<p class="admonition-title">Objective</p>
+<p>To minimize some notion of distance between <span class="arithmatex"><span class="MathJax_Preview">p_{D}</span><script type="math/tex">p_{D}</script></span> and <span class="arithmatex"><span class="MathJax_Preview">p_{M}</span><script type="math/tex">p_{M}</script></span></p>
+<ul>
+<li>Given a dataset <span class="arithmatex"><span class="MathJax_Preview">X=x_{1}, x_{2}, x_{3}, ...</span><script type="math/tex">X=x_{1}, x_{2}, x_{3}, ...</script></span> from an underlying distribution <span class="arithmatex"><span class="MathJax_Preview">p_{D}</span><script type="math/tex">p_{D}</script></span>,</li>
+<li>Can we find an approximating distribution <span class="arithmatex"><span class="MathJax_Preview">p_{M}</span><script type="math/tex">p_{M}</script></span>, which is from a family of <span class="arithmatex"><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> and parametrized by <span class="arithmatex"><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>, to minimize the distance between <span class="arithmatex"><span class="MathJax_Preview">p_{D}</span><script type="math/tex">p_{D}</script></span> and <span class="arithmatex"><span class="MathJax_Preview">p_{M}</span><script type="math/tex">p_{M}</script></span> ?</li>
+<li>Mathmatically, it is written as below</li>
+<li>
+<div class="arithmatex">
+<div class="MathJax_Preview"> \theta^{*}=\underset{\theta \in M}{\mathrm{argmin}} \space  dist(p_{\theta}, p_{D}$) </div>
+<script type="math/tex; mode=display"> \theta^{*}=\underset{\theta \in M}{\mathrm{argmin}} \space  dist(p_{\theta}, p_{D}$) </script>
+</div>
+</li>
+<li>If KL-divergence is the distance function, the above equation becomes the maximum likelihood estimation ...</li>
+<li>
+<div class="arithmatex">
+<div class="MathJax_Preview"> \theta^{*}=\underset{\theta \in M}{\mathrm{argmin}} \space E_{x~p_{D}} [-log \space p_{\theta}(x)] </div>
+<script type="math/tex; mode=display"> \theta^{*}=\underset{\theta \in M}{\mathrm{argmin}} \space E_{x~p_{D}} [-log \space p_{\theta}(x)] </script>
+</div>
+</li>
+</ul>
+</div>
+<p>Flow-based models are different than GAN or VAE, since Flow-based models explicitly learn <span class="arithmatex"><span class="MathJax_Preview">p(x)</span><script type="math/tex">p(x)</script></span> by optimizing the log likelihood. </p>
+<p>In GAN, the probability density function estimation is implicit by having the minmax classification error. 
+We don't explicitly assign a probability density function and estimate it.</p>
+<p>In VAE, we get an approximate probability density function by optimizing the evidence lower bound (which is <span class="arithmatex"><span class="MathJax_Preview">p_{\theta}(x|z)</span><script type="math/tex">p_{\theta}(x|z)</script></span>).
+The encoder captures the approximate posterior mapping between <span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> and <span class="arithmatex"><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span>, which is <span class="arithmatex"><span class="MathJax_Preview">q</span><script type="math/tex">q</script></span> parameterized by <span class="arithmatex"><span class="MathJax_Preview">\phi</span><script type="math/tex">\phi</script></span>. 
+The decoder captures <span class="arithmatex"><span class="MathJax_Preview">p_{\theta}(x|z)</span><script type="math/tex">p_{\theta}(x|z)</script></span> which is parameterized by <span class="arithmatex"><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>.
+In this casce, it is an approximate density estimation. </p>
+<p>In short, both GAN and VAE do not explicitly learn probability density function of real data <span class="arithmatex"><span class="MathJax_Preview">p(x)</span><script type="math/tex">p(x)</script></span>.</p>
+<p>In flow-based models, given an <span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>, we want to find the function <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> to get the latent representation <span class="arithmatex"><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span>. 
+And if we invert <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>, we will get <span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> back.
+The function <span class="arithmatex"><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> and <span class="arithmatex"><span class="MathJax_Preview">f^{-1}_(x)</span><script type="math/tex">f^{-1}_(x)</script></span> are exactly the inverse. And the flow-based models try to capture <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span></p>
+<h1 id="how-does-it-work">How does it work?<a class="headerlink" href="#how-does-it-work" title="Permanent link">&para;</a></h1>
+<p><img alt="z to x" src="../../img/blog/nf/z_to_x.png" /></p>
+<p>We try to identify a transformation <span class="arithmatex"><span class="MathJax_Preview">f: Z \rightarrow X</span><script type="math/tex">f: Z \rightarrow X</script></span> where f is a series of <strong>differentiable</strong> and <strong>invertible</strong> functions (<span class="arithmatex"><span class="MathJax_Preview">f_{1}</span><script type="math/tex">f_{1}</script></span>, <span class="arithmatex"><span class="MathJax_Preview">f_{2}</span><script type="math/tex">f_{2}</script></span>, ..., <span class="arithmatex"><span class="MathJax_Preview">f_{K}</span><script type="math/tex">f_{K}</script></span>,)</p>
+<p>In general, for any invertible function <span class="arithmatex"><span class="MathJax_Preview">f: Z \rightarrow X</span><script type="math/tex">f: Z \rightarrow X</script></span>, the probability function is below. The detailed steps can be found in <a href="../nf1/">this page</a></p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    p(x') = \pi(z') \mid {det(J_{f^{-1}})} \mid
+</div>
+<script type="math/tex; mode=display">
+    p(x') = \pi(z') \mid {det(J_{f^{-1}})} \mid
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    log \space p(x') = log \space \pi(z') + \sum^{K}_{i=1} log \mid {det(J_{f^{-1}})} \mid
+</div>
+<script type="math/tex; mode=display">
+    log \space p(x') = log \space \pi(z') + \sum^{K}_{i=1} log \mid {det(J_{f^{-1}})} \mid
+</script>
+</div>
+<p>Intuition:</p>
+<ul>
+<li>The first term describes the transformation <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> moulds the density <span class="arithmatex"><span class="MathJax_Preview">p_{Z}(z)</span><script type="math/tex">p_{Z}(z)</script></span> into <span class="arithmatex"><span class="MathJax_Preview">p_{X}(x)</span><script type="math/tex">p_{X}(x)</script></span>.</li>
+<li>The second term describes the relative change of volume around <span class="arithmatex"><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span></li>
+</ul>
+<p>In summary, the three requirements must hold for a normalizing flow model: </p>
+<ul>
+<li>Transformation function <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> should be differentiable</li>
+<li>Transformation function <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> should be invertible</li>
+<li>Determinant of Jacobian should be easy to compute</li>
+</ul>
+<h2 id="example-1-nice-non-linear-independent-components-estimation">Example 1: NICE (Non-linear Independent Components Estimation)<a class="headerlink" href="#example-1-nice-non-linear-independent-components-estimation" title="Permanent link">&para;</a></h2>
+<p><img alt="NICE" src="../../img/blog/nf/NICE.png" /></p>
+<p>Coupling layer operation:
+<script type="math/tex; mode=display">
+    y_{1} = x_{1}
+</script>
+</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    y_{2} = g(x_{2};m(x_{1}))
+</div>
+<script type="math/tex; mode=display">
+    y_{2} = g(x_{2};m(x_{1}))
+</script>
+</div>
+<p>Therefore, its Jacobian is a lower-triangular matrix and the determinant is the product of diagonal elements</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    \frac{\partial y}{\partial x} = \begin{bmatrix} I &amp; 0  \\ \frac{\partial y_{2}}{\partial x_{1}} &amp; \frac{\partial y_{2}}{\partial x_{2}}  \end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+    \frac{\partial y}{\partial x} = \begin{bmatrix} I & 0  \\ \frac{\partial y_{2}}{\partial x_{1}} & \frac{\partial y_{2}}{\partial x_{2}}  \end{bmatrix}
+</script>
+</div>
+<p>The inverse mappings are:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    x_{1} = y_{1}
+</div>
+<script type="math/tex; mode=display">
+    x_{1} = y_{1}
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    x_{2} = g^{-1}(y_{2}, m(y_{1}))
+</div>
+<script type="math/tex; mode=display">
+    x_{2} = g^{-1}(y_{2}, m(y_{1}))
+</script>
+</div>
+<h2 id="example-2-real-nvp-real-valued-non-volume-preserving">Example 2: Real NVP (Real-valued Non Volume Preserving)<a class="headerlink" href="#example-2-real-nvp-real-valued-non-volume-preserving" title="Permanent link">&para;</a></h2>
+<p><img alt="RealNVP" src="../../img/blog/nf/RealNVP.png" /></p>
+<p>Affine coupling operations are (there is one translation component and one scale component for <span class="arithmatex"><span class="MathJax_Preview">y_{2}</span><script type="math/tex">y_{2}</script></span>):</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    y_{1} = x_{1}
+</div>
+<script type="math/tex; mode=display">
+    y_{1} = x_{1}
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    y_{2} = x_{2} \odot exp(s(x_{1})) + t(x_{1})
+</div>
+<script type="math/tex; mode=display">
+    y_{2} = x_{2} \odot exp(s(x_{1})) + t(x_{1})
+</script>
+</div>
+<p>The Jacobian becomes</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    \frac{\partial y}{\partial x} = \begin{bmatrix} I_{d} &amp; 0  \\ \frac{\partial y_{2}}{\partial x_{1}} &amp; diag(exp[s(x_{1})])  \end{bmatrix}
+</div>
+<script type="math/tex; mode=display">
+    \frac{\partial y}{\partial x} = \begin{bmatrix} I_{d} & 0  \\ \frac{\partial y_{2}}{\partial x_{1}} & diag(exp[s(x_{1})])  \end{bmatrix}
+</script>
+</div>
+<p>Since the Jacobian matrix is not always equal to 1, affine coupling is not always volume preserving which is more realistic in real world data.</p>
+<p>The inverse operations are:</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    x_{1} = y_{1}
+</div>
+<script type="math/tex; mode=display">
+    x_{1} = y_{1}
+</script>
+</div>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+    x_{2} = (y_{2} - t(y_{1})) \odot exp(-s(y_{1})) 
+</div>
+<script type="math/tex; mode=display">
+    x_{2} = (y_{2} - t(y_{1})) \odot exp(-s(y_{1})) 
+</script>
+</div>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="https://www.youtube.com/watch?v=RPkf516rXgw">https://www.youtube.com/watch?v=RPkf516rXgw</a></li>
+<li><a href="https://www.youtube.com/watch?v=PCfHd0Ec6M4">https://www.youtube.com/watch?v=PCfHd0Ec6M4</a></li>
+<li><a href="https://stackoverflow.com/questions/54635355/what-does-log-prob-do">https://stackoverflow.com/questions/54635355/what-does-log-prob-do</a></li>
+</ol>
 
 
 
