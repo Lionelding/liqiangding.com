@@ -1,5 +1,13 @@
 
 **********
+## **Paper Reading: Human Pose Regression with Residual Log-likelihood Estimation**
+![rle](img/blog/rle/rle_frontpage.png)
+
+!!! Keywords
+    Human pose estimation, laplace, gaussian priors
+[:point_right: Full Articale :point_left:](MyBlogs/rle.md)
+
+**********
 ## **Normalizing Flows and Its Friends (Part 2)**
 ![Normalizing Flows](img/blog/nf/nf.png)
 
@@ -19,5 +27,8 @@
 ## **Gradient Class Activation Map (Grad-CAM) Summary**
 ![GradCam](img/blog/GradCam/GradCam.png)
 
-[The following note demonstrates the logic procedure of how a GradCam is computed. For ...](MyBlogs/GradCam.md)
+!!! Keywords
+    GradCam, penultimate layer
+
+[:point_right: Full Articale :point_left:](MyBlogs/GradCam.md)
 

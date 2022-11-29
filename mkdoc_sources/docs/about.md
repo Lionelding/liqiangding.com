@@ -1,10 +1,5 @@
 # About Myself
 
-!!! note
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
-
 ## Artificial Intelligence? Computer Vision? Natural language Processing?
 
 Artificial Intelligence never fails to appeal to me. 

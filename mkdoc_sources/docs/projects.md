@@ -1,6 +1,7 @@
 
+************
 # PythonWoW
-![PythonWoW](img/workshop.jpeg)
+![PythonWoW](img/personal_projects/workshop.jpeg)
 
 As a machine learning developer/researcher, I encountered many python related questions from time to time. The majority of them are straightforward, but some are subtle to understand, and hard to be applied properly in real practise. During the process for searching answers, I realized that it usually becomes super clear if I write them down with my own examples and understanding.
 
@@ -11,16 +12,15 @@ I would be also very happy if this can help you.
 
 **********
 # Tensorflow2 Practises
-![Tensorflow2](img/tf2.png)
+![Tensorflow2](img/personal_projects/tf2.png)
 
 Finally, tensorflow got upgraded to 2.x. It is time to try it out and have some fun :)
 
 [Click me for details](https://github.com/Lionelding/tensorflow2_practise)
 
 **********
-
 # Code practise with `Efficient Python`
-![Efficient Python](img/efficientpython2.jpg)
+![Efficient Python](img/personal_projects/efficientpython2.jpg)
 
 This repository contains notes that I took while reading this book.
 

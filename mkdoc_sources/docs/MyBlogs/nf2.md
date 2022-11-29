@@ -138,3 +138,4 @@ $$
 1. https://www.youtube.com/watch?v=RPkf516rXgw
 2. https://www.youtube.com/watch?v=PCfHd0Ec6M4
 3. https://stackoverflow.com/questions/54635355/what-does-log-prob-do
+4. https://www.youtube.com/watch?v=uXY18nzdSsM&t=169s

@@ -1,30 +1,21 @@
 # Learning is a life-long process ... 
 
+**ML Operations**                      |
+:-------------------------------------:|
+![ML Ops1](img/certificates/MLops1.png)|  
 
+Generative Adversariel Networks Certificate | Generative Adversariel Networks Course 1
+:------------------------------------------:|:----------------------------------------:
+![gan](img/certificates/GAN_certificate.png)| ![gan1](img/certificates/MLops1.png)
 
-<style>
-img {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 640px;
-  float: center
-}
-</style>
+Generative Adversariel Networks Course 2 | Generative Adversariel Networks Course 3          
+:---------------------------------------:|:------------------------------------------:
+![gan2](img/certificates/gan2.png)       | ![gan3](img/certificates/gan3.png)
 
+ Sequence Models                       |  Convolutional Neural Networks       |
+:-------------------------------------:|:-------------------------------------:
+  ![seq](img/certificates/seq.png)   | ![gan3](img/certificates/CNN.png)
 
-<img style="float: middle;" src="./img/MLops1.png", width="900" height="600">
-
-<img style="float: middle;" src="./img/seq.png", width="900" height="600">
-
-<img style="float: middle;" src="./img/gan3.png", width="900" height="600">
-
-<img style="float: middle;" src="./img/gan2.png", width="900" height="600">
-
-<img style="float: middle;" src="./img/gan1.png", width="900" height="600">
-
-<img style="float: middle;" src="./img/GAN_certificate.png", width="900" height="600">
-
-<img style="float: middle;" src="./img/CNN.png", width="900" height="600">
-
-<img style="float: middle;" src="./img/prob1.png", width="900" height="600">
+Probabilistic Graphics Model           |
+:-------------------------------------:|
+![prob1](img/certificates/prob1.png)|  
