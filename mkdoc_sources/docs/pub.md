@@ -4,6 +4,11 @@ My research focuses on representation learning with 3D data, self-supervised lea
 
 [Google scholar](https://scholar.google.ca/citations?user=P87La54AAAAJ&hl=en)
 
+**********
+### **A deep radiomics approach to assess PD-L1 expression and clinical outcomes in patients with advanced non-small cell lung cancer treated with immune checkpoint inhibitors: A multicentric study**
+
+* 2021 European Society for Medical Oncology
+* [Full paper](https://www.annalsofoncology.org/article/S0923-7534(21)04187-9/fulltext)
 
 **********
 ### **Task Adaptive Metric Space for Medium-Shot Medical Image Classification**
