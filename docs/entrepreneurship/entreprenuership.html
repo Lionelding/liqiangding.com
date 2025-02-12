@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrepreneurship - Your Name</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Shared styles from previous pages */
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #6366f1;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            margin: 6rem 5% 2rem;
+            gap: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sidebar {
+            width: 300px;
+            text-align: center;
+            position: sticky;
+            top: 6rem;
+            height: fit-content;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid transparent;
+            background: var(--gradient) border-box;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) padding-box,
+                linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-icons a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Updated company cards styling */
+        .company-grid {
+            display: grid;
+            gap: 2rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .company-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .company-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .company-name {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .company-timeframe {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .company-description {
+            color: #475569;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .company-industries {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .industry-tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .company-website {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .company-website:hover {
+            color: #4f46e5;
+            transform: translateX(5px);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+        }
+
+        .active {
+            background: rgba(99, 102, 241, 0.15);
+            color: #6366f1;
+        }
+
+        .acquired {
+            background: rgba(168, 85, 247, 0.15);
+            color: #a855f7;
+        }
+
+        .closed {
+            background: rgba(236, 72, 153, 0.15);
+            color: #ec4899;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 4rem;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+
+            .company-card {
+                padding: 1.5rem;
+            }
+
+            .company-name {
+                font-size: 1.5rem;
+            }
+
+            .status-badge {
+                top: 1rem;
+                right: 1rem;
+                padding: 0.5rem 0.75rem;
+            }
+        }
+
+        .about-entrepreneurship {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .about-entrepreneurship:hover {
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.3;
+        }
+
+        .motivation-text {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .motivation-text:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .about-entrepreneurship {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/entrepreneurship">Entrepreneurship</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <img src="images/profile/your-profile-picture.jpg" alt="Your Name" class="profile-pic">
+            <div class="social-icons">
+                <a href="your-twitter-url" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="your-youtube-url" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="your-linkedin-url" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="your-github-url" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </aside>
+
+        <main class="blog-content">
+            <!-- New Why Entrepreneurship Section -->
+            <section class="about-entrepreneurship">
+                <h2 class="section-title">Why I Love Entrepreneurship</h2>
+                <div class="section-content">
+                    <p class="motivation-text">
+                        Entrepreneurship is more than just building companies - it's about solving real-world problems
+                        through innovation and persistence. For me, it combines the thrill of creative freedom with
+                        the satisfaction of creating tangible impact.
+                    </p>
+                    <p class="motivation-text">
+                        I'm passionate about the entire lifecycle: from validating early concepts and prototyping
+                        solutions,
+                        to scaling teams and navigating complex challenges. Each venture teaches invaluable lessons
+                        about
+                        leadership, resilience, and technological innovation.
+                    </p>
+                </div>
+            </section>
+
+            <div class="company-grid">
+                <!-- Company 1 -->
+                <article class="company-card">
+                    <span class="status-badge active">Active</span>
+                    <div class="company-header">
+                        <h2 class="company-name">TechStart Innovations</h2>
+                        <div class="company-timeframe">2018 - Present</div>
+                    </div>
+                    <div class="company-industries">
+                        <span class="industry-tag">SaaS</span>
+                        <span class="industry-tag">AI/ML</span>
+                        <span class="industry-tag">Cloud Computing</span>
+                    </div>
+                    <p class="company-description">
+                        Pioneering enterprise SaaS solutions powered by machine learning.
+                        Raised $2.5M seed funding in 2020. Currently serving 150+ enterprise
+                        clients worldwide with our flagship product.
+                    </p>
+                    <a href="https://techstart.com" class="company-website" target="_blank">
+                        Visit Website
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </article>
+
+                <!-- Company 2 -->
+                <article class="company-card">
+                    <span class="status-badge acquired">Acquired (2021)</span>
+                    <div class="company-header">
+                        <h2 class="company-name">EduFuture Platform</h2>
+                        <div class="company-timeframe">2016 - 2021</div>
+                    </div>
+                    <div class="company-industries">
+                        <span class="industry-tag">EdTech</span>
+                        <span class="industry-tag">Mobile Apps</span>
+                        <span class="industry-tag">E-Learning</span>
+                    </div>
+                    <p class="company-description">
+                        Revolutionary mobile-first learning platform acquired by
+                        GlobalEd in 2021. Reached 1M+ active users with our unique
+                        micro-learning approach.
+                    </p>
+                    <a href="https://edufuture.com" class="company-website" target="_blank">
+                        Archive Site
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </article>
+
+                <!-- Company 3 -->
+                <article class="company-card">
+                    <span class="status-badge closed">Closed (2019)</span>
+                    <div class="company-header">
+                        <h2 class="company-name">HealthTrack Solutions</h2>
+                        <div class="company-timeframe">2014 - 2019</div>
+                    </div>
+                    <div class="company-industries">
+                        <span class="industry-tag">HealthTech</span>
+                        <span class="industry-tag">Wearables</span>
+                        <span class="industry-tag">IoT</span>
+                    </div>
+                    <p class="company-description">
+                        Early-stage wearable tech startup focused on remote patient
+                        monitoring. Developed 3 patented technologies before closing
+                        operations in 2019.
+                    </p>
+                    <a href="https://healthtrack.archive" class="company-website" target="_blank">
+                        Case Study
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </article>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

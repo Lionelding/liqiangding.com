@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Web Architecture Patterns - Your Name</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #6366f1;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            margin: 6rem 5% 2rem;
+            gap: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sidebar {
+            width: 300px;
+            text-align: center;
+            position: sticky;
+            top: 6rem;
+            height: fit-content;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid transparent;
+            background: var(--gradient) border-box;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) padding-box,
+                linear-gradient(#fff 0 0);
+            mask:
+                linear-gradient(#fff 0 0) padding-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        /* Updated article styles to match blog listing */
+        .blog-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .blog-article {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            color: #64748b;
+            font-size: 0.95rem;
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            border: 3px solid transparent;
+            background: var(--gradient) border-box;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) padding-box,
+                linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        .article-content h2 {
+            margin: 2.5rem 0 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.75rem;
+        }
+
+        .article-content code {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.3em 0.5em;
+            border-radius: 0.3em;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .article-content pre {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.75rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            background: var(--glass);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-blog:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .social-sharing {
+            display: flex;
+            gap: 1rem;
+            margin: 3rem 0 2rem;
+        }
+
+        .social-sharing a {
+            padding: 0.8rem 1.5rem;
+            border-radius: 999px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-sharing a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 4rem;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+
+            .blog-article {
+                padding: 2rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+                margin: 1.5rem 0;
+            }
+
+            .social-sharing {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog" class="active">Blog</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <img src="images/profile/your-profile-picture.jpg" alt="Your Name" class="profile-pic">
+            <div class="social-icons">
+                <a href="your-twitter-url" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="your-youtube-url" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="your-linkedin-url" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="your-github-url" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </aside>
+
+        <main class="blog-content">
+            <article class="blog-article">
+                <header class="article-header">
+                    <div class="article-meta">
+                        <span>Published: March 15, 2024</span>
+                        <span>•</span>
+                        <span>8 min read</span>
+                    </div>
+                    <h1 class="article-title">Modern Web Architecture Patterns</h1>
+                    <img src="images/blog-posts/architecture-patterns.jpg" alt="Web Architecture" class="article-image">
+                </header>
+
+                <div class="article-content">
+                    <h2>Introduction to Scalable Architectures</h2>
+                    <p>In today's fast-paced digital landscape, choosing the right architecture pattern...</p>
+
+                    <h2>Monolithic vs Microservices</h2>
+                    <p>While monolithic architectures provide simplicity in initial development...</p>
+                    <pre><code>// Example deployment configuration
+services:
+  web-app:
+    image: my-web-app:latest
+    ports:
+      - "8080:8080"</code></pre>
+
+                    <h2>Serverless Considerations</h2>
+                    <p>Serverless architectures offer incredible scalability but require...</p>
+
+                    <div class="social-sharing">
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                            Share on Twitter
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-linkedin"></i>
+                            Share on LinkedIn
+                        </a>
+                    </div>
+
+                    <div class="tags">
+                        <span class="tag">Backend</span>
+                        <span class="tag">Architecture</span>
+                        <span class="tag">Cloud</span>
+                    </div>
+
+                    <a href="/blog" class="back-to-blog">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Blog
+                    </a>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+
+</html>

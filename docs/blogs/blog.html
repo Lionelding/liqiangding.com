@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Blog - Your Name</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #6366f1;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Modern navigation */
+        nav {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Main layout */
+        .container {
+            display: flex;
+            margin: 6rem 5% 2rem;
+            gap: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Modern sidebar */
+        .sidebar {
+            width: 300px;
+            text-align: center;
+            position: sticky;
+            top: 6rem;
+            height: fit-content;
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid transparent;
+            background: var(--gradient) border-box;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) padding-box,
+                linear-gradient(#fff 0 0);
+            mask:
+                linear-gradient(#fff 0 0) padding-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-icons a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Modern bio section */
+        .bio {
+            flex: 1;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .bio h1 {
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .bio p {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 4rem;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+
+            .bio {
+                padding: 1.5rem;
+            }
+
+            .bio h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* New Blog Styles */
+        .blog-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .blog-post {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .featured-image {
+            width: 250px;
+            height: 200px;
+            border-radius: 0.75rem;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .post-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .post-date {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .post-excerpt {
+            color: #475569;
+            line-height: 1.7;
+            margin: 0.5rem 0;
+        }
+
+        .read-more {
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 500;
+            align-self: flex-start;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .read-more:hover {
+            color: #4f46e5;
+        }
+
+        .read-more i {
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover i {
+            transform: translateX(3px);
+        }
+
+        @media (max-width: 768px) {
+            .blog-post {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+
+            .featured-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .post-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog" class="active">Blog</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <img src="./imgs/t50.jpg" alt="Your Name" class="profile-pic">
+            <div class="social-icons">
+                <a href="your-twitter-url" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="your-youtube-url" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="your-linkedin-url" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="your-github-url" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </aside>
+
+        <main class="blog-content">
+            <div class="blog-posts">
+                <!-- Blog Post 1 -->
+                <article class="blog-post">
+                    <img src="blog-image-1.jpg" alt="Web Architecture" class="featured-image">
+                    <div class="post-content">
+                        <div class="post-date">March 15, 2024 • 8 min read</div>
+                        <h2 class="post-title">Modern Web Architecture Patterns</h2>
+                        <div class="tags">
+                            <span class="tag">Backend</span>
+                            <span class="tag">Architecture</span>
+                            <span class="tag">Cloud</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Exploring modern architectural approaches for scalable web applications...
+                        </p>
+                        <a href="#" class="read-more">
+                            Read Article
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-post">
+                    <img src="blog-image-2.jpg" alt="React Performance" class="featured-image">
+                    <div class="post-content">
+                        <div class="post-date">March 10, 2024 • 6 min read</div>
+                        <h2 class="post-title">Optimizing React Performance</h2>
+                        <div class="tags">
+                            <span class="tag">Frontend</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Performance</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Practical techniques for boosting React application performance...
+                        </p>
+                        <a href="#" class="read-more">
+                            Read Article
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
