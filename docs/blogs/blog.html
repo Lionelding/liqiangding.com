@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Blog - Your Name</title>
+    <title>Blogs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #1a1a1a;
-            --accent-color: #6366f1;
+            --accent-color: #3B82F6;
             --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
             --glass: rgba(255, 255, 255, 0.9);
             --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -28,7 +28,6 @@
             line-height: 1.6;
         }
 
-        /* Modern navigation */
         nav {
             background: var(--glass);
             backdrop-filter: blur(10px);
@@ -39,12 +38,16 @@
             z-index: 1000;
             box-shadow: var(--shadow);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
         }
 
         nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
+            margin: 0;
+            padding: 0;
         }
 
         nav a {
@@ -70,7 +73,57 @@
             width: 100%;
         }
 
-        /* Main layout */
+        /* Mobile navigation */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--glass);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
         .container {
             display: flex;
             margin: 6rem 5% 2rem;
@@ -80,7 +133,6 @@
             margin-right: auto;
         }
 
-        /* Modern sidebar */
         .sidebar {
             width: 300px;
             text-align: center;
@@ -89,28 +141,47 @@
             height: fit-content;
         }
 
-        .profile-pic {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            border: 3px solid transparent;
-            background: var(--gradient) border-box;
-            -webkit-mask:
-                linear-gradient(#fff 0 0) padding-box,
-                linear-gradient(#fff 0 0);
-            mask:
-                linear-gradient(#fff 0 0) padding-box,
-                linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            transition: transform 0.3s ease;
+        /* Updated profile image styles */
+        .profile-pic-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 1.5rem;
         }
 
-        .profile-pic:hover {
-            transform: rotate(5deg) scale(1.05);
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
         }
+
+        .profile-pic-container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .profile-pic-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--glass);
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: var(--shadow);
+        }
+
 
         .social-icons {
             display: flex;
@@ -139,77 +210,6 @@
             transform: translateY(-3px);
         }
 
-        /* Modern bio section */
-        .bio {
-            flex: 1;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 1.5rem;
-            box-shadow: var(--shadow);
-        }
-
-        .bio h1 {
-            font-size: 2.75rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.2;
-        }
-
-        .bio p {
-            font-size: 1.1rem;
-            color: #475569;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .container {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                margin-top: 4rem;
-            }
-
-            .sidebar {
-                width: 100%;
-                position: static;
-            }
-
-            .profile-pic {
-                width: 150px;
-                height: 150px;
-            }
-
-            .bio {
-                padding: 1.5rem;
-            }
-
-            .bio h1 {
-                font-size: 2rem;
-            }
-        }
-
-        /* New Blog Styles */
         .blog-content {
             flex: 1;
             max-width: 800px;
@@ -230,6 +230,8 @@
             transition: transform 0.3s ease;
             display: flex;
             gap: 1.5rem;
+            align-items: center;
+            /* Center items vertically */
         }
 
         .blog-post:hover {
@@ -242,6 +244,8 @@
             border-radius: 0.75rem;
             object-fit: cover;
             flex-shrink: 0;
+            margin-left: 1.5rem;
+            /* Add left margin for spacing */
         }
 
         .post-content {
@@ -251,9 +255,10 @@
             gap: 0.75rem;
         }
 
-        .post-date {
+        .project-duration {
             font-size: 0.9rem;
             color: #64748b;
+            margin-bottom: 0.5rem;
         }
 
         .post-title {
@@ -269,8 +274,8 @@
         }
 
         .tag {
-            background: rgba(99, 102, 241, 0.1);
-            color: #6366f1;
+            background: rgba(59, 130, 246, 0.1);
+            color: #3B82F6;
             padding: 0.25rem 0.75rem;
             border-radius: 1rem;
             font-size: 0.85rem;
@@ -283,42 +288,104 @@
             margin: 0.5rem 0;
         }
 
-        .read-more {
-            color: #6366f1;
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            color: #3B82F6;
             text-decoration: none;
             font-weight: 500;
-            align-self: flex-start;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            margin-top: auto;
+            transition: all 0.3s ease;
         }
 
-        .read-more:hover {
-            color: #4f46e5;
+        .project-links a:hover {
+            color: #2563EB;
+            transform: translateY(-2px);
         }
 
-        .read-more i {
+        .project-links a i {
             transition: transform 0.3s ease;
         }
 
-        .read-more:hover i {
-            transform: translateX(3px);
+        .project-links a:hover i {
+            transform: translateY(3px);
         }
 
+        .about-entrepreneurship {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .about-entrepreneurship:hover {
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.3;
+        }
+
+
         @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 4rem;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .profile-pic {
+                width: 300px;
+                height: 300px;
+            }
+
             .blog-post {
                 flex-direction: column;
                 padding: 1.5rem;
+                align-items: flex-start;
+                /* Align items to the start on mobile */
             }
 
             .featured-image {
                 width: 100%;
                 height: 200px;
+                margin-left: 0;
+                /* Remove left margin on mobile */
+                margin-bottom: 1rem;
+                /* Add bottom margin for spacing */
             }
 
             .post-title {
                 font-size: 1.25rem;
+            }
+
+            .about-entrepreneurship {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
             }
         }
     </style>
@@ -326,71 +393,163 @@
 
 <body>
     <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog" class="active">Blog</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/about">About</a></li>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../professional/professional.html">Professional Experience</a></li>
+            <li><a href="../projects/projects.html">Projects</a></li>
+            <li><a href="../research/research.html">Research</a></li>
+            <li><a href="../entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
+            <li><a href="./blog.html" class="active">Blog</a></li>
+            <li><a href="../fun/fun.html">Fun</a></li>
         </ul>
     </nav>
 
     <div class="container">
         <aside class="sidebar">
-            <img src="./imgs/t50.jpg" alt="Your Name" class="profile-pic">
+            <div class="profile-pic-container">
+                <img src="../assets/images/profile.jpg" alt="Your Name" class="profile-pic">
+            </div>
             <div class="social-icons">
-                <a href="your-twitter-url" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="your-youtube-url" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="your-linkedin-url" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="your-github-url" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/liqiang_ding" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@947973" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Lionelding" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </aside>
 
         <main class="blog-content">
+            <section class="about-entrepreneurship">
+                <h2 class="section-title">Learning and Learning</h2>
+                <div class="section-content">
+                    <p class="motivation-text">
+                        If you can't explain it simply, you don't understand it well enough. - Albert Einstein
+                    </p>
+                </div>
+            </section>
+
             <div class="blog-posts">
-                <!-- Blog Post 1 -->
+
                 <article class="blog-post">
-                    <img src="blog-image-1.jpg" alt="Web Architecture" class="featured-image">
+                    <img src="./2021_esmo/img0.png" alt="AI Research" class="featured-image">
                     <div class="post-content">
-                        <div class="post-date">March 15, 2024 • 8 min read</div>
-                        <h2 class="post-title">Modern Web Architecture Patterns</h2>
-                        <div class="tags">
-                            <span class="tag">Backend</span>
-                            <span class="tag">Architecture</span>
-                            <span class="tag">Cloud</span>
-                        </div>
+                        <div class="project-duration">2022 • Technical Blog </div>
+                        <h2 class="post-title">Human Pose Regression with Residual Log-likelihood
+                            Estimation
+                        </h2>
                         <p class="post-excerpt">
-                            Exploring modern architectural approaches for scalable web applications...
+                            Recent studies suggest imaging-based signatures can be a promising non-invasive approach to
+                            predict response to immune checkpoint inhibitors (ICI). In this multi-centric study, we
+                            explored the use of radiomics models to characterize the relationship between PD-L1
+                            expression, imaging features, and clinical outcomes...
                         </p>
-                        <a href="#" class="read-more">
-                            Read Article
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <div class="project-links">
+                            <a href="https://www.annalsofoncology.org/article/S0923-7534(21)04187-9/fulltext"
+                                class="download-link">
+                                <i class="fas fa-download"></i>
+                                Read article
+                            </a>
+                        </div>
                     </div>
                 </article>
 
-                <!-- Blog Post 2 -->
                 <article class="blog-post">
-                    <img src="blog-image-2.jpg" alt="React Performance" class="featured-image">
+                    <img src="./2019_miccai/img0.png" alt="AI Research" class="featured-image">
                     <div class="post-content">
-                        <div class="post-date">March 10, 2024 • 6 min read</div>
-                        <h2 class="post-title">Optimizing React Performance</h2>
+                        <div class="project-duration">2022 • Technical Blog</div>
+                        <h2 class="post-title">Normalizing Flows and Its Friends (Part 2)
+                        </h2>
                         <div class="tags">
-                            <span class="tag">Frontend</span>
-                            <span class="tag">React</span>
-                            <span class="tag">Performance</span>
+                            <span class="tag">flow-based model</span>
+                            <span class="tag">RealNVP</span>
                         </div>
                         <p class="post-excerpt">
-                            Practical techniques for boosting React application performance...
+                            In the medical domain, one challenge of deep learning is to build sample-efficient models
+                            from a small number of labeled data. In recent years, meta-learning has become an important
+                            approach to few-shot image classification...
                         </p>
-                        <a href="#" class="read-more">
-                            Read Article
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/1r2X77euy1spJDXuVIKr-rUivVH72Pq7K/view?usp=sharing"
+                                class="download-link">
+                                <i class="fas fa-download"></i>
+                                Poster
+                            </a>
+                        </div>
                     </div>
                 </article>
+
+                <article class="blog-post">
+                    <img src="./2019_gastroenterology/img0.png" alt="AI Research" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2022 • Technical Blog</div>
+                        <h2 class="post-title">Normalizing Flows and Its Friends (Part 1)</h2>
+                        <div class="tags">
+                            <span class="tag">Jacobian Matrix</span>
+                            <span class="tag">Determinant</span>
+                            <span class="tag">Change of Variable Theorem</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Artificial Intelligence (AI) has shown great promise for colon polyp
+                            detection but high level clinical performance remains elusive. Rather than focus on simply
+                            improving AI-detection, we explored a novel approach to identify and “track” polyps in
+                            real-time.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.researchgate.net/publication/332884708_256_-_Artificial_Intelligence_for_Real-Time_Multiple_Polyp_Detection_with_Identification_Tracking_and_Optical_Biopsy_During_Colonoscopy"
+                                class="download-link">
+                                <i class="fas fa-download"></i>
+                                Paper
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <img src="./202006_gradcam/img0.png" alt="AI Research" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2020 • Technical Blog</div>
+                        <h2 class="post-title">Gradient Class Activation Map (Grad-CAM) Summary</h2>
+                        <div class="tags">
+                            <span class="tag">GradCam</span>
+                            <span class="tag">penultimate layer</span>
+                            <span class="tag">feature visualization</span>
+
+                        </div>
+                        <p class="post-excerpt">
+                            Artificial Intelligence (AI) has shown great promise for colon polyp
+                            detection but high level clinical performance remains elusive. Rather than focus on simply
+                            improving AI-detection, we explored a novel approach to identify and “track” polyps in
+                            real-time.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.researchgate.net/publication/332884708_256_-_Artificial_Intelligence_for_Real-Time_Multiple_Polyp_Detection_with_Identification_Tracking_and_Optical_Biopsy_During_Colonoscopy"
+                                class="download-link">
+                                <i class="fas fa-download"></i>
+                                Read more
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </main>
     </div>
 </body>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+</script>
 
 </html>
