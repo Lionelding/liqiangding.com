@@ -262,6 +262,32 @@
             transform: translateY(3px);
         }
 
+        .about-entrepreneurship {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .about-entrepreneurship:hover {
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.3;
+        }
+
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -297,6 +323,15 @@
             .post-title {
                 font-size: 1.25rem;
             }
+
+            .about-entrepreneurship {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
         }
     </style>
 </head>
@@ -306,7 +341,8 @@
         <ul>
             <li><a href="../index.html">Home</a></li>
             <li><a href="/blog">Blog</a></li>
-            <li><a href="/projects" class="active">Projects</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="research.html" class="active">Research</a></li>
             <li><a href="/about">About</a></li>
         </ul>
     </nav>
@@ -326,8 +362,116 @@
         </aside>
 
         <main class="blog-content">
+            <section class="about-entrepreneurship">
+                <h2 class="section-title">Explore the unknown</h2>
+                <div class="section-content">
+                    <p class="motivation-text">
+                        My work focuses on advancing the understanding and application of AI
+                        through areas such as point cloud analysis, meta-learning, domain adaptation, and generative
+                        models. With a strong foundation in both theoretical and practical aspects of these fields, I
+                        strive to develop innovative solutions that address complex challenges and push the boundaries
+                        of what AI can achieve.
+                    </p>
+                </div>
+            </section>
+
             <div class="blog-posts">
                 <!-- Research Project 1 -->
+
+                <article class="blog-post">
+                    <img src="./2021_esmo/img0.png" alt="AI Research" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2021 • European Society for Medical Oncology </div>
+                        <h2 class="post-title">A deep radiomics approach to assess PD-L1 expression and clinical
+                            outcomes in patients with advanced non-small cell lung cancer treated with immune checkpoint
+                            inhibitors: A multicentric study
+                        </h2>
+                        <div class="tags">
+                            <span class="tag">Feature Analysis</span>
+                            <span class="tag">Deep radiomics</span>
+                            <span class="tag">Transfer learning</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Recent studies suggest imaging-based signatures can be a promising non-invasive approach to
+                            predict response to immune checkpoint inhibitors (ICI). In this multi-centric study, we
+                            explored the use of radiomics models to characterize the relationship between PD-L1
+                            expression, imaging features, and clinical outcomes...
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.annalsofoncology.org/article/S0923-7534(21)04187-9/fulltext"
+                                class="download-link">
+                                <i class="fas fa-download"></i>
+                                Paper
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <img src="./2019_miccai/img0.png" alt="AI Research" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2019 • 22th International Conference on Medical Image Computing
+                            and Computer Assisted Intervention (MICCAI) </div>
+                        <h2 class="post-title">Task Adaptive Metric Space for Medium-Shot Medical Image Classification
+                        </h2>
+                        <div class="tags">
+                            <span class="tag">Meta Learning</span>
+                            <span class="tag">Medium-shot</span>
+                            <span class="tag">Metric Adaptation</span>
+                        </div>
+                        <p class="post-excerpt">
+                            In the medical domain, one challenge of deep learning is to build sample-efficient models
+                            from a small number of labeled data. In recent years, meta-learning has become an important
+                            approach to few-shot image classification...
+                        </p>
+                        <div class="project-links">
+                            <a href="https://link.springer.com/chapter/10.1007/978-3-030-32239-7_17"
+                                class="download-link">
+                                <i class="fas fa-download"></i>
+                                Paper
+                            </a>
+                            <a href="https://drive.google.com/file/d/1r2X77euy1spJDXuVIKr-rUivVH72Pq7K/view?usp=sharing"
+                                class="download-link">
+                                <i class="fas fa-download"></i>
+                                Poster
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <img src="./2019_gastroenterology/img0.png" alt="AI Research" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2019 • Journal of Gastroenterology </div>
+                        <h2 class="post-title">Artificial Intelligence for Real-Time Multiple Polyp Detection with
+                            Identification, Tracking, and Optical Biopsy During Colonoscopy</h2>
+                        <div class="tags">
+                            <span class="tag">Detection</span>
+                            <span class="tag">Tracking</span>
+                            <span class="tag">Real-time</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Artificial Intelligence (AI) has shown great promise for colon polyp
+                            detection but high level clinical performance remains elusive. Rather than focus on simply
+                            improving AI-detection, we explored a novel approach to identify and “track” polyps in
+                            real-time.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.youtube.com/watch?v=L9Nu_SSbNqQ&ab_channel=MontrealGazette"
+                                target="_blank">
+                                <i class="fab fa-youtube"></i>
+                                Demo
+                            </a>
+                            <a href="https://www.researchgate.net/publication/332884708_256_-_Artificial_Intelligence_for_Real-Time_Multiple_Polyp_Detection_with_Identification_Tracking_and_Optical_Biopsy_During_Colonoscopy"
+                                class="download-link">
+                                <i class="fas fa-download"></i>
+                                Paper
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+
                 <article class="blog-post">
                     <img src="./2019_patent/img0.png" alt="AI Research" class="featured-image">
                     <div class="post-content">
