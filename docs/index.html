@@ -39,12 +39,16 @@
             z-index: 1000;
             box-shadow: var(--shadow);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
         }
 
         nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
+            margin: 0;
+            padding: 0;
         }
 
         nav a {
@@ -68,6 +72,57 @@
 
         nav a:hover::after {
             width: 100%;
+        }
+
+        /* Mobile navigation */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--glass);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
         }
 
         /* Main layout */
@@ -231,7 +286,12 @@
 
 <body>
     <nav>
-        <ul>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="professional/professional.html">Professional Experience</a></li>
             <li><a href="projects/projects.html">Projects</a></li>
@@ -275,9 +335,19 @@
             <p>Driven by an insatiable curiosity to explore the world—both through technology and beyond—I am committed
                 to continuous learning, innovation, and pushing the boundaries of what AI can achieve. Let’s connect and
                 discover new possibilities together.</p>
-
         </main>
     </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 
 </html>
