@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Reading: Human Pose Regression with Residual Log-likelihood
+        Estimation (ICCV 2021 Oral)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #6366f1;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile navigation */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--glass);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+
+        .container {
+            display: flex;
+            margin: 6rem 5% 2rem;
+            gap: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sidebar {
+            width: 300px;
+            text-align: center;
+            position: sticky;
+            top: 6rem;
+            height: fit-content;
+        }
+
+        /* Updated profile image styles */
+        .profile-pic-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-icons a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Updated article styles to match blog listing */
+        .blog-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .blog-article {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            color: #64748b;
+            font-size: 0.95rem;
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            border: 3px solid transparent;
+            mask-composite: exclude;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        .article-content h2 {
+            margin: 2.5rem 0 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.75rem;
+        }
+
+        .article-content code {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.3em 0.5em;
+            border-radius: 0.3em;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .article-content pre {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.75rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            background: var(--glass);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-blog:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .social-sharing {
+            display: flex;
+            gap: 1rem;
+            margin: 3rem 0 2rem;
+        }
+
+        .social-sharing a {
+            padding: 0.8rem 1.5rem;
+            border-radius: 999px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-sharing a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .center-equation {
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 4rem;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .profile-pic {
+                width: 300px;
+                height: 300px;
+            }
+
+            .blog-article {
+                padding: 2rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+                margin: 1.5rem 0;
+            }
+
+            .social-sharing {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../professional/professional.html">Professional Experience</a></li>
+            <li><a href="../../projects/projects.html">Projects</a></li>
+            <li><a href="../../research/research.html">Research</a></li>
+            <li><a href="../../entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
+            <li><a href="../blog.html" class="active">Blog</a></li>
+            <li><a href="../../fun/fun.html">Fun</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-pic-container">
+                <img src="../../assets/images/profile.jpg" alt="Liqiang" class="profile-pic">
+            </div>
+            <div class="social-icons">
+                <a href="https://x.com/liqiang_ding" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@947973" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Lionelding" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </aside>
+
+        <main class="blog-content">
+            <article class="blog-article">
+                <header class="article-header">
+                    <div class="article-meta">
+                        <span>Published: November 15, 2022</span>
+                        <span>•</span>
+                        <span>15 min read</span>
+                    </div>
+                    <h1 class="article-title">Paper Reading: Human Pose Regression with Residual Log-likelihood
+                        Estimation (ICCV 2021 Oral)</h1>
+                    <img src="rle_frontpage.png" alt="article image" class="article-image">
+                </header>
+
+                <div class="article-content">
+                    <h2>Summary</h2>
+                    <p>
+                        Regression problem can be reviewed from the maximum likelihood estimation perspective.
+                        The learning process of a model is to optimize its learnable parameters \(\phi\) that makes
+                        labels
+                        \(\mu_{g}\) most probable.
+                    </p>
+                    <div style="text-align: center;">
+                        <img src="mle.png" alt="Maximum Likelihood Estimation" style="width: 75%">
+                    </div>
+
+                    <ul>
+                        <li>If we assume the ground truth follows a Laplacian distribution, then the loss function is
+                            \(L1\).</li>
+                        <li>If we assume the ground truth follows a Gaussian distribution, then the loss function is
+                            \(L2\).</li>
+                    </ul>
+                    <p>
+                        From this perspective, the loss function depends on the shape of distribution \(P_{\phi}(x |
+                        I)\).
+                        However, in reality, the number of samples are infinite and the real underlying distribution are
+                        unknown.
+                        It is hard to compute the real distribution of the data.
+                    </p>
+                    <p>
+                        In this paper, the authors take all deviations (i.e. the differences between predictions and
+                        ground truth) as samples,
+                        feed them to a flow-based model, so that the model is able to learn a mapping between simple
+                        distribution and a real distribution of the deviations.
+                        Three different designs are proposed to achieve this.
+                        Finally, a new loss function is formed, which is parameterized by the distribution of
+                        deviations.
+                    </p>
+
+                    <h2>Heatmap-based or Regression-based Human Pose Estimation?</h2>
+                    <div style="text-align: center;">
+                        <img src="heatmap_vs_regression.png" alt="Heatmap vs Regression" style="width: 75%">
+                    </div>
+                    <p>
+                        In heatmap-based approach, the ground truth, which is usually represented by \(K\) number of
+                        discrete 2D points, is firstly converted into \(K\) number of continuous Gaussian heatmap.
+                        The heatmaps have dimension of \([K, H, W]\) where \(H\) and \(W\) stand for height and width,
+                        respectively.
+                        During model training, ML models predict \(K\) number of feature maps, and element-wisely
+                        compare
+                        the results with the Gaussian heatmaps.
+                        In this type of approach, the dimension of the Gaussian heatmap directly affects the prediction
+                        accuracy, and it is also expensive to compute and save the heatmaps. Hence, the heatmap is a
+                        bottleneck.
+                    </p>
+                    <p>
+                        In regression-based approach, all of the human joints (\((K \text{ joints}, 3)\)) are directly
+                        predicted
+                        by a model.
+                        With \(L1\) or \(L2\) losses, the loss value are directly computed by comparing predicted
+                        coordinates and the ground truth.
+                        Since there are no needs for heatmaps in this regression-based approach, it is more widely used
+                        in practice.
+                    </p>
+                    <p>
+                        In general, heatmap-based approach is able to deliver a better prediction than the
+                        regression-based approach.
+                        This is largely because a heatmap-based model only needs to predict a group of *continuous*
+                        feature map, who should be as close as the ground truth Gaussian maps.
+                        In other words, the objective of the model is to learn how to convert a given 2D image into a
+                        group of specific Gaussian maps by filtering this image.
+                        The convolutional layers are really good at doing this type of filtering procedure.
+                        Mathematically, it also means that the distribution of the ground truth are solidly defined
+                        (which is a Gaussian distribution).
+                        We just need to design the ML models and loss functions in a way such that the final predictions
+                        get to this distribution as closely as possible.
+                    </p>
+                    <table>
+                        <tr>
+                            <th>Method Name</th>
+                            <th>Heatmap-based Approach</th>
+                            <th>Regression-based Approach</th>
+                        </tr>
+                        <tr>
+                            <td>Output space</td>
+                            <td>Discrete</td>
+                            <td>Continuous</td>
+                        </tr>
+                        <tr>
+                            <td>Computational Overhead</td>
+                            <td>High</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td>Prediction Accuracy</td>
+                            <td>High</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td>Expandability</td>
+                            <td>Low</td>
+                            <td>High</td>
+                        </tr>
+                    </table>
+
+                    <h2>Normalizing flows</h2>
+                    <p>An introduction on normalization flows can be found here.</p>
+
+                    <h3>1. Basic Design</h3>
+                    <div style="text-align: center;">
+                        <img src="design_a.png" alt="Basic Design" style="width: 75%">
+                    </div>
+                    <p>
+                        Basically, a flow model is able to convert a simple distribution into a complex distribution.
+                        The theory behind it proves that any distributions can be modeled as long as the flow model is
+                        sufficiently complex.
+                    </p>
+                    <p>
+                        Because of this theory, the regression model can firstly predict a simple distribution.
+                        An example would be the Gaussian distribution, which is defined by \(\hat{\mu}\) and
+                        \(\hat{\sigma}\).
+                        Next, the normalizing flows model transforms this simple distribution to the real distribution
+                        through a smooth and invertible mapping \(f_{\phi}\).
+                    </p>
+                    <p>
+                        In other words, the probability density function \(P_{\theta, \phi} (x | I)\) depends on both
+                        the
+                        regression model \(\theta\) and the flow model \(f_{\phi}\).
+                    </p>
+                    <div style="text-align: center;">
+                        <img src="design_a_prob_density_function.png" alt="Probability Density Function"
+                            style="width: 75%">
+                    </div>
+
+                    <p>Hence, the maximum likelihood estimation is:</p>
+                    <div style="text-align: center;">
+                        <img src="design_a_mle.png" alt="Maximum Likelihood Estimation" style="width: 75%">
+                    </div>
+
+                    <h3>2. Reparameterization</h3>
+
+                    <div style="text-align: center;">
+                        <img src="design_b.png" alt="Reparameterization" style="width: 75%">
+                    </div>
+
+                    <p>
+                        The `design a` is not feasible in practice, because the \(f_{\phi}\) will learn to fit the
+                        distribution of \(\mu_{g}\) across all images.
+                        However, the distribution that we are interested in is *how the output deviates from the ground
+                        truth conditioning on the input image*,
+                        not distribution of the ground truth across all input images.
+                    </p>
+                    <p>
+                        Assuming all the underlying distributions share the same density function family but with
+                        different mean and variance conditioning on the input \(I\).
+                    </p>
+                    <p>
+                        The flow model firstly maps a zero-mean initial distribution \(N(0, I)\) to a zero-mean deformed
+                        distribution \(P_{\phi}(x)\).
+                        Then, the regression model predicts a translation parameter \(\hat{\mu}\) and scale parameter
+                        \(\hat{\sigma}\) to control the position of the deformed distribution.
+                        In other words, \(\hat{\mu}\) and \(\hat{\sigma}\), together, describe the the amount of
+                        deviation
+                        between predictions and ground truth.
+                        The final distribution \(P_{\theta, \phi} (x | I)\) is obtained from \(x = \bar{x} *
+                        \hat{\sigma} +
+                        \hat{\mu}\).
+                    </p>
+                    <p>Hence, the maximum likelihood estimation is:</p>
+                    <div style="text-align: center;">
+                        <img src="design_b_mle.png" alt="Maximum Likelihood Estimation" style="width: 75%">
+                    </div>
+                    <p>where</p>
+
+                    <li>\(\bar{\mu}_{g} = (\mu_{g} - \hat{\mu}) / \hat{\sigma}\)</li>
+                    <li>\(\partial \bar{\mu}_{g} / \partial \mu_{g} = 1 / \hat{\sigma} \)</li>
+                    <li>\(\mu_{g}\) is ground truth from annotation</li>
+                    <li>\(\hat{\mu}\) and \(\hat{\sigma}\), are the amount of deviation between predictions and
+                        ground truth</li>
+                    <li>\(\bar{\mu}_{g}\) is the ground truth used in the objective function. It is a result,
+                        computed by subtracting each ground truth from deviation. The flow model takes these
+                        samples, and
+                        tries to learn this distribution.</li>
+
+
+                    <h3>3. Residual log-likelihood estimation</h3>
+                    <div style="text-align: center;">
+                        <img src="design_c.png" alt="Residual Log-likelihood Estimation" style="width: 75%">
+                    </div>
+                    <p>
+                        The training of \(\hat{\mu}\) and \(\hat{\sigma}\) is closely tied with the training of flow
+                        model.
+                        At the beginning of the training, the distribution shape is far from correct, which increases
+                        the difficulty to train the regression model.
+                    </p>
+                    <p>
+                        A gradient shortcut was developed to reduce the dependencies between the flow model and
+                        regression model.
+                        \(P_{\phi}(\bar{x})\) is trying to fit the optimal underlying distribution \(P_{opt}(\bar{x})\).
+                    </p>
+
+                    <div style="text-align: center;">
+                        <img src="design_c_p.png" alt="Optimal Distribution" style="width: 75%">
+                    </div>
+
+                    <p>where</p>
+
+                    <li>\(Q(\bar{x})\) can be a simple distribution, i.e. Gaussian or Laplacian distribution</li>
+                    <li>\(\log \frac{P_{opt}(\bar{x})}{s*Q(\bar{x})}\) is called residual log-likelihood</li>
+                    <li>\(\log s\), is constant, which makes the whole equation stay as a distribution</li>
+
+                    <p>
+                        The assumption is that the simple distribution \(Q(\bar{x})\) is a rough estimation of the
+                        underlying distribution.
+                        And the *residual log-likelihood* is to finetune or compensate for the difference.
+                    </p>
+                    <div style="text-align: center;">
+                        <img src="design_c_p2.png" alt="Residual Log-likelihood" style="width: 75%">
+                    </div>
+
+                    <p>where</p>
+
+                    <li>\(G_{\phi}(\bar{x})\) is the distribution learned by the flow model.</li>
+
+                    <p>
+                        In this way, \(G_{\phi}(\bar{x})\) will try to finetune the overall distribution \(Q(\bar{x})\),
+                        instead of directly fitting the underlying distribution.
+                    </p>
+
+                    <p>Hence, the maximum likelihood estimation is:</p>
+                    <div style="text-align: center;">
+                        <img src="design_c_mle.png" alt="Maximum Likelihood Estimation" style="width: 75%">
+                    </div>
+
+                    <p>
+                        By doing this, The backward propagation of \(Q(\bar{x})\) does not depend on the flow model.
+                        It is also easier to train the residual mapping than train the original unreferenced mapping.
+                    </p>
+
+                    <h2>Implementations</h2>
+                    <p>
+                        The initial density is set to be a zero-mean \(N(0, I)\).
+                        During inference, the regression model predict \(\hat{\mu}\), which can directly be used as
+                        regressed outputs.
+                        No need for the flow model.
+                    </p>
+
+                    <h2>Some Technical Details</h2>
+                    <ul>
+                        <li>The value of Residual log-likelihood can be positive or negative number, because of
+                            \(L=-\log
+                            p\). The term becomes negative when \(p\) is larger than 1.</li>
+                        <li>In \(bar_mu = (src_poses - gt_uvd) / \sigma\), coordinate normalization is performed. A
+                            `sigmoid` operation is also performed on \(\sigma\).</li>
+                    </ul>
+
+                    <h2>References</h2>
+                    <ol>
+                        <li><a href="https://zhuanlan.zhihu.com/p/395521994">Reference 1</a></li>
+                        <li><a href="https://zhuanlan.zhihu.com/p/429017412">Reference 2</a></li>
+                    </ol>
+
+                    <div class="social-sharing">
+                        <a href="https://x.com/home">
+                            <i class="fab fa-twitter"></i>
+                            Share on Twitter
+                        </a>
+                        <a href="https://www.linkedin.com/">
+                            <i class="fab fa-linkedin"></i>
+                            Share on LinkedIn
+                        </a>
+                    </div>
+
+                    <div class="tags">
+                        <span class="tag">Human pose estimation</span>
+                        <span class="tag">Regression</span>
+                    </div>
+
+                    <a href="../blog.html" class="back-to-blog">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Blog
+                    </a>
+                </div>
+
+            </article>
+        </main>
+    </div>
+</body>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+</script>
+
+</html>

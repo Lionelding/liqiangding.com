@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normalizing Flows and Its Friends (Part 2)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #6366f1;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile navigation */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--glass);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+
+        .container {
+            display: flex;
+            margin: 6rem 5% 2rem;
+            gap: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sidebar {
+            width: 300px;
+            text-align: center;
+            position: sticky;
+            top: 6rem;
+            height: fit-content;
+        }
+
+        /* Updated profile image styles */
+        .profile-pic-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-icons a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Updated article styles to match blog listing */
+        .blog-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .blog-article {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            color: #64748b;
+            font-size: 0.95rem;
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            border: 3px solid transparent;
+            mask-composite: exclude;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        .article-content h2 {
+            margin: 2.5rem 0 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.75rem;
+        }
+
+        .article-content code {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.3em 0.5em;
+            border-radius: 0.3em;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .article-content pre {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.75rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            background: var(--glass);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-blog:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .social-sharing {
+            display: flex;
+            gap: 1rem;
+            margin: 3rem 0 2rem;
+        }
+
+        .social-sharing a {
+            padding: 0.8rem 1.5rem;
+            border-radius: 999px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-sharing a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .center-equation {
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 4rem;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .profile-pic {
+                width: 300px;
+                height: 300px;
+            }
+
+            .blog-article {
+                padding: 2rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+                margin: 1.5rem 0;
+            }
+
+            .social-sharing {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../professional/professional.html">Professional Experience</a></li>
+            <li><a href="../../projects/projects.html">Projects</a></li>
+            <li><a href="../../research/research.html">Research</a></li>
+            <li><a href="../../entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
+            <li><a href="../blog.html" class="active">Blog</a></li>
+            <li><a href="../../fun/fun.html">Fun</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-pic-container">
+                <img src="../../assets/images/profile.jpg" alt="Liqiang" class="profile-pic">
+            </div>
+            <div class="social-icons">
+                <a href="https://x.com/liqiang_ding" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@947973" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Lionelding" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </aside>
+
+        <main class="blog-content">
+            <article class="blog-article">
+                <header class="article-header">
+                    <div class="article-meta">
+                        <span>Published: October 18, 2022</span>
+                        <span>•</span>
+                        <span>20 min read</span>
+                    </div>
+                    <h1 class="article-title">Normalizing Flows and Its Friends (Part 2)</h1>
+                    <img src="nf.png" alt="article image" class="article-image">
+                </header>
+
+                <div class="article-content">
+                    <h2>What is Normalizing Flows?</h2>
+
+                    <div style="text-align: center;">
+                        <img src="triplet.png" alt="Triplet" style="width: 75%">
+                    </div>
+
+                    <p>One type of generative models is flow-based models, which explicitly learns the mapping between a
+                        group of samples \( x_{1}, x_{2}, ..., x_{n} \) to their latent distribution \( p(x) \).</p>
+                    <p><code>Normalizing flows</code> is one example of flow-based models.</p>
+
+                    <h2>Why Normalizing Flows?</h2>
+                    <p>Given some real-world data samples, we are always interested in learning their underlying
+                        distributions. Knowing the exact data distribution \( p(x) \) is helpful in some scenarios such
+                        as sampling data and identifying bias.</p>
+
+                    <h2><strong>Objective</strong></h2>
+                    <div
+                        style="border: 2px solid #333; padding: 15px; margin: 20px 0; border-radius: 8px; background-color: #f9f9f9;">
+                        <div class="objective">
+                            <p>To minimize some notion of distance between \( p_{D} \) and \( p_{M} \):</p>
+                            <li>Given a dataset \( X = x_{1}, x_{2}, x_{3}, ... \) from an underlying distribution \(
+                                p_{D} \),</li>
+                            <li>Can we find an approximating distribution \( p_{M} \), which is from a family of \( M \)
+                                and parameterized by \( \theta \), to minimize the distance between \( p_{D} \) and \(
+                                p_{M} \)?</li>
+                            <li>Mathematically, it is written as below:</li>
+                            <p>\[ \theta^{*} = \underset{\theta \in M}{\mathrm{argmin}} \space dist(p_{\theta}, p_{D})
+                                \]</p>
+                            <li>If KL-divergence is the distance function, the above equation becomes the maximum
+                                likelihood estimation:</li>
+                            <p>\[ \theta^{*} = \underset{\theta \in M}{\mathrm{argmin}} \space E_{x \sim p_{D}} [-\log
+                                \space p_{\theta}(x)] \]</p>
+                        </div>
+                    </div>
+
+                    <p>Flow-based models are different from GAN or VAE since flow-based models explicitly learn \( p(x)
+                        \) by optimizing the log-likelihood.</p>
+                    <p>In GAN, the probability density function estimation is implicit by having the minmax
+                        classification error. We don't explicitly assign a probability density function and estimate it.
+                    </p>
+                    <p>In VAE, we get an approximate probability density function by optimizing the evidence lower bound
+                        (which is \( p_{\theta}(x|z) \)). The encoder captures the approximate posterior mapping between
+                        \( x \) and \( z \), which is \( q \) parameterized by \( \phi \). The decoder captures \(
+                        p_{\theta}(x|z) \), which is parameterized by \( \theta \). In this case, it is an approximate
+                        density estimation.</p>
+                    <p>In short, both GAN and VAE do not explicitly learn the probability density function of real data
+                        \( p(x) \).</p>
+                    <p>In flow-based models, given an \( x \), we want to find the function \( f \) to get the latent
+                        representation \( z \). And if we invert \( f \), we will get \( x \) back. The functions \(
+                        f(x) \) and \( f^{-1}(x) \) are exactly the inverse. The flow-based models try to capture \( f
+                        \).</p>
+
+                    <h2>How Does It Work?</h2>
+                    <div style="text-align: center;">
+                        <img src="z_to_x.png" alt="z to x" style="width: 75%">
+                    </div>
+                    <p>We try to identify a transformation \( f: Z \rightarrow X \) where \( f \) is a series of
+                        <strong>differentiable</strong> and <strong>invertible</strong> functions (\( f_{1}, f_{2}, ...,
+                        f_{K} \)).
+                    </p>
+                    <p>In general, for any invertible function \( f: Z \rightarrow X \), the probability function is
+                        below. The detailed steps can be found in <a href="./nf1.md">this page</a>:</p>
+                    <p>
+                        \[ p(x') = \pi(z') \mid \det(J_{f^{-1}}) \mid \]
+                    </p>
+                    <p>
+                        \[ \log \space p(x') = \log \space \pi(z') + \sum^{K}_{i=1} \log \mid \det(J_{f^{-1}}) \mid \]
+                    </p>
+
+                    <p><strong>Intuition</strong></p>
+                    <ul>
+                        <li>The first term describes the transformation \( f \) moulds the density \( p_{Z}(z) \) into
+                            \( p_{X}(x) \).</li>
+                        <li>The second term describes the relative change of volume around \( z \).</li>
+                    </ul>
+
+                    <p>In summary, the three requirements must hold for a normalizing flow model:</p>
+                    <ol>
+                        <ol>
+                            <li>Transformation function \( f \) should be differentiable.</li>
+                            <li>Transformation function \( f \) should be invertible.</li>
+                            <li>Determinant of Jacobian should be easy to compute.</li>
+                        </ol>
+                    </ol>
+
+                    <h3>Example 1: NICE (Non-linear Independent Components Estimation)</h3>
+                    <div style="text-align: center;">
+                        <img src="NICE.png" alt="NICE" style="width: 75%">
+                    </div>
+                    <p>Coupling layer operation:</p>
+                    <p>
+                        \[ y_{1} = x_{1} \]
+                    </p>
+                    <p>
+                        \[ y_{2} = g(x_{2}; m(x_{1})) \]
+                    </p>
+                    <p>Therefore, its Jacobian is a lower-triangular matrix, and the determinant is the product of
+                        diagonal elements:</p>
+                    <p>
+                        \[ \frac{\partial y}{\partial x} = \begin{bmatrix} I & 0 \\ \frac{\partial y_{2}}{\partial
+                        x_{1}} & \frac{\partial y_{2}}{\partial x_{2}} \end{bmatrix} \]
+                    </p>
+                    <p>The inverse mappings are:</p>
+                    <p>
+                        \[ x_{1} = y_{1} \]
+                    </p>
+                    <p>
+                        \[ x_{2} = g^{-1}(y_{2}, m(y_{1})) \]
+                    </p>
+
+                    <h3>Example 2: Real NVP (Real-valued Non-Volume Preserving)</h3>
+                    <div style="text-align: center;">
+                        <img src="RealNVP.png" alt="RealNVP" style="width: 75%">
+                    </div>
+                    <p>Affine coupling operations are (there is one translation component and one scale component for \(
+                        y_{2} \)):</p>
+                    <p>
+                        \[ y_{1} = x_{1} \]
+                    </p>
+                    <p>
+                        \[ y_{2} = x_{2} \odot \exp(s(x_{1})) + t(x_{1}) \]
+                    </p>
+                    <p>The Jacobian becomes:</p>
+                    <p>
+                        \[ \frac{\partial y}{\partial x} = \begin{bmatrix} I_{d} & 0 \\ \frac{\partial y_{2}}{\partial
+                        x_{1}} & \text{diag}(\exp[s(x_{1})]) \end{bmatrix} \]
+                    </p>
+                    <p>Since the Jacobian matrix is not always equal to 1, affine coupling is not always
+                        volume-preserving, which is more realistic in real-world data.</p>
+                    <p>The inverse operations are:</p>
+                    <p>
+                        \[ x_{1} = y_{1} \]
+                    </p>
+                    <p>
+                        \[ x_{2} = (y_{2} - t(y_{1})) \odot \exp(-s(y_{1})) \]
+                    </p>
+
+                    <h2>References</h2>
+                    <ol>
+                        <li><a
+                                href="https://www.youtube.com/watch?v=RPkf516rXgw">https://www.youtube.com/watch?v=RPkf516rXgw</a>
+                        </li>
+                        <li><a
+                                href="https://www.youtube.com/watch?v=PCfHd0Ec6M4">https://www.youtube.com/watch?v=PCfHd0Ec6M4</a>
+                        </li>
+                        <li><a
+                                href="https://stackoverflow.com/questions/54635355/what-does-log-prob-do">https://stackoverflow.com/questions/54635355/what-does-log-prob-do</a>
+                        </li>
+                        <li><a
+                                href="https://www.youtube.com/watch?v=uXY18nzdSsM&t=169s">https://www.youtube.com/watch?v=uXY18nzdSsM&t=169s</a>
+                        </li>
+                    </ol>
+
+                    <div class="social-sharing">
+                        <a href="https://x.com/home">
+                            <i class="fab fa-twitter"></i>
+                            Share on Twitter
+                        </a>
+                        <a href="https://www.linkedin.com/">
+                            <i class="fab fa-linkedin"></i>
+                            Share on LinkedIn
+                        </a>
+                    </div>
+
+                    <div class="tags">
+                        <span class="tag">Non-linear Independent Components Estimation</span>
+                        <span class="tag">Real NVP</span>
+                        <span class="tag">Differentiable</span>
+                    </div>
+
+                    <a href="../blog.html" class="back-to-blog">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Blog
+                    </a>
+                </div>
+
+            </article>
+        </main>
+    </div>
+</body>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+</script>
+
+</html>
