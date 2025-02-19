@@ -426,10 +426,9 @@
             <li><a href="../../index.html">Home</a></li>
             <li><a href="../../professional/professional.html">Professional Experience</a></li>
             <li><a href="../../projects/projects.html">Projects</a></li>
-            <li><a href="../../research/research.html">Research</a></li>
+            <li><a href="../research.html">Research</a></li>
             <li><a href="../../entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
-            <li><a href="../blog.html" class="active">Blog</a></li>
-            <li><a href="../../fun/fun.html">Fun</a></li>
+            <li><a href="../../blogs/blog.html" class="active">Blog</a></li>
         </ul>
     </nav>
 
@@ -451,20 +450,19 @@
             <article class="blog-article">
                 <header class="article-header">
                     <div class="article-meta">
-                        <span>Published: September 15, 2024</span>
+                        <span>Published: October 01, 2023</span>
                     </div>
-                    <h1 class="article-title">Recursive Temporal-Consistent Content Generation on Latent Variables via
-                        Alpha Diffusion
-                        Framework: Integrating Global and Local Contextual Modeling for 30-Second Sequences</h1>
-                    <img src="./fightsimv3_s_dev_0.gif" alt="article image" class="article-image">
-                    <p>Animation above: 893 frames recursively generated using only 2 input frames as condition</p>
+                    <h1 class="article-title">Diffusion-Based One-Shot Video Generation via Pose-Guided Temporal
+                        Consistency and Spatial Alignment</h1>
+                    <img src="./00004_result_r5t5.png" alt="article image" class="article-image">
 
                 </header>
 
                 <div class="tags">
                     <span class="tag">Temporal-consistent</span>
-                    <span class="tag">Alpha blend diffusion</span>
-                    <span class="tag">Recursive generation</span>
+                    <span class="tag">One-shot video generation</span>
+                    <span class="tag">Pose-guided</span>
+
                 </div>
 
                 <div
@@ -473,102 +471,190 @@
                 </div>
 
                 <div class="article-content">
-                    <h3 class="article-subtitle">Objective</h3>
+                    <h3 class="article-subtitle">Abstract</h3>
+                    <p> We propose a novel framework that
+                        integrates human pose information as a guiding mechanism for the T2V synthesis process. Our
+                        model leverages pose estimation and motion priors to ensure anatomically plausible and
+                        contextually relevant human movements, bridging the gap between textual semantics and visual
+                        dynamics.
+                    </p>
                     <p>
-                        This paper introduces a novel framework for recursively generating temporally consistent content
-                        sequences of 30-second duration using an Alpha Diffusion architecture. By integrating global and
-                        local contextual modeling, our approach ensures coherence across temporal scales while
-                        maintaining high fidelity in content generation. The global context captures overarching
-                        structural patterns, while the local context refines fine-grained details, enabling seamless
-                        transitions and long-term consistency. Experimental results demonstrate the effectiveness of the
-                        proposed method in producing realistic and temporally stable outputs, outperforming existing
-                        baselines in both qualitative and quantitative evaluations. This work advances the
-                        state-of-the-art in generative modeling for sequential data, with potential applications in
-                        video synthesis, dynamic scene generation, and time-series forecasting.
+                        We also design two novel pose-specific evaluation metrics, Frame-to-Frame Pose Distance
+                        (FFPD) and Optical Flow Difference Score (OFDS), designed to quantitatively evaluate the
+                        alignment of generated poses with input text prompts and the realism of motion sequences,
+                        respectively. Extensive experiments on benchmark datasets
+                        demonstrate that our approach outperforms existing methods in both qualitative and quantitative
+                        evaluations, achieving superior control over human pose dynamics while maintaining high video
+                        quality. This work not only advances the state-of-the-art in T2V synthesis but also provides a
+                        robust framework for applications requiring precise human motion generation, such as virtual
+                        avatars, animation, and human-computer interaction.
                     </p>
 
-                    <h3 class="article-subtitle">Challenges</h3>
-                    <li> Prediction errors propagate and amplify iteratively during the sampling process, leading to
-                        suboptimal generative outcomes.</li>
-                    <li> Existing frameworks fail to fully exploit available informational priors, resulting in
-                        inefficient utilization of contextual data.</li>
+                    <h3 class="article-subtitle">Previous Challenges</h3>
+                    <li> The requirement for a model to generalize across all possible scenes while maintaining
+                        high-quality output generation based on input text prompts. This poses a significant challenge
+                        due to the substantial divergence between the inference-time data distribution and the
+                        training-time distribution, leading to suboptimal generalization performance.</li>
+                    <li> The underutilization of critical prior information inherently present in the input data.
+                        Despite its availability, the model fails to adequately emphasize or leverage this information,
+                        resulting in degraded performance, particularly in tasks requiring temporal consistency. This
+                        highlights a gap in the model's ability to effectively integrate and prioritize salient features
+                        from the input domain.</li>
 
                     <h3 class="article-subtitle">Hypothesis</h3>
-                    <p>We can simulate the error-amplification phenomenon by training a model to adapt to its own errors
-                        and iteratively refine its outputs, while leveraging multi-scale, fine-grained contextual
-                        information to enhance corrective learning.</p>
+
+                    <p>1. A one-shot diffusion model, designed to moderately overfit to a single video-text prompt pair
+                        during training, demonstrates the capability to generate contextually faithful video content
+                        when provided with a semantically similar text prompt during inference.</p>
+
+                    <p>2. By maintaining consistent pose priors across both the training and inference phases, the model
+                        generates video content with significantly improved motion coherence and temporal consistency.
+                    </p>
+
+                    <img src="./hypothesis.png" alt="hypothesis" class="article-image">
+                    <p style="text-align: center;">Fig: Training input: a video + pose feature + text prompt. Inference
+                        input: pose feature + text
+                        prompt</p>
+
 
                     <h3 class="article-subtitle">Dataset</h3>
-                    <p>Examples of train and valid sets</p>
                     <div class="gif-container">
-                        <img src="./example_0.gif" alt="GIF 1">
-                        <img src="./example_1.gif" alt="GIF 2">
-                        <img src="./example_2.gif" alt="GIF 3">
+                        <img src="./yoga3.gif" alt="GIF 1">
+                        <img src="./yoga3_r7t7_pose.gif" alt="GIF 2">
+                        <img src="./text.png" alt="GIF 2">
+
                     </div>
 
-                    <li> Train data: 60 seconds x 256 videos, synthetically-made with unity</li>
-                    <li> Diversity: 24 basic fighting animations (i.e. left punch, heavy kick, etc)</li>
-                    <li> Input dimension: 128 x 128 x 3 x frame_number</li>
+                    <p>Since the model is designed to over-fit to a single video-pose-text triplet, only a single data
+                        point
+                        is required</p>
+                    <li> Train set input: a 24-frame video + a text prompt + human pose</li>
+                    <li> Human pose: Inferred with OpenPose on the same input video</li>
+                    <li> Diversity: 24 videos in total</li>
+                    <li> Input dimension: 128 x 128 x 3 x 24</li>
+                    <li> Inference input: a text prompt "Mickey mouse is doing yoga in a room" + human pose</li>
 
                     <h3 class="article-subtitle">Experiments</h3>
-                    <p> Setup: 4 H100 GPU</p>
-                    <p> inputs: 2 cond frames from an unseen test set</p>
-                    <div class="gif-container">
-                        <img src="./l_cond_1.png" alt="GIF 1">
-                        <img src="./l_cond_2.png" alt="GIF 2">
-                        <img src="./l_cond_3.png" alt="GIF 3">
-                    </div>
+                    <p> Setup</p>
+                    <li>1 H100 + 100 epochs of training step (about 5 min)</li>
+                    <p> Text prompts at Inference</p>
+                    <li> "A lady is doing yoga in a room (<- same as the training input)"</li>
+                    <li> "Micky mouse is practising yoga in a room"</li>
+                    <li> "Spider man is doing yoga on the beach, cartoon style."</li>
+                    <li> "Wonder woman is doing yoga with a hat."</li>
+                    <img src="./sample.gif" alt="diagram" class="article-image">
+                    <figcaption style="text-align: center;">Figure: Generated results based on the input pose and
+                        prompts (Please fresh this page if the animation stops)</figcaption>
 
-                    <p> outputs: 893 generated frames</p>
-                    <div class="gif-container">
-                        <img src="./fightsimv3_s_dev_0.gif" alt="GIF 1">
-                        <img src="./fightsimv3_s_dev_1.gif" alt="GIF 2">
-                        <img src="./fightsimv3_s_dev_2.gif" alt="GIF 3">
-                    </div>
+                    <h3 class="article-subtitle">Method</h3>
+                    <p>1. The workflow and the main builidng blocks</p>
+                    <img src="./diagram.png" alt="diagram" class="article-image">
+                    <figcaption style="text-align: center;">Figure: Overall structure of the proposed model</figcaption>
 
-                    <h3 class="article-subtitle">Simplified Diagrams (in 3 steps)</h3>
-                    <p>1. How local and global context information between two consecutive time steps is forwarded to
-                        diffusion framework</p>
-                    <img src="./diagram1.jpg" alt="diagram1" class="article-image">
-
-                    <p>2. How local and global context information is consumed by the diffusion framework</p>
-                    <img src="./diagram2.jpg" alt="diagram2" class="article-image">
-
-                    <p>3. Recursively compute new local and global context between two time steps</p>
-                    <img src="./diagram3.jpg" alt="diagram2" class="article-image">
+                    <img src="./unet.png" alt="unet" class="article-image">
+                    <figcaption style="text-align: center;">Figure: UNet structure</figcaption>
 
 
-                    <h3 class="article-subtitle">Training Logic</h3>
-                    <img src="./main_logic.png" alt="main logic" class="article-image">
-                    <p>Key points:</p>
-                    <li>Each training step is broken down into 2 separate stages</li>
-                    <li>Video predicted from stage 1 is used in stage 2 as priors</li>
-                    <li>Within each training step, the model updates its learnable parameters twice!</li>
-                    <break></break>
+                    <img src="./pose_addition.png" alt="pose_addition" class="article-image">
+                    <figcaption style="text-align: center;">Figure: The pose features (named adapted features) is
+                        merged with the video representation (named hidden states) in the latent space</figcaption>
 
-                    <h3 class="article-subtitle">Schrödinger's cat</h3>
-                    <p> inputs: 2 cond frames from an unseen test set + different random seeds</p>
-                    <div class="gif-container">
-                        <img src="./cond_s.png" alt="cond s">
-                    </div>
+                    <img src="./full.png" alt="full" class="article-image">
+                    <figcaption style="text-align: center;">Figure: A complete block that takes timestamp, latent video
+                        variable, and pose features</figcaption>
+                    <br></br>
 
-                    <p> outputs: 3 different generation of 893 frames</p>
-                    <div class="gif-container">
-                        <img src="./fightsimv3mini_2stage_dev_0a.gif" alt="GIF 1">
-                        <img src="./fightsimv3mini_2stage_dev_0b.gif" alt="GIF 2">
-                        <img src="./fightsimv3mini_2stage_dev_0c.gif" alt="GIF 3">
-                    </div>
-                    <p>The same inputs -> multiple plausible outputs because of different random seeds</p>
+                    <p>2. Classifier-Free Guidance with Pose Information</p>
+                    <img src="./cfg_formula.png" alt="cfg_formula" class="article-image">
+                    <figcaption style="text-align: center;">Figure: the standard classifier-free guidance (CFG) formula
+                    </figcaption>
 
-                    <h3 class="article-subtitle">Train and validation losses</h3>
-                    <img src="./train_and_valid.png" alt="train_and_valid" class="article-image">
+                    <img src="./cfg_pose.png" alt="cfg_pose" class="article-image">
+                    <figcaption style="text-align: center;">Figure: Sampling with pose-guided CFG</figcaption>
+
+                    <img src="./cfg_implementation.png" alt="cfg_implementation" class="article-image">
+                    <figcaption style="text-align: center;">Figure: Pose-guided CFG Implementation</figcaption>
+
+
+                    <p>3. Optical Flow Difference Score</p>
+                    <img src="./ofds.png" alt="ofds" class="article-image">
+                    <figcaption style="text-align: center;">Figure: A graphic illustration of Optical flow difference
+                        score (OFDS)</figcaption>
+                    <p>Occasionally, the generated video sequences exhibit artifacts such as the presence of additional
+                        limbs or heads in certain frames, indicating inconsistencies in the synthesis process. To
+                        quantitatively detect and measure such anomalies, we introduce a novel metric termed the Optical
+                        Flow Difference Score (OFDS). This metric computes the optical flow vectors between two
+                        consecutive frames \( f_1 \) and \( f_2 \), in the generated video. Using these vectors, we
+                        warp \( f_1 \) to
+                        produce
+                        a predicted frame \( f_{2}' \). The \( L_2 \) norm between \( f_2 \) and \( f_{2}' \) is then
+                        calculated to quantify
+                        the
+                        discrepancy. A low OFDS indicates smooth temporal transitions with minimal pixel-level
+                        inconsistencies, while a high OFDS signifies the presence of unexpected
+                        artifacts, such as unnatural pixel displacements or structural anomalies. This metric provides a
+                        robust mechanism for evaluating the temporal coherence and structural integrity of generated
+                        video sequences.</p>
+
+
+                    <br></br>
+
+
+                    <p>4. Frame-Frame Pose Distance (FFPD) </p>
+                    <p></p>
+                    <img src="./ffpd.png" alt="ffpd" class="article-image">
+                    <figcaption style="text-align: center;">Figure: A graphic illustration of frame-frame pose distance
+                        (FFPD)</figcaption>
+
+                    <p>To quantitatively evaluate the alignment between generated videos and the original training
+                        video, we introduce a novel metric termed Frame-Frame Pose Difference (FFPD). Specifically, we
+                        employ an off-the-shelf pose estimation model to extract pose keypoints from each frame of both
+                        the generated video \( V_{gen} \) and the reference video \( V_{ref} \). Let \( P_{gen}^t \) and
+                        \( P_{ref}^t \) denote the sets of pose joint coordinates at frame \( t \) for \( V_{gen} \) and
+                        \( V_{ref} \), respectively. The FFPD is computed as the \( L_2 \) norm between corresponding
+                        pose keypoints across all frames:</p>
+
+                    <p style="text-align: center;">
+                        FFPD =
+                        <span style="font-size: 1.2em;">(1/T)</span>
+                        <span style="font-size: 1.2em;">&sum;<sub>t=1</sub><sup>T</sup></span>
+                        &Vert;P<sub>gen</sub><sup>t</sup> &minus; P<sub>ref</sub><sup>t</sup>&Vert;<sub>2</sub>
+                    </p>
+
+                    <p>where
+                        \(T \) represents the total number of frames. A high FFPD score indicates significant
+                        misalignment
+                        between the generated and reference videos, suggesting deviations in pose dynamics. Conversely,
+                        a low FFPD score reflects strong alignment, demonstrating that the generated video faithfully
+                        preserves the pose structure of the reference video. This metric provides a robust measure for
+                        assessing the structural consistency of generated videos in relation to the original training
+                        data.</p>
+
+                    <h3 class="article-subtitle">Analysis</h3>
+
+                    <img src="./ofds_result.png" alt="ofds_result" class="article-image">
+                    <figcaption style="text-align: center;">Figure: Optical flow difference
+                        score (OFDS) computed on the generation with pose guidance and without it </figcaption>
+                    <img src="./ffpd_0.png" alt="ffpd_0" class="article-image">
+                    <figcaption style="text-align: center;">Figure: The face is more aligned in the pose-guided
+                        generated video</figcaption>
+                    <img src="./ffpd_2.png" alt="ffpd_2" class="article-image">
+                    <figcaption style="text-align: center;">Figure: The arm is more aligned in the pose-guided generated
+                        video</figcaption>
+                    <img src="./ffpd_quant.png" alt="ffpd_quant" class="article-image">
+                    <figcaption style="text-align: center;">Figure: A quantitative comparison between generated results
+                        with pose guidance and
+                        without it. Pose-guided results are more aligned to the original training video.</figcaption>
+
+
+
 
                     <h2>References</h2>
                     <ol>
-                        <li><a href="https://arxiv.org/pdf/2305.03486">Iterative 𝛼-(de)Blending: a Minimalist
-                                Deterministic Diffusion Model</a></li>
-                        <li><a href="https://arxiv.org/abs/2306.02562">Video Diffusion Models with Local-Global
-                                Context Guidance</a></li>
+                        <li><a href="https://arxiv.org/abs/2212.11565">Tune-A-Video: One-Shot Tuning of Image Diffusion
+                                Models for Text-to-Video Generation</a></li>
+                        <li><a href="https://arxiv.org/abs/2302.08453">T2I-Adapter: Learning Adapters to Dig out More
+                                Controllable Ability for Text-to-Image Diffusion Models</a></li>
                     </ol>
 
                     <div class="social-sharing">
@@ -582,9 +668,9 @@
                         </a>
                     </div>
 
-                    <a href="../blog.html" class="back-to-blog">
+                    <a href="../research.html" class="back-to-blog">
                         <i class="fas fa-arrow-left"></i>
-                        Back to Blog
+                        Back to Research
                     </a>
                 </div>
 
