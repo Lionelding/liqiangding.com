@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works at Irreverent Labs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #6366f1;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile navigation */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--glass);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+
+        .container {
+            display: flex;
+            margin: 6rem 5% 2rem;
+            gap: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sidebar {
+            width: 300px;
+            text-align: center;
+            position: sticky;
+            top: 6rem;
+            height: fit-content;
+        }
+
+        /* Updated profile image styles */
+        .profile-pic-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-icons a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Updated article styles to match blog listing */
+        .blog-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .blog-article {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-subtitle {
+            background: #1E90FF;
+            /* Change to a blue color */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-meta {
+            color: #64748b;
+            font-size: 0.95rem;
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            border: 3px solid transparent;
+            mask-composite: exclude;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        .article-content h2 {
+            margin: 2.5rem 0 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.75rem;
+        }
+
+        .article-content code {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.3em 0.5em;
+            border-radius: 0.3em;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .article-content pre {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .tags {
+            display: flex;
+            gap: 0.75rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: #6366f1;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            background: var(--glass);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-blog:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .social-sharing {
+            display: flex;
+            gap: 1rem;
+            margin: 3rem 0 2rem;
+        }
+
+        .social-sharing a {
+            padding: 0.8rem 1.5rem;
+            border-radius: 999px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-sharing a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .center-equation {
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gif-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gif-container img {
+            width: 32%;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .sub-line {
+            font-size: 0.9rem;
+            color: #64748b;
+            /* A lighter color for the sub-line */
+            margin-top: 0.5rem;
+            /* Add some spacing between the main text and sub-line */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 4rem;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .profile-pic {
+                width: 300px;
+                height: 300px;
+            }
+
+            .blog-article {
+                padding: 2rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 350px;
+                margin: 1.5rem 0;
+            }
+
+            .social-sharing {
+                flex-direction: column;
+            }
+
+            .gif-container {
+                flex-direction: column;
+            }
+
+            .gif-container img {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../professional.html">Professional Experience</a></li>
+            <li><a href="../../projects/projects.html">Projects</a></li>
+            <li><a href="../../research/research.html">Research</a></li>
+            <li><a href="../../entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
+            <li><a href="../../blogs/blog.html" class="active">Blog</a></li>
+            <li><a href="../../fun/fun.html">Fun</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-pic-container">
+                <img src="../../assets/images/profile.jpg" alt="Liqiang" class="profile-pic">
+            </div>
+            <div class="social-icons">
+                <a href="https://x.com/liqiang_ding" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@947973" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Lionelding" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </aside>
+
+        <main class="blog-content">
+            <article class="blog-article">
+                <header class="article-header">
+                    <div class="article-meta">
+                        <span>Published: September 15, 2024</span>
+                    </div>
+                    <h1 class="article-title">Recursive Temporal-Consistent Content Generation on Latent Variables via
+                        Alpha Diffusion
+                        Framework: Integrating Global and Local Contextual Modeling for 30-Second Sequences</h1>
+                    <img src="./2_stage_model/fightsimv3_s_dev_0.gif" alt="article image" class="article-image">
+                    <p>Animation above: 893 frames recursively generated using only 2 input frames as condition</p>
+
+                </header>
+
+                <div class="tags">
+                    <span class="tag">Temporal-consistent</span>
+                    <span class="tag">Alpha blend diffusion</span>
+                    <span class="tag">Recursive generation</span>
+
+                </div>
+
+                <div class="article-content">
+                    <h3 class="article-subtitle">Objective</h3>
+                    <p>
+                        This paper introduces a novel framework for recursively generating temporally consistent content
+                        sequences of 30-second duration using an Alpha Diffusion architecture. By integrating global and
+                        local contextual modeling, our approach ensures coherence across temporal scales while
+                        maintaining high fidelity in content generation. The global context captures overarching
+                        structural patterns, while the local context refines fine-grained details, enabling seamless
+                        transitions and long-term consistency. Experimental results demonstrate the effectiveness of the
+                        proposed method in producing realistic and temporally stable outputs, outperforming existing
+                        baselines in both qualitative and quantitative evaluations. This work advances the
+                        state-of-the-art in generative modeling for sequential data, with potential applications in
+                        video synthesis, dynamic scene generation, and time-series forecasting.
+                    </p>
+
+                    <h3 class="article-subtitle">Challenges</h3>
+                    <li> Prediction errors propagate and amplify iteratively during the sampling process, leading to
+                        suboptimal generative outcomes.</li>
+                    <li> Existing frameworks fail to fully exploit available informational priors, resulting in
+                        inefficient utilization of contextual data.</li>
+
+                    <h3 class="article-subtitle">Hypothesis</h3>
+                    <p>We can simulate the error-amplification phenomenon by training a model to adapt to its own errors
+                        and iteratively refine its outputs, while leveraging multi-scale, fine-grained contextual
+                        information to enhance corrective learning.</p>
+
+                    <h3 class="article-subtitle">Dataset</h3>
+                    <p>Examples of train and valid sets</p>
+                    <div class="gif-container">
+                        <img src="./2_stage_model/example_0.gif" alt="GIF 1">
+                        <img src="./2_stage_model/example_1.gif" alt="GIF 2">
+                        <img src="./2_stage_model/example_2.gif" alt="GIF 3">
+                    </div>
+
+                    <li> Train data: 60 seconds x 256 videos, synthetically-made with unity</li>
+                    <li> Diversity: 24 basic fighting animations (i.e. left punch, heavy kick, etc)</li>
+                    <li> Input dimension: 128 x 128 x 3 x frame_number</li>
+
+                    <h3 class="article-subtitle">Experiments</h3>
+                    <p> Setup: 4 H100 GPU</p>
+                    <p> inputs: 2 cond frames from an unseen test set</p>
+                    <div class="gif-container">
+                        <img src="./2_stage_model/l_cond_1.png" alt="GIF 1">
+                        <img src="./2_stage_model/l_cond_2.png" alt="GIF 2">
+                        <img src="./2_stage_model/l_cond_3.png" alt="GIF 3">
+                    </div>
+
+                    <p> outputs: 893 generated frames</p>
+                    <div class="gif-container">
+                        <img src="./2_stage_model/fightsimv3_s_dev_0.gif" alt="GIF 1">
+                        <img src="./2_stage_model/fightsimv3_s_dev_1.gif" alt="GIF 2">
+                        <img src="./2_stage_model/fightsimv3_s_dev_2.gif" alt="GIF 3">
+                    </div>
+
+                    <h3 class="article-subtitle">Simplified Diagrams (in 3 steps)</h3>
+                    <p>1. How local and global context information between two consecutive time steps is forwarded to
+                        diffusion framework</p>
+                    <img src="./2_stage_model/diagram1.jpg" alt="diagram1" class="article-image">
+
+                    <p>2. How local and global context information is consumed by the diffusion framework</p>
+                    <img src="./2_stage_model/diagram2.jpg" alt="diagram2" class="article-image">
+
+                    <p>3. Recursively compute new local and global context between two time steps</p>
+                    <img src="./2_stage_model/diagram3.jpg" alt="diagram2" class="article-image">
+
+
+                    <h3 class="article-subtitle">Training Logic</h3>
+                    <img src="./2_stage_model/main_logic.png" alt="main logic" class="article-image">
+                    <p>Key points:</p>
+                    <li>Each training step is broken down into 2 separate stages</li>
+                    <li>Video predicted from stage 1 is used in stage 2 as priors</li>
+                    <li>Within each training step, the model updates its learnable parameters twice!</li>
+                    <break></break>
+
+                    <h3 class="article-subtitle">Schrödinger's cat</h3>
+                    <p> inputs: 2 cond frames from an unseen test set + different random seeds</p>
+                    <div class="gif-container">
+                        <img src="./2_stage_model/cond_s.png" alt="cond s">
+                    </div>
+
+                    <p> outputs: 3 different generation of 893 frames</p>
+                    <div class="gif-container">
+                        <img src="./2_stage_model/fightsimv3mini_2stage_dev_0a.gif" alt="GIF 1">
+                        <img src="./2_stage_model/fightsimv3mini_2stage_dev_0b.gif" alt="GIF 2">
+                        <img src="./2_stage_model/fightsimv3mini_2stage_dev_0c.gif" alt="GIF 3">
+                    </div>
+                    <p>The same inputs -> multiple plausible outputs because of different random seeds</p>
+
+                    <h3 class="article-subtitle">Train and validation losses</h3>
+                    <img src="./2_stage_model/train_and_valid.png" alt="train_and_valid" class="article-image">
+
+                    <h2>References</h2>
+                    <ol>
+                        <li><a href="https://arxiv.org/pdf/2305.03486">Iterative 𝛼-(de)Blending: a Minimalist
+                                Deterministic Diffusion Model</a></li>
+                        <li><a href="https://arxiv.org/abs/2306.02562">Video Diffusion Models with Local-Global
+                                Context Guidance</a></li>
+                    </ol>
+
+                    <div class="social-sharing">
+                        <a href="https://x.com/home">
+                            <i class="fab fa-twitter"></i>
+                            Share on Twitter
+                        </a>
+                        <a href="https://www.linkedin.com/">
+                            <i class="fab fa-linkedin"></i>
+                            Share on LinkedIn
+                        </a>
+                    </div>
+
+                    <a href="../blog.html" class="back-to-blog">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Blog
+                    </a>
+                </div>
+
+            </article>
+        </main>
+    </div>
+</body>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+</script>
+
+</html>
