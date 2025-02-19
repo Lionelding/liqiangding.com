@@ -424,11 +424,11 @@
         </div>
         <ul id="nav-menu">
             <li><a href="../../index.html">Home</a></li>
-            <li><a href="../professional.html">Professional Experience</a></li>
+            <li><a href="../../professional/professional.html">Professional Experience</a></li>
             <li><a href="../../projects/projects.html">Projects</a></li>
             <li><a href="../../research/research.html">Research</a></li>
             <li><a href="../../entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
-            <li><a href="../../blogs/blog.html" class="active">Blog</a></li>
+            <li><a href="../blog.html" class="active">Blog</a></li>
             <li><a href="../../fun/fun.html">Fun</a></li>
         </ul>
     </nav>
@@ -456,7 +456,7 @@
                     <h1 class="article-title">Recursive Temporal-Consistent Content Generation on Latent Variables via
                         Alpha Diffusion
                         Framework: Integrating Global and Local Contextual Modeling for 30-Second Sequences</h1>
-                    <img src="./2_stage_model/fightsimv3_s_dev_0.gif" alt="article image" class="article-image">
+                    <img src="./fightsimv3_s_dev_0.gif" alt="article image" class="article-image">
                     <p>Animation above: 893 frames recursively generated using only 2 input frames as condition</p>
 
                 </header>
@@ -465,7 +465,11 @@
                     <span class="tag">Temporal-consistent</span>
                     <span class="tag">Alpha blend diffusion</span>
                     <span class="tag">Recursive generation</span>
+                </div>
 
+                <div
+                    style="background-color: #e1f6ea; border-left: 4px solid #ccc; padding: 25px; margin: 10px 0; font-style: italic;">
+                    <p>This is one of the projects I work on at Irreverent Labs.</p>
                 </div>
 
                 <div class="article-content">
@@ -497,9 +501,9 @@
                     <h3 class="article-subtitle">Dataset</h3>
                     <p>Examples of train and valid sets</p>
                     <div class="gif-container">
-                        <img src="./2_stage_model/example_0.gif" alt="GIF 1">
-                        <img src="./2_stage_model/example_1.gif" alt="GIF 2">
-                        <img src="./2_stage_model/example_2.gif" alt="GIF 3">
+                        <img src="./example_0.gif" alt="GIF 1">
+                        <img src="./example_1.gif" alt="GIF 2">
+                        <img src="./example_2.gif" alt="GIF 3">
                     </div>
 
                     <li> Train data: 60 seconds x 256 videos, synthetically-made with unity</li>
@@ -510,32 +514,32 @@
                     <p> Setup: 4 H100 GPU</p>
                     <p> inputs: 2 cond frames from an unseen test set</p>
                     <div class="gif-container">
-                        <img src="./2_stage_model/l_cond_1.png" alt="GIF 1">
-                        <img src="./2_stage_model/l_cond_2.png" alt="GIF 2">
-                        <img src="./2_stage_model/l_cond_3.png" alt="GIF 3">
+                        <img src="./l_cond_1.png" alt="GIF 1">
+                        <img src="./l_cond_2.png" alt="GIF 2">
+                        <img src="./l_cond_3.png" alt="GIF 3">
                     </div>
 
                     <p> outputs: 893 generated frames</p>
                     <div class="gif-container">
-                        <img src="./2_stage_model/fightsimv3_s_dev_0.gif" alt="GIF 1">
-                        <img src="./2_stage_model/fightsimv3_s_dev_1.gif" alt="GIF 2">
-                        <img src="./2_stage_model/fightsimv3_s_dev_2.gif" alt="GIF 3">
+                        <img src="./fightsimv3_s_dev_0.gif" alt="GIF 1">
+                        <img src="./fightsimv3_s_dev_1.gif" alt="GIF 2">
+                        <img src="./fightsimv3_s_dev_2.gif" alt="GIF 3">
                     </div>
 
                     <h3 class="article-subtitle">Simplified Diagrams (in 3 steps)</h3>
                     <p>1. How local and global context information between two consecutive time steps is forwarded to
                         diffusion framework</p>
-                    <img src="./2_stage_model/diagram1.jpg" alt="diagram1" class="article-image">
+                    <img src="./diagram1.jpg" alt="diagram1" class="article-image">
 
                     <p>2. How local and global context information is consumed by the diffusion framework</p>
-                    <img src="./2_stage_model/diagram2.jpg" alt="diagram2" class="article-image">
+                    <img src="./diagram2.jpg" alt="diagram2" class="article-image">
 
                     <p>3. Recursively compute new local and global context between two time steps</p>
-                    <img src="./2_stage_model/diagram3.jpg" alt="diagram2" class="article-image">
+                    <img src="./diagram3.jpg" alt="diagram2" class="article-image">
 
 
                     <h3 class="article-subtitle">Training Logic</h3>
-                    <img src="./2_stage_model/main_logic.png" alt="main logic" class="article-image">
+                    <img src="./main_logic.png" alt="main logic" class="article-image">
                     <p>Key points:</p>
                     <li>Each training step is broken down into 2 separate stages</li>
                     <li>Video predicted from stage 1 is used in stage 2 as priors</li>
@@ -545,19 +549,19 @@
                     <h3 class="article-subtitle">Schrödinger's cat</h3>
                     <p> inputs: 2 cond frames from an unseen test set + different random seeds</p>
                     <div class="gif-container">
-                        <img src="./2_stage_model/cond_s.png" alt="cond s">
+                        <img src="./cond_s.png" alt="cond s">
                     </div>
 
                     <p> outputs: 3 different generation of 893 frames</p>
                     <div class="gif-container">
-                        <img src="./2_stage_model/fightsimv3mini_2stage_dev_0a.gif" alt="GIF 1">
-                        <img src="./2_stage_model/fightsimv3mini_2stage_dev_0b.gif" alt="GIF 2">
-                        <img src="./2_stage_model/fightsimv3mini_2stage_dev_0c.gif" alt="GIF 3">
+                        <img src="./fightsimv3mini_2stage_dev_0a.gif" alt="GIF 1">
+                        <img src="./fightsimv3mini_2stage_dev_0b.gif" alt="GIF 2">
+                        <img src="./fightsimv3mini_2stage_dev_0c.gif" alt="GIF 3">
                     </div>
                     <p>The same inputs -> multiple plausible outputs because of different random seeds</p>
 
                     <h3 class="article-subtitle">Train and validation losses</h3>
-                    <img src="./2_stage_model/train_and_valid.png" alt="train_and_valid" class="article-image">
+                    <img src="./train_and_valid.png" alt="train_and_valid" class="article-image">
 
                     <h2>References</h2>
                     <ol>
