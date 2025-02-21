@@ -370,6 +370,61 @@
             /* Add some spacing between the main text and sub-line */
         }
 
+        /* New styles for projects section */
+        .projects-section {
+            margin-top: 1.5rem;
+        }
+
+        .projects-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .project-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .project-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #4f46e5;
+            transform: translateX(5px);
+        }
+
+        .project-link i {
+            font-size: 0.9rem;
+        }
+
         :root {
             --press-list-style: none;
             --press-list-padding: 0;
@@ -483,7 +538,7 @@
 
                 <div
                     style="background-color: #e1f6ea; border-left: 4px solid #ccc; padding: 25px; margin: 10px 0; font-style: italic;">
-                    <p>This is one of the projects I work on at Unity.</p>
+                    <p>The product that I worked on at Unity.</p>
                 </div>
 
                 <div class="article-content">
@@ -532,7 +587,7 @@
                     <h3 class="article-subtitle">Metacast: ML modules</h3>
 
                     <p>As a Senior Machine Learning Engineer, I spearheaded the end-to-end development of two core ML
-                        components integral to Metacast’s 3D scene capture and athlete analytics pipeline. Leading a
+                        components integrated to Metacast’s 3D scene capture and athlete analytics pipeline. Leading a
                         cross-functional team of four engineers and researchers, I architected scalable solutions
                         leveraging ML reconstruction to optimize 3D data acquisition costs by 40% and implemented
                         advanced human pose estimation frameworks to enable granular behavioral analysis. </p>
@@ -543,8 +598,27 @@
                         lifecycle encompassed multimodal data curation, iterative model prototyping, rigorous validation
                         (achieving 98% pose estimation accuracy), and seamless deployment to production environments.
                         Despite technical complexities, we successfully deployed both modules within an aggressive
-                        timeline, driving measurable efficiency gains for stakeholders. Embedded links detail technical
-                        milestones and performance benchmarks.</p>
+                        timeline, driving measurable efficiency gains for stakeholders. The links below detail technical
+                        milestones and demonstrations.</p>
+
+                    <div class="projects-section">
+                        <ul class="project-list">
+                            <li class="project-box">
+                                <a href="../research.html#2022-pose" class="project-link" target="_blank">
+                                    Metacast: 3D Human Pose Estimation
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="project-list">
+                            <li class="project-box">
+                                <a href="../research.html#2022-reconstruction" class="project-link" target="_blank">
+                                    Metacast: Multi-View 3D Human Reconstruction
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
 
 
                     <h3 class="article-subtitle">Press Coverage</h3>
