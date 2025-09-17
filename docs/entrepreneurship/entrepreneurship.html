@@ -5,421 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrepreneurship - Your Name</title>
+    
+    <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Shared styles from previous pages */
-        :root {
-            --primary-color: #1a1a1a;
-            --accent-color: #6366f1;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-            --glass: rgba(255, 255, 255, 0.9);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        }
-
-        body {
-            background: #f8fafc;
-            color: #334155;
-            line-height: 1.6;
-        }
-
-        nav {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile navigation */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                gap: 1rem;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--glass);
-                backdrop-filter: blur(10px);
-                padding: 1rem;
-                box-shadow: var(--shadow);
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-        }
-
-        .container {
-            display: flex;
-            margin: 6rem 5% 2rem;
-            gap: 3rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .sidebar {
-            width: 300px;
-            text-align: center;
-            position: sticky;
-            top: 6rem;
-            height: fit-content;
-        }
-
-
-        /* Updated profile image styles */
-        .profile-pic-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 1.5rem;
-        }
-
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-pic-container::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .profile-pic-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--glass);
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: var(--shadow);
-        }
-
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background: var(--glass);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-        }
-
-        .social-icons a:hover {
-            background: var(--gradient);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Updated company cards styling */
-        .company-grid {
-            display: grid;
-            gap: 2rem;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .company-card {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .company-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .company-header {
-            margin-bottom: 1.5rem;
-        }
-
-        .company-name {
-            font-size: 1.75rem;
-            margin-bottom: 0.75rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .company-timeframe {
-            color: #64748b;
-            font-size: 0.95rem;
-        }
-
-        .company-description {
-            color: #475569;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .company-industries {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .industry-tag {
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--accent-color);
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .company-website {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .company-website:hover {
-            color: #4f46e5;
-            transform: translateX(5px);
-        }
-
-        .status-badge {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
-        }
-
-        .active {
-            background: rgba(99, 102, 241, 0.15);
-            color: #6366f1;
-        }
-
-        .acquired {
-            background: rgba(168, 85, 247, 0.15);
-            color: #a855f7;
-        }
-
-        .closed {
-            background: rgba(236, 72, 153, 0.15);
-            color: #ec4899;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                margin-top: 4rem;
-            }
-
-            .sidebar {
-                width: 100%;
-                position: static;
-            }
-
-            .profile-pic {
-                width: 150px;
-                height: 150px;
-            }
-
-            .company-card {
-                padding: 1.5rem;
-            }
-
-            .company-name {
-                font-size: 1.5rem;
-            }
-
-            .status-badge {
-                top: 1rem;
-                right: 1rem;
-                padding: 0.5rem 0.75rem;
-            }
-        }
-
-        .about-entrepreneurship {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .about-entrepreneurship:hover {
-            transform: translateY(-3px);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.3;
-        }
-
-        .motivation-text {
-            color: #475569;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-
-        .motivation-text:last-child {
-            margin-bottom: 0;
-        }
-
-        @media (max-width: 768px) {
-            .about-entrepreneurship {
-                padding: 1.5rem;
-                margin-bottom: 2rem;
-            }
-
-            .section-title {
-                font-size: 1.75rem;
-            }
-
-            .profile-pic {
-                width: 300px;
-                height: 300px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/entrepreneurship.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
+    <script src="../assets/js/analytics.js"></script>
 </head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-3Z01HR33VG');
-</script>
 
 <body>
     <nav>
@@ -433,7 +28,7 @@
             <li><a href="../professional/professional.html">Professional Experience</a></li>
             <li><a href="../research/research.html">Research</a></li>
             <li><a href="../projects/projects.html">Side Projects</a></li>
-            <li><a href="./entrepreneurship.html">Entrepreneurship</a></li>
+            <li><a href="./entrepreneurship.html" class="active">Entrepreneurship</a></li>
             <li><a href="../blogs/blog.html">Blog</a></li>
         </ul>
     </nav>
@@ -446,14 +41,13 @@
             <div class="social-icons">
                 <a href="https://x.com/liqiang_ding" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.youtube.com/@947973" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i
-                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/Lionelding" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </aside>
 
         <main class="blog-content">
-            <!-- New Why Entrepreneurship Section -->
+            <!-- Why Entrepreneurship Section -->
             <section class="about-entrepreneurship">
                 <h2 class="section-title">Why I Love Entrepreneurship</h2>
                 <div class="section-content">
@@ -477,7 +71,7 @@
             </section>
 
             <div class="company-grid">
-                <!-- Company 1 -->
+                <!-- Company 1: Client Express -->
                 <article class="company-card">
                     <span class="status-badge active">Active</span>
                     <div class="company-header">
@@ -490,13 +84,15 @@
                         <span class="industry-tag">Cloud Computing</span>
                     </div>
                     <p class="company-description">
-                        An agile customer relationship management (CRM) system to connect costumers and business.
+                        An agile customer relationship management (CRM) system to connect customers and business.
+                        Built with modern web technologies, Client Express streamlines customer interactions,
+                        automates workflows, and provides actionable insights through advanced analytics.
                     </p>
                 </article>
 
-                <!-- Company 2 -->
+                <!-- Company 2: Global AI Education -->
                 <article class="company-card">
-                    <span class="status-badge acquired">Active</span>
+                    <span class="status-badge active">Active</span>
                     <div class="company-header">
                         <h2 class="company-name">Global AI Education</h2>
                         <div class="company-timeframe">2024 - Present</div>
@@ -517,7 +113,7 @@
                     </a>
                 </article>
 
-                <!-- Company 3 -->
+                <!-- Company 3: Beat Exams -->
                 <article class="company-card">
                     <span class="status-badge closed">Closed (2016)</span>
                     <div class="company-header">
@@ -527,27 +123,20 @@
                     <div class="company-industries">
                         <span class="industry-tag">Online bookstore</span>
                         <span class="industry-tag">Second-hand textbook exchange</span>
-
                     </div>
                     <p class="company-description">
                         Implemented marketing strategies and set up promotion plans for attracting potential customers.
                         Managed the overall resource of products and supervised the designs of covers of products and
-                        creativities of advertisements, and ran it profitable within one month
+                        creativities of advertisements, and ran it profitable within one month. This early venture
+                        taught me valuable lessons about market validation, customer acquisition, and operational efficiency.
                     </p>
                 </article>
             </div>
         </main>
     </div>
-    <script>
-        // Mobile menu toggle
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
 
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-    </script>
+    <!-- External JavaScript -->
+    <script src="../assets/js/navigation.js"></script>
 </body>
 
 </html>

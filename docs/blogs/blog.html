@@ -5,399 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogs</title>
+    
+    <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #1a1a1a;
-            --accent-color: #3B82F6;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-            --glass: rgba(255, 255, 255, 0.9);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        }
-
-        body {
-            background: #f8fafc;
-            color: #334155;
-            line-height: 1.6;
-        }
-
-        nav {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile navigation */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                gap: 1rem;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--glass);
-                backdrop-filter: blur(10px);
-                padding: 1rem;
-                box-shadow: var(--shadow);
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-        }
-
-        .container {
-            display: flex;
-            margin: 6rem 5% 2rem;
-            gap: 3rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .sidebar {
-            width: 300px;
-            text-align: center;
-            position: sticky;
-            top: 6rem;
-            height: fit-content;
-        }
-
-        /* Updated profile image styles */
-        .profile-pic-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 1.5rem;
-        }
-
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-pic-container::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .profile-pic-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--glass);
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: var(--shadow);
-        }
-
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background: var(--glass);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-        }
-
-        .social-icons a:hover {
-            background: var(--gradient);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .blog-content {
-            flex: 1;
-            max-width: 800px;
-        }
-
-        .blog-posts {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .blog-post {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            /* Center items vertically */
-        }
-
-        .blog-post:hover {
-            transform: translateY(-5px);
-        }
-
-        .featured-image {
-            width: 250px;
-            height: 200px;
-            border-radius: 0.75rem;
-            object-fit: cover;
-            flex-shrink: 0;
-            margin-left: 1.5rem;
-            /* Add left margin for spacing */
-        }
-
-        .post-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .project-duration {
-            font-size: 0.9rem;
-            color: #64748b;
-            margin-bottom: 0.5rem;
-        }
-
-        .post-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin: 0;
-        }
-
-        .tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: rgba(59, 130, 246, 0.1);
-            color: #3B82F6;
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .post-excerpt {
-            color: #475569;
-            line-height: 1.7;
-            margin: 0.5rem 0;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .project-links a {
-            color: #3B82F6;
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .project-links a:hover {
-            color: #2563EB;
-            transform: translateY(-2px);
-        }
-
-        .project-links a i {
-            transition: transform 0.3s ease;
-        }
-
-        .project-links a:hover i {
-            transform: translateY(3px);
-        }
-
-        .about-entrepreneurship {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .about-entrepreneurship:hover {
-            transform: translateY(-3px);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.3;
-        }
-
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                margin-top: 4rem;
-            }
-
-            .sidebar {
-                width: 100%;
-                position: static;
-            }
-
-            .profile-pic {
-                width: 300px;
-                height: 300px;
-            }
-
-            .blog-post {
-                flex-direction: column;
-                padding: 1.5rem;
-                align-items: flex-start;
-                /* Align items to the start on mobile */
-            }
-
-            .featured-image {
-                width: 100%;
-                height: 200px;
-                margin-left: 0;
-                /* Remove left margin on mobile */
-                margin-bottom: 1rem;
-                /* Add bottom margin for spacing */
-            }
-
-            .post-title {
-                font-size: 1.25rem;
-            }
-
-            .about-entrepreneurship {
-                padding: 1.5rem;
-                margin-bottom: 2rem;
-            }
-
-            .section-title {
-                font-size: 1.75rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
+    <script src="../assets/js/analytics.js"></script>
+    
+    <!-- MathJax for mathematical notation -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-3Z01HR33VG');
-</script>
 
 <body>
     <nav>
@@ -424,8 +45,7 @@
             <div class="social-icons">
                 <a href="https://x.com/liqiang_ding" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.youtube.com/@947973" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i
-                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/Lionelding" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </aside>
@@ -435,118 +55,118 @@
                 <h2 class="section-title">Input and Output</h2>
                 <div class="section-content">
                     <p class="motivation-text">
-                        "If you can't explain it simply, you don't understand it well enough."" - Albert Einstein
+                        "If you can't explain it simply, you don't understand it well enough." - Albert Einstein
                     </p>
                 </div>
             </section>
 
-            <article class="blog-post">
-                <img src="./202211_rle/rle_frontpage.png" alt="AI Research" class="featured-image">
-                <div class="post-content">
-                    <div class="project-duration">2022 • Technical Blog </div>
-                    <h2 class="post-title">Paper reading: Human Pose Regression with Residual Log-likelihood
-                        Estimation
-                    </h2>
-                    <p class="post-excerpt">
-                        Regression problem can be reviewed from the maximum likelihood estimation perspective.
-                        The learning process of a model is to optimize its learnable parameters \(\phi\) that makes
-                        labels
-                        \(\mu_{g}\) most probable...
-                    </p>
-                    <div class="project-links">
-                        <a href="./202211_rle/rle.html" class="download-link">
-                            Read more
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
+            <div class="blog-posts">
+                <!-- Blog Post 1: RLE -->
+                <article class="blog-post">
+                    <img src="./202211_rle/rle_frontpage.png" alt="RLE Research" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2022 • Technical Blog</div>
+                        <h2 class="post-title">Paper reading: Human Pose Regression with Residual Log-likelihood Estimation</h2>
+                        <div class="tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Human Pose</span>
+                            <span class="tag">Regression</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Regression problem can be reviewed from the maximum likelihood estimation perspective.
+                            The learning process of a model is to optimize its learnable parameters \(\phi\) that makes
+                            labels \(\mu_{g}\) most probable. This comprehensive analysis explores the mathematical
+                            foundations and practical applications of residual log-likelihood estimation in pose regression.
+                        </p>
+                        <div class="project-links">
+                            <a href="./202211_rle/rle.html" class="download-link">
+                                Read more
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="blog-post">
-                <img src="./202210_nf/nf.png" alt="AI Research" class="featured-image">
-                <div class="post-content">
-                    <div class="project-duration">2022 • Technical Blog</div>
-                    <h2 class="post-title">Normalizing Flows and Its Friends (Part 2)
-                    </h2>
-                    <div class="tags">
-                        <span class="tag">flow-based model</span>
-                        <span class="tag">RealNVP</span>
+                <!-- Blog Post 2: Normalizing Flows Part 2 -->
+                <article class="blog-post">
+                    <img src="./202210_nf/nf.png" alt="Normalizing Flows" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2022 • Technical Blog</div>
+                        <h2 class="post-title">Normalizing Flows and Its Friends (Part 2)</h2>
+                        <div class="tags">
+                            <span class="tag">flow-based model</span>
+                            <span class="tag">RealNVP</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+                        <p class="post-excerpt">
+                            What is Normalizing Flows? In this second part, we dive deeper into the practical implementations
+                            and advanced techniques of normalizing flows, exploring RealNVP architectures and their applications
+                            in generative modeling and density estimation.
+                        </p>
+                        <div class="project-links">
+                            <a href="./202210_nf/nf2.html" class="download-link">
+                                Read more
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <p class="post-excerpt">
-                        What is Normalizing Flows?
-                    </p>
-                    <div class="project-links">
-                        <a href="./202210_nf/nf2.html" class="download-link">
-                            Read more
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="blog-post">
-                <img src="./202210_nf/nf.png" alt="AI Research" class="featured-image">
-                <div class="post-content">
-                    <div class="project-duration">2022 • Technical Blog</div>
-                    <h2 class="post-title">Normalizing Flows and Its Friends (Part 1)</h2>
-                    <div class="tags">
-                        <span class="tag">Jacobian Matrix</span>
-                        <span class="tag">Determinant</span>
-                        <span class="tag">Change of Variable Theorem</span>
+                <!-- Blog Post 3: Normalizing Flows Part 1 -->
+                <article class="blog-post">
+                    <img src="./202210_nf/nf.png" alt="Normalizing Flows Fundamentals" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2022 • Technical Blog</div>
+                        <h2 class="post-title">Normalizing Flows and Its Friends (Part 1)</h2>
+                        <div class="tags">
+                            <span class="tag">Jacobian Matrix</span>
+                            <span class="tag">Determinant</span>
+                            <span class="tag">Change of Variable Theorem</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Here is some pre-requisite knowledge required before we move to Normalizing Flows.
+                            We'll explore the mathematical foundations including Jacobian matrices, determinants,
+                            and the change of variable theorem that form the backbone of flow-based models.
+                        </p>
+                        <div class="project-links">
+                            <a href="./202210_nf/nf1.html" class="download-link">
+                                Read more
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <p class="post-excerpt">
-                        Here is some pre-requisite knowledge required before we move to Normalizing Flows.
-                    </p>
-                    <div class="project-links">
-                        <a href="./202210_nf/nf1.html" class="download-link">
-                            Read more
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </article>
+                </article>
 
-            <article class="blog-post">
-                <img src="./202006_gradcam/img0.png" alt="AI Research" class="featured-image">
-                <div class="post-content">
-                    <div class="project-duration">2020 • Technical Blog</div>
-                    <h2 class="post-title">Gradient Class Activation Map (Grad-CAM) Summary</h2>
-                    <div class="tags">
-                        <span class="tag">GradCam</span>
-                        <span class="tag">penultimate layer</span>
-                        <span class="tag">feature visualization</span>
-
+                <!-- Blog Post 4: Grad-CAM -->
+                <article class="blog-post">
+                    <img src="./202006_gradcam/img0.png" alt="Grad-CAM Visualization" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2020 • Technical Blog</div>
+                        <h2 class="post-title">Gradient Class Activation Map (Grad-CAM) Summary</h2>
+                        <div class="tags">
+                            <span class="tag">GradCam</span>
+                            <span class="tag">penultimate layer</span>
+                            <span class="tag">feature visualization</span>
+                        </div>
+                        <p class="post-excerpt">
+                            The following note demonstrates the logic procedure of how a GradCam is computed.
+                            We'll explore the mathematical derivation and implementation details of this powerful
+                            technique for visualizing what convolutional neural networks learn and focus on.
+                        </p>
+                        <div class="project-links">
+                            <a href="./202006_gradcam/gradcam.html" class="download-link">
+                                Read more
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <p class="post-excerpt">
-                        The following note demonstrates the logic procedure of how a GradCam is computed...
-                    </p>
-                    <div class="project-links">
-                        <a href="./202006_gradcam/gradcam.html" class="download-link">
-                            Read more
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </article>
-
+                </article>
+            </div>
+        </main>
     </div>
-    </main>
-    </div>
+
+    <!-- External JavaScript -->
+    <script src="../assets/js/navigation.js"></script>
 </body>
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-
-<script>
-    // Mobile menu toggle
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navMenu = document.getElementById('nav-menu');
-
-    mobileMenu.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-</script>
 
 </html>

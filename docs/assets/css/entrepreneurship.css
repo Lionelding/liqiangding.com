@@ -1,0 +1,185 @@
+/* Entrepreneurship Page Specific Styles */
+
+/* Blog content area */
+.blog-content {
+    flex: 1;
+    margin-top: 1rem;
+}
+
+/* Company grid layout */
+.company-grid {
+    display: grid;
+    gap: 2rem;
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Company cards */
+.company-card {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.company-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Company header */
+.company-header {
+    margin-bottom: 1.5rem;
+}
+
+.company-name {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.company-timeframe {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* Company description */
+.company-description {
+    color: #475569;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+/* Industry tags */
+.company-industries {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.industry-tag {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Company website link */
+.company-website {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.company-website:hover {
+    color: #4f46e5;
+    transform: translateX(5px);
+}
+
+/* Status badges */
+.status-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+}
+
+.status-badge.active {
+    background: rgba(99, 102, 241, 0.15);
+    color: #6366f1;
+}
+
+.status-badge.acquired {
+    background: rgba(168, 85, 247, 0.15);
+    color: #a855f7;
+}
+
+.status-badge.closed {
+    background: rgba(236, 72, 153, 0.15);
+    color: #ec4899;
+}
+
+/* About entrepreneurship section */
+.about-entrepreneurship {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.about-entrepreneurship:hover {
+    transform: translateY(-3px);
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.3;
+}
+
+.section-content .motivation-text {
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.section-content .motivation-text:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments for entrepreneurship page */
+@media (max-width: 768px) {
+    .company-card {
+        padding: 1.5rem;
+    }
+
+    .company-name {
+        font-size: 1.5rem;
+    }
+
+    .status-badge {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .about-entrepreneurship {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .profile-pic-container {
+        width: 300px;
+        height: 300px;
+    }
+}
