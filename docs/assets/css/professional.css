@@ -52,6 +52,14 @@
     color: transparent;
 }
 
+.job-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
 .company-timeframe {
     color: #64748b;
     font-size: 0.95rem;
@@ -63,6 +71,21 @@
     color: #475569;
     margin-bottom: 1.5rem;
     line-height: 1.7;
+}
+
+.company-description ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    list-style-type: disc;
+}
+
+.company-description li {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+}
+
+.company-description li:last-child {
+    margin-bottom: 0;
 }
 
 /* Industry Tags */
@@ -217,6 +240,11 @@
 
     .company-name {
         font-size: 1.5rem;
+    }
+
+    .job-title {
+        font-size: 1rem;
+        letter-spacing: 0.3px;
     }
 
     .company-timeframe {

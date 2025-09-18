@@ -8,30 +8,17 @@
     
     <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/professional.css">
+    <link rel="stylesheet" href="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/css/main.css">
+    <link rel="stylesheet" href="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/css/professional.css">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
-    <script src="../assets/js/analytics.js"></script>
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/analytics.js"></script>
 </head>
 
 <body>
-    <nav>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul id="nav-menu">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="./professional.html">Professional Experience</a></li>
-            <li><a href="../research/research.html">Research</a></li>
-            <li><a href="../projects/projects.html">Side Projects</a></li>
-            <li><a href="../entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
-            <li><a href="../blogs/blog.html">Blog</a></li>
-        </ul>
-    </nav>
+    <!-- Navigation will be injected here by navigation-config.js -->
+    <div id="nav-container"></div>
 
     <div class="container">
         <aside class="sidebar">
@@ -48,25 +35,80 @@
 
         <main class="blog-content">
             <div class="company-grid">
-                <!-- Company 1: Irreverent Labs -->
+                <!-- Company 4: AudioFlo.ai -->
+                <article class="company-card">
+                    <div class="company-header">
+                        <div class="company-header-left">
+                            <img class="company-logo" src="./audioflo/audioflo.jpg" alt="AudioFlo Logo">
+                            <h2 class="company-name">AudioFlo Inc</h2>
+                        </div>
+                        <div class="company-timeframe">2025.03 - Present</div>
+                    </div>
+                    <div class="job-title">Founder / CEO</div>
+                    <div class="company-industries">
+                        <span class="industry-tag">AudioBook Production</span>
+                        <span class="industry-tag">Text-to-Voice</span>
+                        <span class="industry-tag">SaaS</span>
+                    </div>
+                    <div class="company-description">
+                        <ul>
+                            <li>TBC</li>
+
+                        </ul>
+                    </div>
+                    <div class="projects-section">
+                        <h3>Vision</h3>
+                        <ul class="project-list">
+                            <li class="project-box">
+                                <a href="../research/research.html#2024-2stag" class="project-link" target="_blank">
+                                    Recursive Temporal-Consistent Content Generation on Latent Variables
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <h3>Market Gap</h3>
+                        <ul class="project-list">
+                            <li class="project-box">
+                                <a href="../research/research.html#2024-2stag" class="project-link" target="_blank">
+                                    Recursive Temporal-Consistent Content Generation on Latent Variables
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <h3>Market Gap</h3>
+                        <ul class="project-list">
+                            <li class="project-box">
+                                <a href="../research/research.html#2024-2stag" class="project-link" target="_blank">
+                                    Recursive Temporal-Consistent Content Generation on Latent Variables
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Company 3: Irreverent Labs -->
                 <article class="company-card">
                     <div class="company-header">
                         <div class="company-header-left">
                             <img class="company-logo" src="./lab/lab.png" alt="Irreverent Labs Logo">
                             <h2 class="company-name">Irreverent Labs</h2>
                         </div>
-                        <div class="company-timeframe">2023.02 - Present</div>
+                        <div class="company-timeframe">2023.02 - 2025.02</div>
                     </div>
+                    <div class="job-title">Senior Machine Learning Engineer</div>
                     <div class="company-industries">
                         <span class="industry-tag">Gen AI</span>
                         <span class="industry-tag">Text2Video</span>
                         <span class="industry-tag">Real-time Generation</span>
                     </div>
-                    <p class="company-description">
-                        Pioneered two patent-pending text-to-video architectures achieving unprecedented temporal
-                        coherence through novel data-efficient learning frameworks, setting new SOTA
-                        metrics with only 12% of industry-standard training data.
-                    </p>
+                    <div class="company-description">
+                        <ul>
+                            <li>Pioneered two patent-pending text-to-video architectures achieving unprecedented temporal coherence</li>
+                            <li>Developed novel data-efficient learning frameworks setting new SOTA metrics</li>
+                            <li>Achieved breakthrough results with only 12% of industry-standard training data</li>
+                        </ul>
+                    </div>
                     <div class="projects-section">
                         <h3>Research</h3>
                         <ul class="project-list">
@@ -95,17 +137,18 @@
                         </div>
                         <div class="company-timeframe">2021.08 - 2023.02</div>
                     </div>
+                    <div class="job-title">Senior Machine Learning Engineer</div>
                     <div class="company-industries">
                         <span class="industry-tag">Sports</span>
                         <span class="industry-tag">3D Human Pose Estimation</span>
                         <span class="industry-tag">3D Human Representation</span>
                     </div>
-                    <p class="company-description">
-                        Led a cross-functional team of 4 engineers in developing an enterprise-grade 3D human pose
-                        estimation system deployed across unity's flagship production environment. Designed and
-                        implemented a complete machine learning pipeline encompassing data acquisition strategies,
-                        multi-stage model optimization, and cloud-based deployment infrastructure.
-                    </p>
+                    <div class="company-description">
+                        <ul>
+                            <li>Led a cross-functional team of 4 engineers in developing enterprise-grade 3D human pose estimation system</li>
+                            <li>Designed and built a complete machine learning pipeline with data acquisition, model optimization, and cloud deployment</li>
+                        </ul>
+                    </div>
                     <div class="projects-section">
                         <h3>Product</h3>
                         <ul class="project-list">
@@ -136,7 +179,7 @@
                     </div>
                 </article>
 
-                <!-- Company 3: Imagia -->
+                <!-- Company 1: Imagia -->
                 <article class="company-card">
                     <div class="company-header">
                         <div class="company-header-left">
@@ -150,13 +193,13 @@
                         <span class="industry-tag">Computer Vision</span>
                         <span class="industry-tag">Deep Learning</span>
                     </div>
-                    <p class="company-description">
-                        Led the development of medical AI solutions, achieving breakthrough results in lung cancer
-                        diagnostics. Published 4 peer-reviewed papers in top venues including MICCAI, Gastroenterology,
-                        and ESMO, advancing the state-of-the-art in automated medical image analysis. Implemented
-                        clinically-validated algorithms that improved diagnostic accuracy by 23% across multiple cancer
-                        types.
-                    </p>
+                    <div class="company-description">
+                        <ul>
+                            <li>Led development of medical AI solutions achieving breakthrough results in lung cancer diagnostics</li>
+                            <li>Published 4 peer-reviewed papers in top venues (MICCAI, Gastroenterology, ESMO)</li>
+                            <li>Implemented clinically-validated algorithms improving diagnostic accuracy by 23% across multiple cancer types</li>
+                        </ul>
+                    </div>
                     <div class="projects-section">
                         <h3>Research</h3>
                         <ul class="project-list">
@@ -253,7 +296,8 @@
     </div>
 
     <!-- External JavaScript -->
-    <script src="../assets/js/navigation.js"></script>
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/navigation.js"></script>
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/navigation-config.js"></script>
 </body>
 
 </html>
