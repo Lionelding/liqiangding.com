@@ -38,17 +38,6 @@
             overflow: hidden;
         }
 
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 152, 0, 0.05) 0%, transparent 70%);
-            animation: rotate 30s linear infinite;
-        }
-
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -98,12 +87,12 @@
             max-width: 800px;
             margin: 0 auto 50px;
             padding: 40px;
-            background: #ffffff;
+            background: #fff9f0;
             border-radius: 12px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 20px rgba(255, 152, 0, 0.1);
             position: relative;
             z-index: 1;
-            border: 1px solid #f0f0f0;
+            border: 1px solid #ffe4cc;
         }
 
         .vision-title {
@@ -120,7 +109,7 @@
         }
 
         .metrics-section {
-            background: white;
+            background: linear-gradient(135deg, #fff9f0, #ffe4cc);
             padding: 60px 20px;
         }
 
@@ -135,7 +124,7 @@
 
         .metric-card {
             background: #ffffff;
-            padding: 30px;
+            padding: 20px;
             border-radius: 12px;
             text-align: center;
             border: 1px solid #f0f0f0;
@@ -264,45 +253,84 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="logo-container">
-            <img src="./avatar.png" alt="AudioFlo Logo" class="logo-icon">
-            <h1 class="logo-title">audio<span class="flo">flo</span>.ai</h1>
+            <img src="./AudioFlo_banner_small.png" alt="AudioFlo Banner" style="height: 240px; width: auto; max-width: 100%;">
         </div>
         
         <div class="vision-box">
             <h2 class="vision-title">Our Vision</h2>
             <p class="vision-text">
-                When I started AudioFlo, the idea was simple: make audiobook creation accessible to every author. 
-                What used to take thousands of dollars and months of work should instead take just a few clicks. 
-                We're removing the barriers of cost and complexity so that every story, not just those backed by 
-                large publishers, can find its voice.
+                Building a SaaS company from zero to market has always been my entrepreneurial dream. In March 2025, I seized the opportunity to spend three intensive months founding AudioFlo—an AI-powered platform that helps indie authors produce professional audiobooks. <br><br>
+                
+                This comprehensive case study documents my complete founder journey across every critical business function: from initial market analysis and product design to full-stack development, strategic marketing, and business development.<br><br>
+
+                I'm sharing these real-world insights and methodologies with fellow entrepreneurs and startup leaders who understand the challenges of building something from nothing. Whether you're seeking a product leader who can navigate the entire startup lifecycle or looking to learn from hands-on experience in taking a SaaS concept to market, this documentation showcases the strategic thinking and execution capabilities that drive successful product ventures.
             </p>
         </div>
     </section>
 
     <!-- Metrics Section -->
     <section class="metrics-section">
-        <div class="metrics-container">
+        <!-- Business Foundation -->
+        <h3 style="text-align: center; color: #2c2c2c; margin-bottom: 30px; font-size: 1.5rem;">Business Foundation</h3>
+        <div class="metrics-container" style="margin-bottom: 50px;">
             <div class="metric-card">
-                <div class="metric-value">$469.8M</div>
-                <div class="metric-label">Total Addressable Market</div>
-                <div class="metric-growth">2024 TAM for Self-Published Authors</div>
+                <div class="metric-value">June 28th</div>
+                <div class="metric-label">Product Launched</div>
+                <div class="metric-growth">2025</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value">26%</div>
-                <div class="metric-label">Annual Market Growth</div>
-                <div class="metric-growth">Projected CAGR 2025-2030</div>
+                <div class="metric-value">2 people</div>
+                <div class="metric-label">Team Size</div>
+                <div class="metric-growth">Lean startup approach</div>
             </div>
             <div class="metric-card">
-                <div class="metric-value">95%</div>
-                <div class="metric-label">Cost Reduction</div>
-                <div class="metric-growth">vs. Traditional Production</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value">24hrs</div>
-                <div class="metric-label">Production Time</div>
-                <div class="metric-growth">vs. 2-3 Months Traditional</div>
+                <div class="metric-value">24</div>
+                <div class="metric-label">Customer Interviews Conducted</div>
+                <div class="metric-growth">Market validation</div>
             </div>
         </div>
+
+        <!-- Revenue & Growth -->
+        <h3 style="text-align: center; color: #2c2c2c; margin-bottom: 30px; font-size: 1.5rem;">Revenue & Growth</h3>
+        <div class="metrics-container" style="margin-bottom: 50px;">
+            <div class="metric-card">
+                <div class="metric-value">$550</div>
+                <div class="metric-label">Monthly Revenue</div>
+                <div class="metric-growth">Transaction-based model</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">65+</div>
+                <div class="metric-label">Total Paid Customers</div>
+                <div class="metric-growth">Self-publishing authors</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">35.75%</div>
+                <div class="metric-label">Paid Conversion Rate</div>
+                <div class="metric-growth">From Registration to Payment</div>
+            </div>
+        </div>
+
+        <!-- Product & Technical Performance -->
+        <h3 style="text-align: center; color: #2c2c2c; margin-bottom: 30px; font-size: 1.5rem;">Product & Technical Performance</h3>
+        <div class="metrics-container" style="margin-bottom: 50px;">
+            <div class="metric-card">
+                <div class="metric-value">30 mins</div>
+                <div class="metric-label">Time to First Value</div>
+                <div class="metric-growth">First audiobook creation</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">99%</div>
+                <div class="metric-label">System Uptime</div>
+                <div class="metric-growth">Platform reliability</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">57</div>
+                <div class="metric-label">Features Shipped</div>
+                <div class="metric-growth">Product iterations</div>
+            </div>
+        </div>
+
+
     </section>
 
     <!-- Chapters Section -->
