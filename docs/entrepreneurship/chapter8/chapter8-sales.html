@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 8: Marketing & Sales - AudioFlo</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/css/main.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/analytics.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            color: #1e293b;
+            background: #ffffff;
+        }
+
+        .chapter-header {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe4cc 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: #2c2c2c;
+            border-bottom: 1px solid #ffe0b2;
+        }
+
+        .chapter-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #ff9800;
+            color: white;
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .chapter-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .chapter-subtitle {
+            font-size: 1.2rem;
+            color: #757575;
+        }
+
+        .content-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #1e293b;
+            margin-bottom: 30px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 100%;
+            background: #ff9800;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .highlight-text {
+            color: #ff9800;
+            font-weight: 600;
+        }
+
+        .principle-box {
+            background: #ff9800;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .principle-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .principle-box p {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .channel-card {
+            background: #f8fafc;
+            border-left: 4px solid #ff9800;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .channel-card h3 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .channel-card h4 {
+            color: #475569;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .channel-list {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        .channel-list li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .channel-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #ff9800;
+            font-weight: bold;
+        }
+
+        .strategy-box {
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            margin: 20px 0;
+        }
+
+        .strategy-box h3 {
+            color: #ff9800;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .funnel-step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .funnel-step:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 20px rgba(255, 152, 0, 0.2);
+        }
+
+        .funnel-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #ff9800;
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            text-align: center;
+            font-weight: 600;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .funnel-content {
+            flex: 1;
+        }
+
+        .funnel-content strong {
+            color: #1e293b;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .crm-timeline {
+            background: #2c2c2c;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+        }
+
+        .crm-timeline h3 {
+            color: #ff9800;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .crm-timeline ol {
+            list-style: none;
+            padding: 0;
+        }
+
+        .crm-timeline li {
+            margin: 15px 0;
+            padding-left: 35px;
+            position: relative;
+        }
+
+        .crm-timeline li::before {
+            content: counter(item);
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            background: #ff9800;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .crm-timeline ol {
+            counter-reset: item;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .nav-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #475569;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            border-color: #ff9800;
+            color: #ff9800;
+            transform: translateY(-2px);
+        }
+
+        .nav-button.prev {
+            flex-direction: row-reverse;
+        }
+
+        .nav-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        @media (max-width: 768px) {
+            .chapter-title {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .funnel-step {
+                flex-direction: column;
+                text-align: center;
+            }
+            .funnel-number {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+
+    <!-- Navigation Config -->
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/navigation-config.js" defer></script>
+</head>
+
+<body>
+    <!-- Navigation will be injected here by navigation-config.js -->
+    <div id="nav-container"></div>
+
+    <!-- Chapter Header -->
+    <div class="chapter-header">
+        <div class="chapter-number">8</div>
+        <h1 class="chapter-title">Marketing & Sales</h1>
+        <p class="chapter-subtitle">Building trust and converting authors into loyal customers</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Chapter Outline -->
+        <section class="section">
+            <h2 class="section-title">Chapter Outline</h2>
+            <div style="background: #f8fafc; padding: 25px; border-radius: 10px; margin: 30px 0;">
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">1.</span>
+                        <strong>Core Principle</strong> - Help customers solve problems, not just sell
+                    </li>
+                    <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">2.</span>
+                        <strong>Distribution Channels</strong> - Forums, social media, and search engines
+                    </li>
+                    <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">3.</span>
+                        <strong>Conversion Strategy</strong> - Free trials and quality-first approach
+                    </li>
+                    <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">4.</span>
+                        <strong>CRM Pipeline</strong> - Seven-step customer engagement timeline
+                    </li>
+                    <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">5.</span>
+                        <strong>Sales Funnel</strong> - Six stages from awareness to loyalty
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Core Principle -->
+        <section class="section">
+            <h2 class="section-title">Core Principle</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                <!-- Principle Image Column -->
+                <div style="min-width: 350px; height: 350px;">
+                    <img src="./principle.png" alt="Core Principle" style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+
+                <!-- Animation Column -->
+                <div style="min-width: 350px; height: 350px;">
+                    <img src="./10_animation.gif" alt="Sales Process Animation" style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </section>
+
+        <!-- Distribution Channels -->
+        <section class="section">
+            <h2 class="section-title">Distribution Channels</h2>
+
+            <p>
+                Multiple distribution channels exist to attract potential customers, but people enter each channel with different <span class="highlight-text">intentions and mindsets</span>. I discovered that marketing campaigns become significantly more effective when tailored to match the specific mentality and expectations of users within each channel.
+            </p>
+
+            <div class="channel-card">
+                <h3>1. Writing Communities</h3>
+                <h4>Platforms:</h4>
+                <div style="display: flex; gap: 30px; margin: 20px 0; align-items: center; flex-wrap: wrap; justify-content: center;">
+                    <div style="text-align: center;">
+                        <img src="./wf.png" alt="Writing Forums" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">Writing Forums</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="./reddit.jpeg" alt="Reddit Subreddits" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">Reddit Subreddits</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="./ww.png" alt="Reddit Subreddits" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">Wide for the Win</p>
+                    </div>
+                </div>
+
+                <h4>Why authors come here:</h4>
+                <p>These websites are run for authors. People visit these websites to ask writing questions, share drafts, and seek feedback from beta readers.</p>
+
+                <h4>How to do marketing here:</h4>
+                <ul class="channel-list">
+                    <li><strong>Human Connection</strong>: People trust products more when they've talked to me personally</li>
+                    <li><strong>Peer Understanding</strong>: Build stronger trust when they know I'm an indie author too</li>
+                    <li><strong>Authentic Engagement</strong>: Avoid corporate-style marketing campaigns that immediately lose interest</li>
+                </ul>
+
+                <h4>Marketing Campagin Example:</h4>
+                <div style="display: flex; gap: 30px; margin: 20px 0; align-items: center; flex-wrap: wrap; justify-content: center;">
+                    <div style="text-align: center;">
+                        <img src="./example1.png" alt="example1" style="width: 650px; height: auto; border-radius: 8px; transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">A post for on the Subreddit r/authors</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="channel-card">
+                <h3>2. Social Media Platforms</h3>
+                <h4>Platforms:</h4>
+                <div style="display: flex; gap: 30px; margin: 20px 0; align-items: center; flex-wrap: wrap; justify-content: center;">
+                    <div style="text-align: center;">
+                        <img src="./goodread.png" alt="Writing Forums" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">GoodReads</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="./meta.png" alt="Reddit Subreddits" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">Meta</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="./insta.png" alt="Reddit Subreddits" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">Instagram</p>
+                    </div>
+                </div>
+
+                <h4>Why authors come here:</h4>
+                <p>Most of authors use these platforms primarily for marketing. Users are in "pitch mode" and most focus on promoting their own books.</p>
+
+                <h4>How to do marketing here:</h4>
+                <ul class="channel-list">
+                    <li><strong>Sales Boost Education</strong>: Show how audio versions can increase book sales</li>
+                    <li><strong>Discoverability Enhancement</strong>: Introduce AudioFlo's Bookstand service for featuring audiobooks</li>
+                </ul>
+
+                <h4>Marketing Campagin Example:</h4>
+                <div style="display: flex; gap: 30px; margin: 20px 0; align-items: center; flex-wrap: wrap; justify-content: center;">
+                    <div style="text-align: center;">
+                        <img src="./11.jpg" alt="11" style="width: 450px; height: auto; border-radius: 8px; transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">A visual ad on Instagram</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="channel-card">
+                <h3>3. Search Engine Marketing</h3>
+                <h4>Platforms:</h4>
+                <div style="display: flex; gap: 30px; margin: 20px 0; align-items: center; flex-wrap: wrap; justify-content: center;">
+                    <div style="text-align: center;">
+                        <img src="./google-ads.png" alt="Writing Forums" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">Google Ads</p>
+                    </div>
+                </div>
+
+                <h4>Why authors come here:</h4>
+                <p>Target users actively looking for audio production solutions. Most of them assume it is simple free service</p>
+
+                <h4>How to do marketing here:</h4>
+                <p>This is a highly effective yet expensive channel. Google's dynamic bidding system puts AudioFlo in direct competition with established players like ElevenLabs and Amazon Digital Voices.</p>
+                <p>With a limited budget, strategic bidding becomes crucial. I implemented manual bidding strategies and carefully selected keywords to maximize ROI while competing against larger competitors.</p>
+                <p>Additionally, extensive negative keyword lists help filter out irrelevant traffic, ensuring we reach genuine potential customers rather than casual browsers.</p>
+
+                <h5>Focus on AudioFlo's Advantages:</h5>
+                <ul class="channel-list">
+                    <li>Easy-to-use interface</li>
+                    <li>Budget-efficient pricing</li>
+                    <li>High-quality audiobook output</li>
+                    <li>Free trial availability</li>
+                </ul>
+
+                <h4>Marketing Campagin Example:</h4>
+                <div style="display: flex; gap: 30px; margin: 20px 0; align-items: center; flex-wrap: wrap; justify-content: center;">
+                    <div style="text-align: center;">
+                        <img src="./keywords.png" alt="keywords" style="width: 650px; height: auto; border-radius: 8px; transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">Google Ads Keywords</p>
+                    </div>
+                </div>
+                <p>Through carefully manual bidding optimization and strategic keyword selection, AudioFlo achieved an impressive 6.5% click-through rate on Google Ads.</p>
+
+            </div>
+        </section>
+
+        <!-- Customer Conversion Strategy -->
+        <section class="section">
+            <h2 class="section-title">Customer Conversion Strategy</h2>
+
+            <p>
+                Getting users to register is just the beginning of the journey, not the destination. While attracting new sign-ups validates market interest, the real challenge lies in converting these registered users into paying customers. Converting free users to paid subscribers requires building trust, demonstrating clear value, and addressing the specific hesitations that prevent users from upgrading. Through careful analysis of user behavior and strategic conversion tactics, I discovered that successful conversion is less about pushing sales and more about removing barriers that prevent users from seeing the full value of the product.
+            </p>
+
+            <div class="strategy-box">
+                <h3>1. Free Trial</h3>
+                <p>Most SaaS services offer free trials to build trust. Authors typically subscribe to paid plans only after experiencing the free version. This gives users the opportunity to trust both the product and the development team behind it.</p>
+            </div>
+
+            <div class="strategy-box">
+                <h3>2. Quantity vs Quality Philosophy</h3>
+                <p><span class="highlight-text">Never compromise on quality.</span> It's difficult for users to imagine the difference between free and paid services if quality varies. Instead, we compromise on quantity - all AudioFlo features are available to all users, with the same top-quality output. We only restrict the total word count (e.g., first chapter only). This way, users experience our full feature set and are more likely to upgrade to process their entire book.</p>
+            </div>
+
+            <div class="strategy-box">
+                <h3>3. Premium Perks for Paid Customers</h3>
+                <p>We emphasize special perks that make paid customers' books next-level:</p>
+
+                <h4 style="color: #1e293b; margin-top: 15px;">Product Benefits:</h4>
+                <ul class="channel-list">
+                    <li>Custom voice cloning for personal narration</li>
+                    <li>Additional credits for longer books</li>
+                </ul>
+
+                <h4 style="color: #1e293b; margin-top: 15px;">Service Benefits:</h4>
+                <ul class="channel-list">
+                    <li>Full guidance for distribution platform submission</li>
+                    <li>VIP support with manual script editing</li>
+                    <li>Priority chapter conversion</li>
+                </ul>
+            </div>
+
+            <div class="strategy-box">
+                <h3>4. Discoverability Enhancement</h3>
+                <p>Book featuring on AudioFlo website to improve discoverability and reach new audiences.</p>
+                <div style="display: flex; gap: 30px; margin: 20px 0; align-items: center; flex-wrap: wrap; justify-content: center;">
+                    <div style="text-align: center;">
+                        <img src="./bookstand.png" alt="keywords" style="width: 650px; height: auto; border-radius: 8px; transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">Featured books on Audioflo's website</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="strategy-box">
+                <h3>5. Proactive Customer Support</h3>
+                <p>Most customers have questions. We built an email CRM pipeline that reaches each user after sign-up, providing timely support and guidance throughout their journey.</p>
+                <div style="display: flex; gap: 30px; margin: 20px 0; align-items: center; flex-wrap: wrap; justify-content: center;">
+                    <div style="text-align: center;">
+                        <img src="./feedbacks.png" alt="feedbacks" style="width: 750px; height: auto; border-radius: 8px; transition: transform 0.3s ease;">
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">A thank-you note from one of our users</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CRM Pipeline -->
+        <section class="section">
+            <h2 class="section-title">CRM Pipeline</h2>
+
+            <p>
+                Timing is everything in customer relationship management. I leveraged an existing CRM platform to send personalized messages triggered by specific user activities rather than generic scheduled emails. By tracking key moments like first uploads or pricing page visits, we provide timely support exactly when users need guidance during their AudioFlo journey.
+            </p>
+
+            <div class="crm-timeline">
+                <h3>Customer Engagement Timeline</h3>
+                <ol>
+                    <li>Welcome message upon registration</li>
+                    <li>Step-by-step guide for first book conversion</li>
+                    <li>Feedback request on audio sample quality</li>
+                    <li>Introduction to subscription plan benefits</li>
+                    <li>Manuscript optimization guidance for audio</li>
+                    <li>Chapter-level customer support</li>
+                    <li>Distribution platform submission guidance</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Sales Funnel -->
+        <section class="section">
+            <h2 class="section-title">Sales Funnel Analysis</h2>
+
+            <p>
+                Understanding customer behavior requires systematic categorization of users based on their actions and engagement levels. I categorized all customers into six distinct groups, each representing a specific stage in their journey with AudioFlo. By creating business-specific labels for these customer segments, we can provide highly customized support and targeted interventions that address the unique needs and challenges at each stage of the conversion process.
+            </p>
+
+            <div style="display: flex; gap: 40px; margin: 40px 0; align-items: center; flex-wrap: wrap;">
+                <!-- Funnel Image Column -->
+                <div style="flex: 1; min-width: 300px; text-align: center;">
+                    <img src="./sales-funnel-stages.jpg" alt="Sales Funnel Stages" style="width: 100%; max-width: 500px; height: auto; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);">
+                    <p style="margin-top: 15px; font-size: 14px; color: #666; font-style: italic;">Six-stage customer journey</p>
+                </div>
+
+                <!-- Bullet Points Column -->
+                <div style="flex: 1; min-width: 300px;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 1.1rem;">
+                        <thead>
+                            <tr style="background: #f8fafc;">
+                                <th style="padding: 15px; text-align: left; border-bottom: 2px solid #ff9800; color: #1e293b; font-weight: 600;">Stage</th>
+                                <th style="padding: 15px; text-align: left; border-bottom: 2px solid #ff9800; color: #1e293b; font-weight: 600;">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 12px 15px; font-weight: 600; color: #ff9800;">Awareness</td>
+                                <td style="padding: 12px 15px; color: #475569;">New user registers on the platform</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 12px 15px; font-weight: 600; color: #ff9800;">Discovery</td>
+                                <td style="padding: 12px 15px; color: #475569;">User uploads book and requests audio conversion</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 12px 15px; font-weight: 600; color: #ff9800;">Evaluation</td>
+                                <td style="padding: 12px 15px; color: #475569;">User receives and reviews audiobook sample</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 12px 15px; font-weight: 600; color: #ff9800;">Intent</td>
+                                <td style="padding: 12px 15px; color: #475569;">User requests pricing and explores plans</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 12px 15px; font-weight: 600; color: #ff9800;">Purchase</td>
+                                <td style="padding: 12px 15px; color: #475569;">User subscribes to monthly plan</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 15px; font-weight: 600; color: #ff9800;">Loyalty</td>
+                                <td style="padding: 12px 15px; color: #475569;">User joins affiliate program and refers others</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Conversion Rate Display -->
+            <div style="text-align: center; margin: 40px 0;">
+                <div style="display: inline-block; background: linear-gradient(135deg, #ff9800, #ff6b35); color: white; padding: 30px 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(255, 152, 0, 0.3); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); pointer-events: none;"></div>
+                    <div style="position: relative; z-index: 1;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 10px; opacity: 0.9; font-weight: 500;">Overall Conversion Rate</h3>
+                        <div style="font-size: 3.5rem; font-weight: 800; margin-bottom: 5px;">35.75%</div>
+                        <p style="font-size: 1rem; opacity: 0.9; margin: 0;">From registration to paid subscription</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="nav-buttons">
+            <a href="../chapter7/chapter7-ai.html" class="nav-button prev">
+                <span>‹</span>
+                <div>
+                    <div class="nav-label">Previous Chapter</div>
+                    <div class="nav-title">AI System</div>
+                </div>
+            </a>
+            <a href="../chapter9/chapter9-lessons.html" class="nav-button next">
+                <div>
+                    <div class="nav-label">Next Chapter</div>
+                    <div class="nav-title">Lessons Learned</div>
+                </div>
+                <span>›</span>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
