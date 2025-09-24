@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gradient Class Activation Map (Grad-CAM) Summary</title>
+    <title>Works at Irreverent Labs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/tags.css">
     <style>
@@ -213,6 +213,17 @@
             margin-bottom: 1.5rem;
         }
 
+        .article-subtitle {
+            background: #1E90FF;
+            /* Change to a blue color */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
         .article-meta {
             color: #64748b;
             font-size: 0.95rem;
@@ -223,7 +234,7 @@
 
         .article-image {
             width: 100%;
-            height: 400px;
+            height: 100%;
             object-fit: cover;
             border-radius: 1rem;
             margin: 2rem 0;
@@ -259,19 +270,21 @@
             margin: 2rem 0;
         }
 
+        /* Tag styles imported from tags.css */
         .tags {
-            display: flex;
-            gap: 0.75rem;
             margin: 2rem 0;
-            flex-wrap: wrap;
         }
 
+        .tag {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
 
         .back-to-blog {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            color: var(--accent-color);
+            color: #3B82F6;
             text-decoration: none;
             font-weight: 500;
             padding: 0.75rem 1.5rem;
@@ -328,6 +341,27 @@
             }
         }
 
+        .gif-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gif-container img {
+            width: 32%;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .sub-line {
+            font-size: 0.9rem;
+            color: #64748b;
+            /* A lighter color for the sub-line */
+            margin-top: 0.5rem;
+            /* Add some spacing between the main text and sub-line */
+        }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -353,27 +387,28 @@
             }
 
             .article-image {
-                height: 250px;
+                height: 350px;
                 margin: 1.5rem 0;
             }
 
             .social-sharing {
                 flex-direction: column;
             }
+
+            .gif-container {
+                flex-direction: column;
+            }
+
+            .gif-container img {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
         }
     </style>
 </head>
-<script src="../../assets/js/navigation-config.js"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-3Z01HR33VG');
-</script>
 
 <body>
+    <!-- Navigation will be injected here by navigation-config.js -->
     <div id="nav-container"></div>
 
     <div class="container">
@@ -394,102 +429,131 @@
             <article class="blog-article">
                 <header class="article-header">
                     <div class="article-meta">
-                        <span>Published: June 15, 2020</span>
-                        <span>•</span>
-                        <span>8 min read</span>
+                        <span>Published: September 15, 2024</span>
                     </div>
-                    <h1 class="article-title">Gradient Class Activation Map (Grad-CAM) Summary</h1>
-                    <img src="img0.png" alt="article image" class="article-image">
+                    <h1 class="article-title">Recursive Temporal-Consistent Content Generation on Latent Variables via
+                        Alpha Diffusion
+                        Framework: Integrating Global and Local Contextual Modeling for 30-Second Sequences</h1>
+                    <img src="./fightsimv3_s_dev_0.gif" alt="article image" class="article-image">
+                    <p>Animation above: 893 frames recursively generated using only 2 input frames as condition</p>
+
                 </header>
 
+                <div class="tags">
+                    <span class="tag">Temporal-consistent</span>
+                    <span class="tag">Alpha blend diffusion</span>
+                    <span class="tag">Recursive generation</span>
+                </div>
+
+                <div
+                    style="background-color: #e1f6ea; border-left: 4px solid #ccc; padding: 25px; margin: 10px 0; font-style: italic;">
+                    <p>A technical research I architected and executed at Irreverent Labs. For technical
+                        details, please see our paper.</p>
+                </div>
+
                 <div class="article-content">
-                    <h1>Gradient Class Activation Map (Grad-CAM) Summary</h1>
-                    <p>The following note demonstrates the logic procedure of how a GradCam is computed. For details,
-                        please see: <a href="https://arxiv.org/pdf/1610.02391v1.pdf">Grad-CAM: Why did you say that?
-                            Visual Explanations from Deep Networks via Gradient-based Localization</a></p>
-
-                    <h2>Assumption</h2>
-                    <h3>Class Activation Mapping</h3>
-                    <p class="center-equation">
-                        \( y^{c} = \sum\limits_{k} w^k_c \frac{1}{Z} \sum\limits_{i} \sum\limits_{j} A^k_{ij} \)
-                    </p>
+                    <h3 class="article-subtitle">Objective</h3>
                     <p>
-                        The penultimate layer produces \( K \) activation map \( A^K \) with width \( u \) and height \(
-                        v \).
-                    </p>
-                    <p>
-                        The feature goes through \( \frac{1}{Z} \sum\limits_{i} \sum\limits_{j} \), which is called
-                        <code>global averaged pooled</code>, and then linearly transformed to \( y^{c} \) for each class
-                        \( c \).
+                        This paper introduces a novel framework for recursively generating temporally consistent content
+                        sequences of 30-second duration using an Alpha Diffusion architecture. By integrating global and
+                        local contextual modeling, our approach ensures coherence across temporal scales while
+                        maintaining high fidelity in content generation. The global context captures overarching
+                        structural patterns, while the local context refines fine-grained details, enabling seamless
+                        transitions and long-term consistency. Experimental results demonstrate the effectiveness of the
+                        proposed method in producing realistic and temporally stable outputs, outperforming existing
+                        baselines in both qualitative and quantitative evaluations. This work advances the
+                        state-of-the-art in generative modeling for sequential data, with potential applications in
+                        video synthesis, dynamic scene generation, and time-series forecasting.
                     </p>
 
-                    <h2>Procedure</h2>
-                    <h3>1. Choose the penultimate layer.</h3>
-                    <p>
-                        This is the layer where we want to visualize the activation map. The reason why it is called the
-                        penultimate layer is because the last layer of a model is usually the layer computing
-                        class-specific loss (i.e. Sigmoid loss, softmax loss, etc). The penultimate layer is a layer,
-                        which is before the last layer, that we want to compute the loss respect to.
-                    </p>
+                    <h3 class="article-subtitle">Challenges</h3>
+                    <li> Prediction errors propagate and amplify iteratively during the sampling process, leading to
+                        suboptimal generative outcomes.</li>
+                    <li> Existing frameworks fail to fully exploit available informational priors, resulting in
+                        inefficient utilization of contextual data.</li>
 
-                    <h3>2. Compute the class-specific loss (i.e. loss of \( y^{c} \)) on the last layer of the model.
-                    </h3>
-                    <p>
-                        This step involves calculating the loss for the specific class \( c \).
-                    </p>
+                    <h3 class="article-subtitle">Hypothesis</h3>
+                    <p>We can simulate the error-amplification phenomenon by training a model to adapt to its own errors
+                        and iteratively refine its outputs, while leveraging multi-scale, fine-grained contextual
+                        information to enhance corrective learning.</p>
 
-                    <h3>3. Compute the gradients of \( y^c \) respect to the penultimate layer's activation map \( A^K
-                        \).</h3>
-                    <p class="center-equation">
-                        \( \alpha^c_k = \frac{1}{Z} \sum\limits_{i} \sum\limits_{j} \frac{\partial y^c}{\partial
-                        A^k_{ij}} \)
-                    </p>
-                    <p>
-                        The dimension of the gradients is then reduced from <code>(batch_size, u, v, channel)</code> to
-                        <code>(channel)</code> by averaging the values in the first three axes. In the paper, this
-                        dimension reduction is called <code>global-average-pooling</code>.
-                    </p>
-                    <p>
-                        This result denoted as \( \alpha^c_k \) represents a partial linearization of the penultimate
-                        layer to the loss, which captures the importance of the activation \( A^k \) for a target \( c
-                        \).
-                    </p>
-
-                    <h3>4. Element-wise multiply the gradient with the Activation map.</h3>
-                    <p>
-                        This step combines the gradients and the activation maps to highlight important regions.
-                    </p>
-
-                    <h3>5. Remove any negative results by applying the ReLU function over the result.</h3>
-                    <p>
-                        Only interested in the positive influence on the class of interest. (i.e. Pixels whose intensity
-                        should increase in order to increase \( y^{c} \))
-                    </p>
-                    <p class="center-equation">
-                        \( L^c_{Grad-CAM} = ReLU(\sum\limits_{k} \alpha^c_k A^k) \)
-                    </p>
-
-                    <div class="social-sharing">
-                        <a href="https://x.com/home">
-                            <i class="fab fa-twitter"></i>
-                            Share on Twitter
-                        </a>
-                        <a href="https://www.linkedin.com/">
-                            <i class="fab fa-linkedin"></i>
-                            Share on LinkedIn
-                        </a>
+                    <h3 class="article-subtitle">Dataset</h3>
+                    <p>Examples of train and valid sets</p>
+                    <div class="gif-container">
+                        <img src="./example_0.gif" alt="GIF 1">
+                        <img src="./example_1.gif" alt="GIF 2">
+                        <img src="./example_2.gif" alt="GIF 3">
                     </div>
 
-                    <div class="tags">
-                        <span class="tag">GradCam</span>
-                        <span class="tag">penultimate layer</span>
-                        <span class="tag">feature visualization</span>
+                    <li> Train data: 60 seconds x 256 videos, synthetically-made with unity</li>
+                    <li> Diversity: 24 basic fighting animations (i.e. left punch, heavy kick, etc)</li>
+                    <li> Input dimension: 128 x 128 x 3 x frame_number</li>
+
+                    <h3 class="article-subtitle">Experiments</h3>
+                    <p> Setup: 4 H100 GPU</p>
+                    <p> inputs: 2 cond frames from an unseen test set</p>
+                    <div class="gif-container">
+                        <img src="./l_cond_1.png" alt="GIF 1">
+                        <img src="./l_cond_2.png" alt="GIF 2">
+                        <img src="./l_cond_3.png" alt="GIF 3">
                     </div>
+
+                    <p> outputs: 893 generated frames</p>
+                    <div class="gif-container">
+                        <img src="./fightsimv3_s_dev_0.gif" alt="GIF 1">
+                        <img src="./fightsimv3_s_dev_1.gif" alt="GIF 2">
+                        <img src="./fightsimv3_s_dev_2.gif" alt="GIF 3">
+                    </div>
+
+                    <h3 class="article-subtitle">Simplified Diagrams (in 3 steps)</h3>
+                    <p>1. How local and global context information between two consecutive time steps is forwarded to
+                        diffusion framework</p>
+                    <img src="./diagram1.jpg" alt="diagram1" class="article-image">
+
+                    <p>2. How local and global context information is consumed by the diffusion framework</p>
+                    <img src="./diagram2.jpg" alt="diagram2" class="article-image">
+
+                    <p>3. Recursively compute new local and global context between two time steps</p>
+                    <img src="./diagram3.jpg" alt="diagram2" class="article-image">
+
+
+                    <h3 class="article-subtitle">Training Logic</h3>
+                    <img src="./main_logic.png" alt="main logic" class="article-image">
+                    <p>Key points:</p>
+                    <li>Each training step is broken down into 2 separate stages</li>
+                    <li>Video predicted from stage 1 is used in stage 2 as priors</li>
+                    <li>Within each training step, the model updates its learnable parameters twice!</li>
+                    <break></break>
+
+                    <h3 class="article-subtitle">Schrödinger's cat</h3>
+                    <p> inputs: 2 cond frames from an unseen test set + different random seeds</p>
+                    <div class="gif-container">
+                        <img src="./cond_s.png" alt="cond s">
+                    </div>
+
+                    <p> outputs: 3 different generation of 893 frames</p>
+                    <div class="gif-container">
+                        <img src="./fightsimv3mini_2stage_dev_0a.gif" alt="GIF 1">
+                        <img src="./fightsimv3mini_2stage_dev_0b.gif" alt="GIF 2">
+                        <img src="./fightsimv3mini_2stage_dev_0c.gif" alt="GIF 3">
+                    </div>
+                    <p>The same inputs -> multiple plausible outputs because of different random seeds</p>
+
+                    <h3 class="article-subtitle">Train and validation losses</h3>
+                    <img src="./train_and_valid.png" alt="train_and_valid" class="article-image">
+
+                    <h2>References</h2>
+                    <ol>
+                        <li><a href="https://arxiv.org/pdf/2305.03486">Iterative 𝛼-(de)Blending: a Minimalist
+                                Deterministic Diffusion Model</a></li>
+                        <li><a href="https://arxiv.org/abs/2306.02562">Video Diffusion Models with Local-Global
+                                Context Guidance</a></li>
+                    </ol>
 
                     <div style="text-align: center; margin-top: 3rem;">
-                        <a href="../research.html" class="back-to-blog">
+                        <a href="../blog.html" class="back-to-blog">
                             <i class="fas fa-arrow-left"></i>
-                            Back to Research
+                            Back to Blogs
                         </a>
                     </div>
                 </div>
@@ -497,6 +561,10 @@
             </article>
         </main>
     </div>
+
+    <!-- External JavaScript -->
+    <script src="../../assets/js/navigation.js"></script>
+    <script src="../../assets/js/navigation-config.js"></script>
 </body>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>

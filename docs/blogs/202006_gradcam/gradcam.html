@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Works at Unity</title>
+    <title>Gradient Class Activation Map (Grad-CAM) Summary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/tags.css">
     <style>
@@ -213,17 +213,6 @@
             margin-bottom: 1.5rem;
         }
 
-        .article-subtitle {
-            background: #1E90FF;
-            /* Change to a blue color */
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.2;
-            margin-top: 1.5rem;
-            margin-bottom: 0.8rem;
-        }
-
         .article-meta {
             color: #64748b;
             font-size: 0.95rem;
@@ -234,7 +223,7 @@
 
         .article-image {
             width: 100%;
-            height: 100%;
+            height: 400px;
             object-fit: cover;
             border-radius: 1rem;
             margin: 2rem 0;
@@ -270,21 +259,19 @@
             margin: 2rem 0;
         }
 
-        /* Tag styles imported from tags.css */
         .tags {
+            display: flex;
+            gap: 0.75rem;
             margin: 2rem 0;
+            flex-wrap: wrap;
         }
 
-        .tag {
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
-        }
 
         .back-to-blog {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            color: #3B82F6;
+            color: var(--accent-color);
             text-decoration: none;
             font-weight: 500;
             padding: 0.75rem 1.5rem;
@@ -341,31 +328,6 @@
             }
         }
 
-        .gif-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .gif-container img {
-            width: 32%;
-            border-radius: 1rem;
-            box-shadow: var(--shadow);
-        }
-
-        .sub-line {
-            font-size: 0.9rem;
-            color: #64748b;
-            /* A lighter color for the sub-line */
-            margin-top: 0.5rem;
-            /* Add some spacing between the main text and sub-line */
-        }
-
-        .math {
-            font-family: "Times New Roman", serif;
-        }
-
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
@@ -391,28 +353,27 @@
             }
 
             .article-image {
-                height: 350px;
+                height: 250px;
                 margin: 1.5rem 0;
             }
 
             .social-sharing {
                 flex-direction: column;
             }
-
-            .gif-container {
-                flex-direction: column;
-            }
-
-            .gif-container img {
-                width: 100%;
-                margin-bottom: 1rem;
-            }
         }
     </style>
 </head>
+<script src="../../assets/js/navigation-config.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-3Z01HR33VG');
+</script>
 
 <body>
-    <!-- Navigation will be injected here by navigation-config.js -->
     <div id="nav-container"></div>
 
     <div class="container">
@@ -433,115 +394,102 @@
             <article class="blog-article">
                 <header class="article-header">
                     <div class="article-meta">
-                        <span>Published: August 16, 2022</span>
+                        <span>Published: June 15, 2020</span>
+                        <span>•</span>
+                        <span>8 min read</span>
                     </div>
-                    <h1 class="article-title">Metacast: Multi-View 3D Human Reconstruction</h1>
-                    <h2>Attention PiFU: Multi-View 3D Reconstruction of Crowded Multi-Person Interactions
-                    </h2>
-
+                    <h1 class="article-title">Gradient Class Activation Map (Grad-CAM) Summary</h1>
+                    <img src="img0.png" alt="article image" class="article-image">
                 </header>
 
-                <div class="tags">
-                    <span class="tag">3D Human Reconstruction</span>
-                    <span class="tag">Multi-view</span>
-                    <span class="tag">Multi-person</span>
-                </div>
-
-                <div
-                    style="background-color: #e1f6ea; border-left: 4px solid #ccc; padding: 25px; margin: 10px 0; font-style: italic;">
-                    <p>A technical research I led at Unity. For technical details, please see our paper.</p>
-                </div>
-
                 <div class="article-content">
+                    <h1>Gradient Class Activation Map (Grad-CAM) Summary</h1>
+                    <p>The following note demonstrates the logic procedure of how a GradCam is computed. For details,
+                        please see: <a href="https://arxiv.org/pdf/1610.02391v1.pdf">Grad-CAM: Why did you say that?
+                            Visual Explanations from Deep Networks via Gradient-based Localization</a></p>
 
-                    <h3 class="article-subtitle">Objective</h3>
+                    <h2>Assumption</h2>
+                    <h3>Class Activation Mapping</h3>
+                    <p class="center-equation">
+                        \( y^{c} = \sum\limits_{k} w^k_c \frac{1}{Z} \sum\limits_{i} \sum\limits_{j} A^k_{ij} \)
+                    </p>
+                    <p>
+                        The penultimate layer produces \( K \) activation map \( A^K \) with width \( u \) and height \(
+                        v \).
+                    </p>
+                    <p>
+                        The feature goes through \( \frac{1}{Z} \sum\limits_{i} \sum\limits_{j} \), which is called
+                        <code>global averaged pooled</code>, and then linearly transformed to \( y^{c} \) for each class
+                        \( c \).
+                    </p>
 
-                    <p> To design and implement a robust deep learning framework for 3D dynamic scene reconstruction,
-                        leveraging multi-view camera systems, to model complex human interactions in densely populated
-                        environments. </p>
+                    <h2>Procedure</h2>
+                    <h3>1. Choose the penultimate layer.</h3>
+                    <p>
+                        This is the layer where we want to visualize the activation map. The reason why it is called the
+                        penultimate layer is because the last layer of a model is usually the layer computing
+                        class-specific loss (i.e. Sigmoid loss, softmax loss, etc). The penultimate layer is a layer,
+                        which is before the last layer, that we want to compute the loss respect to.
+                    </p>
 
-                    <h3 class="article-subtitle">Dataset</h3>
+                    <h3>2. Compute the class-specific loss (i.e. loss of \( y^{c} \)) on the last layer of the model.
+                    </h3>
+                    <p>
+                        This step involves calculating the loss for the specific class \( c \).
+                    </p>
 
-                    <img src="./ufc_train.png" alt="ufc_train" class="article-image">
-                    <figcaption style="text-align: center;">Figure: An example of the inputs at training.</figcaption>
+                    <h3>3. Compute the gradients of \( y^c \) respect to the penultimate layer's activation map \( A^K
+                        \).</h3>
+                    <p class="center-equation">
+                        \( \alpha^c_k = \frac{1}{Z} \sum\limits_{i} \sum\limits_{j} \frac{\partial y^c}{\partial
+                        A^k_{ij}} \)
+                    </p>
+                    <p>
+                        The dimension of the gradients is then reduced from <code>(batch_size, u, v, channel)</code> to
+                        <code>(channel)</code> by averaging the values in the first three axes. In the paper, this
+                        dimension reduction is called <code>global-average-pooling</code>.
+                    </p>
+                    <p>
+                        This result denoted as \( \alpha^c_k \) represents a partial linearization of the penultimate
+                        layer to the loss, which captures the importance of the activation \( A^k \) for a target \( c
+                        \).
+                    </p>
 
-                    <img src="./ufc_test.png" alt="ufc_test" class="article-image">
-                    <figcaption style="text-align: center;">Figure: An example of the inputs at testing.</figcaption>
-                    <h4> UFC Dataset </h4>
-                    <li> Internally captured with two professional UFC athletes. All 2D views are generated with
-                        orthogonal projection.</li>
-                    <li> train set: 3600 scenes in 3D mesh</li>
-                    <li> valid set: 600 scenes in 3D mesh</li>
-                    <li> At training, every 3D scene is decomposed into
-                        \(k \) 2D
-                        RGB views, \(k \) 2D binary masks, a texture map, and a normal map. All of them are forwarded to
-                        the model.</li>
-                    <li> At testing, every 3D scene is decomposed into
-                        \(k \) 2D
-                        RGB views, and \(k \) 2D binary masks. Only RGB views and masks are forwarded to the model.</li>
+                    <h3>4. Element-wise multiply the gradient with the Activation map.</h3>
+                    <p>
+                        This step combines the gradients and the activation maps to highlight important regions.
+                    </p>
 
-                    <h3 class="article-subtitle">Result Demonstration</h3>
-                    <img src="./test_input.png" alt="test_input" class="article-image">
-                    <figcaption style="text-align: center;">Figure: Multi-view RGB images as input</figcaption>
+                    <h3>5. Remove any negative results by applying the ReLU function over the result.</h3>
+                    <p>
+                        Only interested in the positive influence on the class of interest. (i.e. Pixels whose intensity
+                        should increase in order to increase \( y^{c} \))
+                    </p>
+                    <p class="center-equation">
+                        \( L^c_{Grad-CAM} = ReLU(\sum\limits_{k} \alpha^c_k A^k) \)
+                    </p>
 
-                    <img src="./test_output.png" alt="test_output" class="article-image">
-                    <figcaption style="text-align: center;">Figure: A 3D mesh as output</figcaption>
+                    <div class="social-sharing">
+                        <a href="https://x.com/home">
+                            <i class="fab fa-twitter"></i>
+                            Share on Twitter
+                        </a>
+                        <a href="https://www.linkedin.com/">
+                            <i class="fab fa-linkedin"></i>
+                            Share on LinkedIn
+                        </a>
+                    </div>
 
-                    <p>Prediction on a unseen scene</p>
-                    <li> Input: \(k \) (\(k \)=5) RGB images + \(k \) (\(k \)=5) binary masks</li>
-                    <li> Output: a 3D mesh</li>
-                    <li> Inference time: 50 seconds on a single Nvidia T4 GPU</li>
-
-
-
-
-                    <h3 class="article-subtitle">Method</h3>
-                    <p>The following diagrams illustrate the geometry branch of our model.</p>
-                    <img src="./Metacast_PiFU_step1.jpg" alt="Metacast_PiFU_step1" class="article-image">
-                    <figcaption style="text-align: center;">Step 1: Project an input 3D mesh to four 2D-planes
-                    </figcaption>
-
-                    <img src="./Metacast_PiFU_step2.jpg" alt="Metacast_PiFU_step2" class="article-image">
-                    <figcaption style="text-align: center;">Step 2: Sample n points around the 3D mesh surface and the
-                        space</figcaption>
-
-                    <img src="./Metacast_PiFU_step3.jpg" alt="Metacast_PiFU_step3" class="article-image">
-                    <figcaption style="text-align: center;">Step 3: Orthogonally project 3D sampled points to each view
-                        image</figcaption>
-
-                    <img src="./Metacast_PiFU_step4.jpg" alt="Metacast_PiFU_step4" class="article-image">
-                    <figcaption style="text-align: center;">Step 4: Obtain each projected 2D pixel’s image features from
-                        Image Feature Encoder.</figcaption>
-
-                    <img src="./step5_c.jpg" alt="step5_c" class="article-image">
-                    <figcaption style="text-align: center;">Step 5: Introduce a dummy feature
-                        (token) to each feature encoder, leverage a self-attention encoder to
-                        encode the fused image and
-                        point cloud features.</figcaption>
-
-                    <img src="./Metacast_PiFU_step6.jpg" alt="Metacast_PiFU_step6" class="article-image">
-                    <figcaption style="text-align: center;">Step 6: Averaged features are fed into a classifier to
-                        classify if each point is inside/outside the 3D mesh.</figcaption>
-
-                    <h3 class="article-subtitle">Experiments</h3>
-                    <img src="./4views.png" alt="4views" class="article-image">
-                    <figcaption style="text-align: center;">Fig: Test results when 4 views are input to each model
-                    </figcaption>
-                    <img src="./onemoreview.png" alt="onemoreview" class="article-image">
-                    <figcaption style="text-align: center;">Fig: Add one more view to the model during training and
-                        testing</figcaption>
-                    </figcaption>
-                    <img src="./5views.png" alt="5views" class="article-image">
-                    <figcaption style="text-align: center;">Test results when 5 views are input to each model
-                    </figcaption>
-                    <img src="./5views_geometry.png" alt="5views_geometry" class="article-image">
-                    <figcaption style="text-align: center;">Test losses when 5 views are input to each model
-                    </figcaption>
+                    <div class="tags">
+                        <span class="tag">GradCam</span>
+                        <span class="tag">penultimate layer</span>
+                        <span class="tag">feature visualization</span>
+                    </div>
 
                     <div style="text-align: center; margin-top: 3rem;">
-                        <a href="../research.html" class="back-to-blog">
+                        <a href="../blogs.html" class="back-to-blog">
                             <i class="fas fa-arrow-left"></i>
-                            Back to Research
+                            Back to Blogs
                         </a>
                     </div>
                 </div>
@@ -549,10 +497,6 @@
             </article>
         </main>
     </div>
-
-    <!-- External JavaScript -->
-    <script src="../../assets/js/navigation.js"></script>
-    <script src="../../assets/js/navigation-config.js"></script>
 </body>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>

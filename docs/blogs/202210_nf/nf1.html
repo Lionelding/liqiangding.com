@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Normalizing Flows and Its Friends (Part 2)</title>
+    <title>Normalizing Flows and Its Friends (Part 1)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/tags.css">
     <style>
@@ -394,163 +394,95 @@
             <article class="blog-article">
                 <header class="article-header">
                     <div class="article-meta">
-                        <span>Published: October 18, 2022</span>
+                        <span>Published: October 15, 2022</span>
                         <span>•</span>
-                        <span>20 min read</span>
+                        <span>10 min read</span>
                     </div>
-                    <h1 class="article-title">Normalizing Flows and Its Friends (Part 2)</h1>
+                    <h1 class="article-title">Normalizing Flows and Its Friends (Part 1)</h1>
                     <img src="nf.png" alt="article image" class="article-image">
                 </header>
 
                 <div class="article-content">
-                    <h2>What is Normalizing Flows?</h2>
+                    <p>Here is some pre-requisite knowledge required before we move to Normalizing Flows.</p>
 
-                    <div style="text-align: center;">
-                        <img src="triplet.png" alt="Triplet" style="width: 75%">
-                    </div>
+                    <h2><strong>1. Jacobian Matrix</strong></h2>
+                    <p>Jacobian is a just matrix containing all partial derivatives between each input and output. It
+                        looks scary, but in fact, it is just a fancy name for a partial derivative matrix.</p>
 
-                    <p>One type of generative models is flow-based models, which explicitly learns the mapping between a
-                        group of samples \( x_{1}, x_{2}, ..., x_{n} \) to their latent distribution \( p(x) \).</p>
-                    <p><code>Normalizing flows</code> is one example of flow-based models.</p>
-
-                    <h2>Why Normalizing Flows?</h2>
-                    <p>Given some real-world data samples, we are always interested in learning their underlying
-                        distributions. Knowing the exact data distribution \( p(x) \) is helpful in some scenarios such
-                        as sampling data and identifying bias.</p>
-
-                    <h2><strong>Objective</strong></h2>
-                    <div
-                        style="border: 2px solid #333; padding: 15px; margin: 20px 0; border-radius: 8px; background-color: #f9f9f9;">
-                        <div class="objective">
-                            <p>To minimize some notion of distance between \( p_{D} \) and \( p_{M} \):</p>
-                            <li>Given a dataset \( X = x_{1}, x_{2}, x_{3}, ... \) from an underlying distribution \(
-                                p_{D} \),</li>
-                            <li>Can we find an approximating distribution \( p_{M} \), which is from a family of \( M \)
-                                and parameterized by \( \theta \), to minimize the distance between \( p_{D} \) and \(
-                                p_{M} \)?</li>
-                            <li>Mathematically, it is written as below:</li>
-                            <p>\[ \theta^{*} = \underset{\theta \in M}{\mathrm{argmin}} \space dist(p_{\theta}, p_{D})
-                                \]</p>
-                            <li>If KL-divergence is the distance function, the above equation becomes the maximum
-                                likelihood estimation:</li>
-                            <p>\[ \theta^{*} = \underset{\theta \in M}{\mathrm{argmin}} \space E_{x \sim p_{D}} [-\log
-                                \space p_{\theta}(x)] \]</p>
-                        </div>
-                    </div>
-
-                    <p>Flow-based models are different from GAN or VAE since flow-based models explicitly learn \( p(x)
-                        \) by optimizing the log-likelihood.</p>
-                    <p>In GAN, the probability density function estimation is implicit by having the minmax
-                        classification error. We don't explicitly assign a probability density function and estimate it.
-                    </p>
-                    <p>In VAE, we get an approximate probability density function by optimizing the evidence lower bound
-                        (which is \( p_{\theta}(x|z) \)). The encoder captures the approximate posterior mapping between
-                        \( x \) and \( z \), which is \( q \) parameterized by \( \phi \). The decoder captures \(
-                        p_{\theta}(x|z) \), which is parameterized by \( \theta \). In this case, it is an approximate
-                        density estimation.</p>
-                    <p>In short, both GAN and VAE do not explicitly learn the probability density function of real data
-                        \( p(x) \).</p>
-                    <p>In flow-based models, given an \( x \), we want to find the function \( f \) to get the latent
-                        representation \( z \). And if we invert \( f \), we will get \( x \) back. The functions \(
-                        f(x) \) and \( f^{-1}(x) \) are exactly the inverse. The flow-based models try to capture \( f
-                        \).</p>
-
-                    <h2>How Does It Work?</h2>
-                    <div style="text-align: center;">
-                        <img src="z_to_x.png" alt="z to x" style="width: 75%">
-                    </div>
-                    <p>We try to identify a transformation \( f: Z \rightarrow X \) where \( f \) is a series of
-                        <strong>differentiable</strong> and <strong>invertible</strong> functions (\( f_{1}, f_{2}, ...,
-                        f_{K} \)).
-                    </p>
-                    <p>In general, for any invertible function \( f: Z \rightarrow X \), the probability function is
-                        below. The detailed steps can be found in <a href="./nf1.md">this page</a>:</p>
+                    <p><strong>For example, if</strong></p>
                     <p>
-                        \[ p(x') = \pi(z') \mid \det(J_{f^{-1}}) \mid \]
+                        \[ z = \begin{bmatrix} z_{1} \\ z_{2} \end{bmatrix} \]
                     </p>
                     <p>
-                        \[ \log \space p(x') = \log \space \pi(z') + \sum^{K}_{i=1} \log \mid \det(J_{f^{-1}}) \mid \]
+                        \[ x = \begin{bmatrix} x_{1} \\ x_{2} \end{bmatrix} \]
+                    </p>
+                    <p><strong>and</strong></p>
+                    <p>
+                        \[ z = f(x) \]
+                    </p>
+                    <p>
+                        \[ x = f^{-1}(z) \]
+                    </p>
+                    <p><strong>then,</strong></p>
+                    <p>
+                        \[ J_{f} = \begin{bmatrix} \frac{\partial x_{1}}{\partial z_{1}} & \frac{\partial
+                        x_{1}}{\partial z_{2}} \\
+                        \frac{\partial x_{2}}{\partial z_{1}} & \frac{\partial x_{2}}{\partial z_{2}} \end{bmatrix} \]
+                    </p>
+                    <p>
+                        \[ J_{f^{-1}} = \begin{bmatrix} \frac{\partial z_{1}}{\partial x_{1}} & \frac{\partial
+                        z_{1}}{\partial x_{2}} \\
+                        \frac{\partial z_{2}}{\partial x_{1}} & \frac{\partial z_{2}}{\partial x_{2}} \end{bmatrix} \]
+                    </p>
+                    <p>
+                        \[ J_{f} J_{f^{-1}} = I \]
                     </p>
 
-                    <p><strong>Intuition</strong></p>
-                    <ul>
-                        <li>The first term describes the transformation \( f \) moulds the density \( p_{Z}(z) \) into
-                            \( p_{X}(x) \).</li>
-                        <li>The second term describes the relative change of volume around \( z \).</li>
-                    </ul>
+                    <h2><strong>2. Determinant</strong></h2>
+                    <p>Determinant is a scalar value, which describes the area/volume enclosed by all the vectors in a
+                        matrix.</p>
 
-                    <p>In summary, the three requirements must hold for a normalizing flow model:</p>
+                    <p><strong>For example, if</strong></p>
+                    <p>
+                        \[ A = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \]
+                    </p>
+                    <p>then,</p>
+                    <p>
+                        \[ det(A) = ad - bc \]
+                    </p>
+                    <p>The most important thing is that:</p>
+                    <p>
+                        \[ det(A) = \frac{1}{det(A^{-1})} \]
+                    </p>
+                    <p>
+                        \[ det(J_{f}) = \frac{1}{det(J_{f^{-1})}} \]
+                    </p>
+                    <p>In a 2D space, it looks like this:</p>
+                    <div style="text-align: center;">
+                        <img src="determinant.png" alt="Determinant" style="width: 75%">
+                    </div>
+
+                    <h2><strong>3. Change of Variable Theorem</strong></h2>
+                    <div style="text-align: center;">
+                        <img src="change_of_variable_1.png" alt="Change of Variable 1" , style="width: 75%">
+                        <img src="change_of_variable_2.png" alt="Change of Variable 2" , style="width: 75%">
+                    </div>
+                    <p>
+                        \[ p(x') \mid det \begin{bmatrix} \Delta x_{11} & \Delta x_{21} \\
+                        \Delta x_{12} & \Delta x_{22} \end{bmatrix} \mid = \pi(z') \Delta {z_{1}} \Delta {z_{2}} \]
+                    </p>
+                    <p>and this becomes to</p>
+                    <p>
+                        \[ p(x') \mid det(J_{f}) \mid = \pi(z') \]
+                    </p>
+                    <p>
+                        \[ p(x') = \pi(z') \mid det(J_{f^{-1})} \mid \]
+                    </p>
+
+                    <hr>
+
+                    <h3>References</h3>
                     <ol>
-                        <ol>
-                            <li>Transformation function \( f \) should be differentiable.</li>
-                            <li>Transformation function \( f \) should be invertible.</li>
-                            <li>Determinant of Jacobian should be easy to compute.</li>
-                        </ol>
-                    </ol>
-
-                    <h3>Example 1: NICE (Non-linear Independent Components Estimation)</h3>
-                    <div style="text-align: center;">
-                        <img src="NICE.png" alt="NICE" style="width: 75%">
-                    </div>
-                    <p>Coupling layer operation:</p>
-                    <p>
-                        \[ y_{1} = x_{1} \]
-                    </p>
-                    <p>
-                        \[ y_{2} = g(x_{2}; m(x_{1})) \]
-                    </p>
-                    <p>Therefore, its Jacobian is a lower-triangular matrix, and the determinant is the product of
-                        diagonal elements:</p>
-                    <p>
-                        \[ \frac{\partial y}{\partial x} = \begin{bmatrix} I & 0 \\ \frac{\partial y_{2}}{\partial
-                        x_{1}} & \frac{\partial y_{2}}{\partial x_{2}} \end{bmatrix} \]
-                    </p>
-                    <p>The inverse mappings are:</p>
-                    <p>
-                        \[ x_{1} = y_{1} \]
-                    </p>
-                    <p>
-                        \[ x_{2} = g^{-1}(y_{2}, m(y_{1})) \]
-                    </p>
-
-                    <h3>Example 2: Real NVP (Real-valued Non-Volume Preserving)</h3>
-                    <div style="text-align: center;">
-                        <img src="RealNVP.png" alt="RealNVP" style="width: 75%">
-                    </div>
-                    <p>Affine coupling operations are (there is one translation component and one scale component for \(
-                        y_{2} \)):</p>
-                    <p>
-                        \[ y_{1} = x_{1} \]
-                    </p>
-                    <p>
-                        \[ y_{2} = x_{2} \odot \exp(s(x_{1})) + t(x_{1}) \]
-                    </p>
-                    <p>The Jacobian becomes:</p>
-                    <p>
-                        \[ \frac{\partial y}{\partial x} = \begin{bmatrix} I_{d} & 0 \\ \frac{\partial y_{2}}{\partial
-                        x_{1}} & \text{diag}(\exp[s(x_{1})]) \end{bmatrix} \]
-                    </p>
-                    <p>Since the Jacobian matrix is not always equal to 1, affine coupling is not always
-                        volume-preserving, which is more realistic in real-world data.</p>
-                    <p>The inverse operations are:</p>
-                    <p>
-                        \[ x_{1} = y_{1} \]
-                    </p>
-                    <p>
-                        \[ x_{2} = (y_{2} - t(y_{1})) \odot \exp(-s(y_{1})) \]
-                    </p>
-
-                    <h2>References</h2>
-                    <ol>
-                        <li><a
-                                href="https://www.youtube.com/watch?v=RPkf516rXgw">https://www.youtube.com/watch?v=RPkf516rXgw</a>
-                        </li>
-                        <li><a
-                                href="https://www.youtube.com/watch?v=PCfHd0Ec6M4">https://www.youtube.com/watch?v=PCfHd0Ec6M4</a>
-                        </li>
-                        <li><a
-                                href="https://stackoverflow.com/questions/54635355/what-does-log-prob-do">https://stackoverflow.com/questions/54635355/what-does-log-prob-do</a>
-                        </li>
                         <li><a
                                 href="https://www.youtube.com/watch?v=uXY18nzdSsM&t=169s">https://www.youtube.com/watch?v=uXY18nzdSsM&t=169s</a>
                         </li>
@@ -568,15 +500,15 @@
                     </div>
 
                     <div class="tags">
-                        <span class="tag">Non-linear Independent Components Estimation</span>
-                        <span class="tag">Real NVP</span>
-                        <span class="tag">Differentiable</span>
+                        <span class="tag">Jacobian Matrix</span>
+                        <span class="tag">Determinant</span>
+                        <span class="tag">Change of Variable Theorem</span>
                     </div>
 
                     <div style="text-align: center; margin-top: 3rem;">
-                        <a href="../research.html" class="back-to-blog">
+                        <a href="../blogs.html" class="back-to-blog">
                             <i class="fas fa-arrow-left"></i>
-                            Back to Research
+                            Back to Blogs
                         </a>
                     </div>
                 </div>

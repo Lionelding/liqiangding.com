@@ -362,8 +362,76 @@
             /* Add some spacing between the main text and sub-line */
         }
 
-        .math {
-            font-family: "Times New Roman", serif;
+        /* New styles for projects section */
+        .projects-section {
+            margin-top: 1.5rem;
+        }
+
+        .projects-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .project-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .project-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .project-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #4f46e5;
+            transform: translateX(5px);
+        }
+
+        .project-link i {
+            font-size: 0.9rem;
+        }
+
+        :root {
+            --press-list-style: none;
+            --press-list-padding: 0;
+            --press-list-margin: 20px 0;
+            --press-item-margin: 0 0 15px 0;
+            --press-item-padding: 10px;
+            --press-item-bg: #f5f5f5;
+            --press-item-border: 3px solid #4CAF50;
+            --press-link-decoration: none;
+            --press-link-color: #2c3e50;
+            --press-link-weight: 500;
+            --press-date-display: block;
+            --press-date-color: #7f8c8d;
+            --press-date-size: 0.9em;
+            --press-date-margin: 5px 0 0 0;
         }
 
         @media (max-width: 768px) {
@@ -433,129 +501,166 @@
             <article class="blog-article">
                 <header class="article-header">
                     <div class="article-meta">
-                        <span>Published: April 26, 2022</span>
+                        <span>Published: October 15, 2022</span>
                     </div>
-                    <h1 class="article-title">Metacast: 3D Human Pose Estimation</h1>
-                    <h2>PointPose: Efficient Multi-Person 3D Pose Estimation via Continuous Point Cloud Representation
-                    </h2>
+                    <h1 class="article-title">Unity Metacast</h1>
+                    <h2>A real-time 3D platform for sports broadcasts</h2>
+                    <img src="./metacast_preview.png" alt="article image" class="article-image">
 
                 </header>
 
                 <div class="tags">
-                    <span class="tag">3D Human Pose Estimation</span>
-                    <span class="tag">Point Cloud</span>
-                    <span class="tag">Multi-person </span>
+                    <span class="tag">Sports</span>
+                    <span class="tag">Volumetric Capture</span>
+                    <span class="tag">Real-time 3D</span>
                 </div>
 
                 <div
                     style="background-color: #e1f6ea; border-left: 4px solid #ccc; padding: 25px; margin: 10px 0; font-style: italic;">
-                    <p>A technical research I architected and executed at Unity. For technical
-                        details, please see our paper.</p>
+                    <p>The product that I worked on at Unity.</p>
                 </div>
 
                 <div class="article-content">
+                    <h3 class="article-subtitle">Teaser</h3>
 
                     <!-- YouTube Video Player -->
                     <div style="display: flex; justify-content: center; margin: 40px 0;">
                         <iframe width="840" height="472"
-                            src="https://www.youtube.com/embed/pLntpglZPZU?si=08VK9ip5Cs_mHTuF&amp;start=84"
+                            src="https://www.youtube.com/embed/u-fDjtYBGq4?si=juZEkVxb-HRwAuaT"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
                     </div>
 
-                    <h3 class="article-subtitle">Abstract</h3>
 
-                    <p> Current point cloud-based 3D human pose estimation methods lag behind image-based approaches
-                        despite inherent advantages, including continuous output space (avoiding quantization errors),
-                        reduced computational complexity (eliminating voxel-based heatmap computations), and inherent
-                        extendability to other 3D vision tasks. However, existing point cloud models struggle with
-                        multi-person scenarios and fail to generalize to highly complex poses, limiting their practical
-                        adoption. To address these gaps, we propose a novel point cloud-based framework for robust
-                        multi-person 3D pose estimation. Our method integrates three key innovations: (1) a hierarchical
-                        feature extraction module inspired by the PointNet architecture, optimized for sparse and
-                        unordered point cloud data; (2) an efficient multi-person matching strategy that disentangles
-                        pose estimation across individuals in crowded scenes; and (3) a multi-task loss function
-                        designed to learn the latent distribution of human poses, significantly improving generalization
-                        to challenging articulations. Extensive experiments show that our method delivers
-                        state-of-the-art accuracy on two highly challenging martial arts benchmark datasets. It
-                        outperforms image-based approaches by 25% while also cutting computational costs by 2.4 times.
+                    <h3 class="article-subtitle">What is Metacast?</h3>
+
+                    <p>Unity Metacast is a platform that uses volumetric technology, which encompasses the process of
+                        capturing, viewing,
+                        and interacting with the real-world, from moving people to static objects, in 3D. This content
+                        can then be viewed from any angle, at any moment in time, giving audiences the ability to see
+                        every bead of sweat, blow, takedown and submission, as if they were going toe-to-toe on the
+                        famous Octagon canvas themselves.</p>
+
+                    <div style="height: 30px;"></div>
+
+                    <p> Metacast doesn’t get into the actual work of hardware or capture systems. It works with partners
+                        such as Microsoft, Canon, and other volumetric capture providers who provide the raw volumetric
+                        data. Unity then takes over from there by providing an entire pipeline – from ingestion to
+                        Unity, content development, delivery, rendering, to interactive experience consumption on
+                        various devices.
                     </p>
 
+                    <h3 class="article-subtitle">How does the pipeline work?</h3>
 
-                    <h3 class="article-subtitle">Data</h3>
-                    <h4> 1. UMA Synthetic Dataset </h4>
-                    <img src="./UMA.gif" alt="UMA" class="article-image">
-                    <figcaption style="text-align: center;">Figure: Examples from UMA Synthetic Dataset </figcaption>
-                    <div style="height: 30px;"></div>
-
-
-                    <p> Synthetically-made point cloud dataset within Unity engine</p>
-                    <li> Train set input: point-cloud coordinates </li>
-                    <li> Diversity: 6000 scenes</li>
-                    <li> Input dimension: 3 x 500 x 6000 (human body in point cloud) + 3 x 18 x 6000 (Ground
-                        Truth)</li>
-                    <li> Inference input: 3 x 500 x 6000 (human body in point cloud)</li>
-
-                    <h4>2. UFC benchmark 24: Motion Captured with real UFC player</h4>
                     <div style="display: flex; justify-content: center; margin: 40px 0;">
                         <iframe width="840" height="472"
-                            src="https://www.youtube.com/embed/NqMeBWOP6Ro?si=es8RyA2U8dfLIIxZ"
+                            src="https://www.youtube.com/embed/HGyT6pLVBBs?si=f1ETy7Z0wPQDNnhp"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
                     </div>
 
-                    <figcaption style="text-align: center;">Figure: A footage from UFC Motion Capture </figcaption>
+                    <h3 class="article-subtitle">Metacast: ML modules</h3>
+
+                    <p>As a Senior Machine Learning Engineer, I spearheaded the end-to-end development of two core ML
+                        components integrated to Metacast’s 3D scene capture and athlete analytics pipeline. Leading a
+                        cross-functional team of four engineers and researchers, I architected scalable solutions
+                        leveraging ML reconstruction to optimize 3D data acquisition costs by 40% and implemented
+                        advanced human pose estimation frameworks to enable granular behavioral analysis. </p>
+
                     <div style="height: 30px;"></div>
-                    <div class="gif-container">
-                        <img src="./mocap.jpeg" alt="GIF 1">
-                        <img src="./mocap_seat.jpg" alt="GIF 2">
-                        <img src="./atOctgon.jpg" alt="GIF 3">
+
+                    <p> The project
+                        lifecycle encompassed multimodal data curation, iterative model prototyping, rigorous validation
+                        (achieving 98% pose estimation accuracy), and seamless deployment to production environments.
+                        Despite technical complexities, we successfully deployed both modules within an aggressive
+                        timeline, driving measurable efficiency gains for stakeholders. The links below detail technical
+                        milestones and demonstrations.</p>
+
+                    <div class="projects-section">
+                        <ul class="project-list">
+                            <li class="project-box">
+                                <a href="../blogs.html#2022-pose" class="project-link" target="_blank">
+                                    Metacast: 3D Human Pose Estimation
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="project-list">
+                            <li class="project-box">
+                                <a href="../blogs.html#2022-reconstruction" class="project-link" target="_blank">
+                                    Metacast: Multi-View 3D Human Reconstruction
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <figcaption style="text-align: center;">Figure: Liqiang at the Motion Capture center </figcaption>
-                    <div style="height: 30px;"></div>
 
 
-                    <p> Real actions captured by motion capture suits</p>
-                    <li> Train set input: point-cloud coordinates </li>
-                    <li> Diversity: 100 real fighting scenes performed by 2 professional UFC athletes</li>
-                    <li> Purpose: Provide corner case examples to the model</li>
-
-
-                    <h3 class="article-subtitle">Method</h3>
-                    <img src="./ArchitectureOverview.png" alt="diagram" class="article-image">
-                    <figcaption style="text-align: center;">Figure: The overall pipeline</figcaption>
-                    <div style="height: 30px;"></div>
-
-                    <p> The pipeline consists of three main components: PointNet feature extraction, Matching
-                        Strategy
-                        for
-                        Multi-person Scenarios, and Multi-task learning for underlying distribution. The
-                        PointNet
-                        feature
-                        extraction module is responsible for capturing the spatial relationships between points
-                        in the
-                        input point cloud. The Matching Strategy for Multi-person Scenarios disentangles pose
-                        estimation
-                        across individuals in crowded scenes. Finally, the Multi-task learning for underlying
-                        distribution
-                        module is designed to learn the latent distribution of human poses, significantly
-                        improving
-                        generalization to challenging articulations.</p>
-
-                    <h3 class="article-subtitle">Experiments</h3>
-
-                    <img src="./UMA_test.gif" alt="UMA_test" class="article-image">
-                    <figcaption style="text-align: center;">Figure: Some visualizations of predictions on UMA
-                    </figcaption>
+                    <h3 class="article-subtitle">Press Coverage</h3>
+                    <ul style="list-style-type: var(--press-list-style); 
+                              padding-left: var(--press-list-padding); 
+                              margin: var(--press-list-margin);">
+                        <li style="margin-bottom: var(--press-item-margin);
+                                  padding: var(--press-item-padding);
+                                  background-color: var(--press-item-bg);
+                                  border-left: var(--press-item-border);">
+                            <a href="https://venturebeat.com/games/unity-metacast-is-a-real-time-3d-platform-for-sports-broadcasts/"
+                                target="_blank" style="text-decoration: var(--press-link-decoration);
+                                      color: var(--press-link-color);
+                                      font-weight: var(--press-link-weight);">
+                                "Unity unveils Metacast real-time 3D platform for sports broadcasts"
+                            </a>
+                            <span style="display: var(--press-date-display);
+                                       color: var(--press-date-color);
+                                       font-size: var(--press-date-size);
+                                       margin: var(--press-date-margin);">
+                                VentureBeat - October 05, 2021
+                            </span>
+                        </li>
+                        <li style="margin-bottom: var(--press-item-margin);
+                        padding: var(--press-item-padding);
+                        background-color: var(--press-item-bg);
+                        border-left: var(--press-item-border);">
+                            <a href="https://www.broadcastnow.co.uk/production/unity-demos-real-time-volumetric-3d-for-ufc/5168882.article"
+                                target="_blank" style="text-decoration: var(--press-link-decoration);
+                            color: var(--press-link-color);
+                            font-weight: var(--press-link-weight);">
+                                "Unity demos real-time volumetric 3D for UFC"
+                            </a>
+                            <span style="display: var(--press-date-display);
+                             color: var(--press-date-color);
+                             font-size: var(--press-date-size);
+                             margin: var(--press-date-margin);">
+                                Broadcast Now - March 23, 2022
+                            </span>
+                        </li>
+                        <li style="margin-bottom: var(--press-item-margin);
+                        padding: var(--press-item-padding);
+                        background-color: var(--press-item-bg);
+                        border-left: var(--press-item-border);">
+                            <a href="https://www.cnn.com/videos/sports/2022/11/21/volumetric-video-sport-spc-intl.cnn"
+                                target="_blank" style="text-decoration: var(--press-link-decoration);
+                            color: var(--press-link-color);
+                            font-weight: var(--press-link-weight);">
+                                "Sport like you've never seen it before"
+                            </a>
+                            <span style="display: var(--press-date-display);
+                             color: var(--press-date-color);
+                             font-size: var(--press-date-size);
+                             margin: var(--press-date-margin);">
+                                CNN Sports - November 21, 2022
+                            </span>
+                        </li>
+                    </ul>
 
                     <div style="text-align: center; margin-top: 3rem;">
-                        <a href="../research.html" class="back-to-blog">
+                        <a href="../blogs.html" class="back-to-blog">
                             <i class="fas fa-arrow-left"></i>
-                            Back to Research
+                            Back to Blogs
                         </a>
                     </div>
                 </div>
