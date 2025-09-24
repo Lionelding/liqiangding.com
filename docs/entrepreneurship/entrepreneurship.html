@@ -110,52 +110,123 @@
 
         .metrics-section {
             background: linear-gradient(135deg, #fff9f0, #ffe4cc);
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
 
-        .metrics-container {
-            max-width: 1200px;
+        .hub-spoke-container {
+            position: relative;
+            width: 650px;
+            height: 500px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .metric-card {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid #f0f0f0;
-            transform: translateY(0);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        .center-circle {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #ff9800, #ff6b35);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 8px 30px rgba(255, 152, 0, 0.3);
+            z-index: 2;
         }
 
-        .metric-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.15);
-            border-color: #ff9800;
-        }
-
-        .metric-value {
+        .center-value {
             font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 10px;
-            color: #ff9800;
+            margin-bottom: 5px;
         }
 
-        .metric-label {
-            font-size: 1.1rem;
+        .center-label {
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .metric-circle {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             color: #2c2c2c;
-            font-weight: 400;
+            box-shadow: 0 4px 20px rgba(255, 152, 0, 0.15);
+            border: 2px solid #ff9800;
+            text-align: center;
+            padding: 10px;
         }
 
-        .metric-growth {
-            font-size: 0.9rem;
-            margin-top: 10px;
-            color: #757575;
+        .circle-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .circle-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            line-height: 1.1;
+            margin-top: 2px;
+        }
+
+        /* Positioning each circle around the center */
+        .circle-1 { top: 15px; left: 50%; transform: translateX(-50%); }
+        .circle-2 { top: 60px; right: 20px; }
+        .circle-3 { top: 50%; right: 0px; transform: translateY(-50%); }
+        .circle-4 { bottom: 60px; right: 20px; }
+        .circle-5 { bottom: 15px; left: 50%; transform: translateX(-50%); }
+        .circle-6 { bottom: 60px; left: 20px; }
+        .circle-7 { top: 50%; left: 0px; transform: translateY(-50%); }
+        .circle-8 { top: 60px; left: 20px; }
+
+        @media (max-width: 768px) {
+            .hub-spoke-container {
+                width: 400px;
+                height: 400px;
+            }
+
+            .center-circle {
+                width: 120px;
+                height: 120px;
+            }
+
+            .center-value {
+                font-size: 2rem;
+            }
+
+            .metric-circle {
+                width: 100px;
+                height: 100px;
+            }
+
+            .circle-value {
+                font-size: 1rem;
+            }
+
+            .circle-label {
+                font-size: 0.7rem;
+            }
+
+            /* Adjust positions for mobile */
+            .circle-1 { top: 20px; }
+            .circle-2 { top: 70px; right: 40px; }
+            .circle-3 { right: 10px; }
+            .circle-4 { bottom: 70px; right: 40px; }
+            .circle-5 { bottom: 20px; }
+            .circle-6 { bottom: 70px; left: 40px; }
+            .circle-7 { left: 10px; }
+            .circle-8 { top: 70px; left: 40px; }
         }
 
         .chapters-section {
@@ -317,67 +388,56 @@
 
     <!-- Metrics Section -->
     <section class="metrics-section">
-        <!-- Business Foundation -->
-        <h3 style="text-align: center; color: #2c2c2c; margin-bottom: 30px; font-size: 1.5rem;">Business Foundation</h3>
-        <div class="metrics-container" style="margin-bottom: 50px;">
-            <div class="metric-card">
-                <div class="metric-value">June 28th</div>
-                <div class="metric-label">Product Launched</div>
-                <div class="metric-growth">2025</div>
+        <h3 style="text-align: center; color: #2c2c2c; margin-bottom: 50px; font-size: 2rem;">Key Metrics</h3>
+
+        <div class="hub-spoke-container">
+            <!-- Center Circle -->
+            <div class="center-circle">
+                <div class="center-value">2</div>
+                <div class="center-label">Person Team</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value">2 people</div>
-                <div class="metric-label">Team Size</div>
-                <div class="metric-growth">Lean startup approach</div>
+
+            <!-- Surrounding Circles -->
+            <div class="metric-circle circle-1">
+                <div class="circle-value">June 28th</div>
+                <div class="circle-label">Launch<br>Date</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value">24</div>
-                <div class="metric-label">Customer Interviews Conducted</div>
-                <div class="metric-growth">Market validation</div>
+
+            <div class="metric-circle circle-2">
+                <div class="circle-value">$550</div>
+                <div class="circle-label">Monthly<br>Revenue</div>
+            </div>
+
+            <div class="metric-circle circle-3">
+                <div class="circle-value">65+</div>
+                <div class="circle-label">Users</div>
+            </div>
+
+            <div class="metric-circle circle-4">
+                <div class="circle-value">35.75%</div>
+                <div class="circle-label">Payment Conversion<br>Rate</div>
+            </div>
+
+            <div class="metric-circle circle-5">
+                <div class="circle-value">30 mins</div>
+                <div class="circle-label">Time to<br>Value</div>
+            </div>
+
+            <div class="metric-circle circle-6">
+                <div class="circle-value">57</div>
+                <div class="circle-label">Features<br>Shipped</div>
+            </div>
+
+            <div class="metric-circle circle-7">
+                <div class="circle-value">24</div>
+                <div class="circle-label">User Interviews</div>
+            </div>
+
+            <div class="metric-circle circle-8">
+                <div class="circle-value">99%</div>
+                <div class="circle-label">Uptime</div>
             </div>
         </div>
-
-        <!-- Revenue & Growth -->
-        <h3 style="text-align: center; color: #2c2c2c; margin-bottom: 30px; font-size: 1.5rem;">Revenue & Growth</h3>
-        <div class="metrics-container" style="margin-bottom: 50px;">
-            <div class="metric-card">
-                <div class="metric-value">$550</div>
-                <div class="metric-label">Monthly Revenue</div>
-                <div class="metric-growth">Transaction-based model</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value">65+</div>
-                <div class="metric-label">Total Paid Customers</div>
-                <div class="metric-growth">Self-publishing authors</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value">35.75%</div>
-                <div class="metric-label">Paid Conversion Rate</div>
-                <div class="metric-growth">From Registration to Payment</div>
-            </div>
-        </div>
-
-        <!-- Product & Technical Performance -->
-        <h3 style="text-align: center; color: #2c2c2c; margin-bottom: 30px; font-size: 1.5rem;">Product & Technical Performance</h3>
-        <div class="metrics-container" style="margin-bottom: 50px;">
-            <div class="metric-card">
-                <div class="metric-value">30 mins</div>
-                <div class="metric-label">Time to First Value</div>
-                <div class="metric-growth">First audiobook creation</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value">99%</div>
-                <div class="metric-label">System Uptime</div>
-                <div class="metric-growth">Platform reliability</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value">57</div>
-                <div class="metric-label">Features Shipped</div>
-                <div class="metric-growth">Product iterations</div>
-            </div>
-        </div>
-
-
     </section>
 
     <!-- Chapters Section -->
