@@ -55,7 +55,7 @@
 .job-title {
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--accent-color);
+    color: #1E90FF;
     margin-bottom: 1.5rem;
     letter-spacing: 0.5px;
 }
@@ -97,8 +97,8 @@
 }
 
 .industry-tag {
-    background: rgba(99, 102, 241, 0.1);
-    color: var(--accent-color);
+    background: rgba(59, 130, 246, 0.1);
+    color: #3B82F6;
     padding: 0.5rem 1rem;
     border-radius: 999px;
     font-size: 0.9rem;
@@ -150,20 +150,20 @@
 }
 
 .project-box {
-    background: rgba(99, 102, 241, 0.05);
-    border-left: 3px solid var(--accent-color);
+    background: rgba(59, 130, 246, 0.05);
+    border-left: 3px solid #3B82F6;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
     transition: all 0.3s ease;
 }
 
 .project-box:hover {
-    background: rgba(99, 102, 241, 0.1);
+    background: rgba(59, 130, 246, 0.1);
     transform: translateX(5px);
 }
 
 .project-link {
-    color: #334155;
+    color: #3B82F6;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -172,7 +172,7 @@
 }
 
 .project-link:hover {
-    color: var(--accent-color);
+    color: #2563EB;
 }
 
 .project-link i {

@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Normalizing Flows and Its Friends (Part 1)</title>
+    <title>Gradient Class Activation Map (Grad-CAM) Summary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/tags.css">
     <style>
         :root {
             --primary-color: #1a1a1a;
             --accent-color: #6366f1;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --gradient: linear-gradient(135deg, #ff9800 0%, #ffb74d 50%, #ffc107 100%);
             --glass: rgba(255, 255, 255, 0.9);
             --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
@@ -208,10 +208,7 @@
 
         .article-title {
             font-size: 2.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #1a1a1a;
             line-height: 1.2;
             margin-bottom: 1.5rem;
         }
@@ -269,14 +266,6 @@
             flex-wrap: wrap;
         }
 
-        .tag {
-            background: rgba(99, 102, 241, 0.1);
-            color: #6366f1;
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
 
         .back-to-blog {
             display: inline-flex;
@@ -374,6 +363,7 @@
         }
     </style>
 </head>
+<script src="../../assets/js/navigation-config.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -384,21 +374,7 @@
 </script>
 
 <body>
-    <nav>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul id="nav-menu">
-            <li><a href="../../index.html">Home</a></li>
-            <li><a href="../../professional/professional.html">Professional Experience</a></li>
-            <li><a href="../../research/research.html">Research</a></li>
-            <li><a href="../../projects/projects.html">Side Projects</a></li>
-            <li><a href="../../entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
-            <li><a href="../blog.html" class="active">Blog</a></li>
-        </ul>
-    </nav>
+    <div id="nav-container"></div>
 
     <div class="container">
         <aside class="sidebar">
@@ -418,99 +394,80 @@
             <article class="blog-article">
                 <header class="article-header">
                     <div class="article-meta">
-                        <span>Published: October 15, 2022</span>
+                        <span>Published: June 15, 2020</span>
                         <span>•</span>
-                        <span>10 min read</span>
+                        <span>8 min read</span>
                     </div>
-                    <h1 class="article-title">Normalizing Flows and Its Friends (Part 1)</h1>
-                    <img src="nf.png" alt="article image" class="article-image">
+                    <h1 class="article-title">Gradient Class Activation Map (Grad-CAM) Summary</h1>
+                    <img src="img0.png" alt="article image" class="article-image">
                 </header>
 
                 <div class="article-content">
-                    <p>Here is some pre-requisite knowledge required before we move to Normalizing Flows.</p>
+                    <h1>Gradient Class Activation Map (Grad-CAM) Summary</h1>
+                    <p>The following note demonstrates the logic procedure of how a GradCam is computed. For details,
+                        please see: <a href="https://arxiv.org/pdf/1610.02391v1.pdf">Grad-CAM: Why did you say that?
+                            Visual Explanations from Deep Networks via Gradient-based Localization</a></p>
 
-                    <h2><strong>1. Jacobian Matrix</strong></h2>
-                    <p>Jacobian is a just matrix containing all partial derivatives between each input and output. It
-                        looks scary, but in fact, it is just a fancy name for a partial derivative matrix.</p>
-
-                    <p><strong>For example, if</strong></p>
-                    <p>
-                        \[ z = \begin{bmatrix} z_{1} \\ z_{2} \end{bmatrix} \]
+                    <h2>Assumption</h2>
+                    <h3>Class Activation Mapping</h3>
+                    <p class="center-equation">
+                        \( y^{c} = \sum\limits_{k} w^k_c \frac{1}{Z} \sum\limits_{i} \sum\limits_{j} A^k_{ij} \)
                     </p>
                     <p>
-                        \[ x = \begin{bmatrix} x_{1} \\ x_{2} \end{bmatrix} \]
-                    </p>
-                    <p><strong>and</strong></p>
-                    <p>
-                        \[ z = f(x) \]
+                        The penultimate layer produces \( K \) activation map \( A^K \) with width \( u \) and height \(
+                        v \).
                     </p>
                     <p>
-                        \[ x = f^{-1}(z) \]
-                    </p>
-                    <p><strong>then,</strong></p>
-                    <p>
-                        \[ J_{f} = \begin{bmatrix} \frac{\partial x_{1}}{\partial z_{1}} & \frac{\partial
-                        x_{1}}{\partial z_{2}} \\
-                        \frac{\partial x_{2}}{\partial z_{1}} & \frac{\partial x_{2}}{\partial z_{2}} \end{bmatrix} \]
-                    </p>
-                    <p>
-                        \[ J_{f^{-1}} = \begin{bmatrix} \frac{\partial z_{1}}{\partial x_{1}} & \frac{\partial
-                        z_{1}}{\partial x_{2}} \\
-                        \frac{\partial z_{2}}{\partial x_{1}} & \frac{\partial z_{2}}{\partial x_{2}} \end{bmatrix} \]
-                    </p>
-                    <p>
-                        \[ J_{f} J_{f^{-1}} = I \]
+                        The feature goes through \( \frac{1}{Z} \sum\limits_{i} \sum\limits_{j} \), which is called
+                        <code>global averaged pooled</code>, and then linearly transformed to \( y^{c} \) for each class
+                        \( c \).
                     </p>
 
-                    <h2><strong>2. Determinant</strong></h2>
-                    <p>Determinant is a scalar value, which describes the area/volume enclosed by all the vectors in a
-                        matrix.</p>
-
-                    <p><strong>For example, if</strong></p>
+                    <h2>Procedure</h2>
+                    <h3>1. Choose the penultimate layer.</h3>
                     <p>
-                        \[ A = \begin{bmatrix} a & b \\ c & d \end{bmatrix} \]
-                    </p>
-                    <p>then,</p>
-                    <p>
-                        \[ det(A) = ad - bc \]
-                    </p>
-                    <p>The most important thing is that:</p>
-                    <p>
-                        \[ det(A) = \frac{1}{det(A^{-1})} \]
-                    </p>
-                    <p>
-                        \[ det(J_{f}) = \frac{1}{det(J_{f^{-1})}} \]
-                    </p>
-                    <p>In a 2D space, it looks like this:</p>
-                    <div style="text-align: center;">
-                        <img src="determinant.png" alt="Determinant" style="width: 75%">
-                    </div>
-
-                    <h2><strong>3. Change of Variable Theorem</strong></h2>
-                    <div style="text-align: center;">
-                        <img src="change_of_variable_1.png" alt="Change of Variable 1" , style="width: 75%">
-                        <img src="change_of_variable_2.png" alt="Change of Variable 2" , style="width: 75%">
-                    </div>
-                    <p>
-                        \[ p(x') \mid det \begin{bmatrix} \Delta x_{11} & \Delta x_{21} \\
-                        \Delta x_{12} & \Delta x_{22} \end{bmatrix} \mid = \pi(z') \Delta {z_{1}} \Delta {z_{2}} \]
-                    </p>
-                    <p>and this becomes to</p>
-                    <p>
-                        \[ p(x') \mid det(J_{f}) \mid = \pi(z') \]
-                    </p>
-                    <p>
-                        \[ p(x') = \pi(z') \mid det(J_{f^{-1})} \mid \]
+                        This is the layer where we want to visualize the activation map. The reason why it is called the
+                        penultimate layer is because the last layer of a model is usually the layer computing
+                        class-specific loss (i.e. Sigmoid loss, softmax loss, etc). The penultimate layer is a layer,
+                        which is before the last layer, that we want to compute the loss respect to.
                     </p>
 
-                    <hr>
+                    <h3>2. Compute the class-specific loss (i.e. loss of \( y^{c} \)) on the last layer of the model.
+                    </h3>
+                    <p>
+                        This step involves calculating the loss for the specific class \( c \).
+                    </p>
 
-                    <h3>References</h3>
-                    <ol>
-                        <li><a
-                                href="https://www.youtube.com/watch?v=uXY18nzdSsM&t=169s">https://www.youtube.com/watch?v=uXY18nzdSsM&t=169s</a>
-                        </li>
-                    </ol>
+                    <h3>3. Compute the gradients of \( y^c \) respect to the penultimate layer's activation map \( A^K
+                        \).</h3>
+                    <p class="center-equation">
+                        \( \alpha^c_k = \frac{1}{Z} \sum\limits_{i} \sum\limits_{j} \frac{\partial y^c}{\partial
+                        A^k_{ij}} \)
+                    </p>
+                    <p>
+                        The dimension of the gradients is then reduced from <code>(batch_size, u, v, channel)</code> to
+                        <code>(channel)</code> by averaging the values in the first three axes. In the paper, this
+                        dimension reduction is called <code>global-average-pooling</code>.
+                    </p>
+                    <p>
+                        This result denoted as \( \alpha^c_k \) represents a partial linearization of the penultimate
+                        layer to the loss, which captures the importance of the activation \( A^k \) for a target \( c
+                        \).
+                    </p>
+
+                    <h3>4. Element-wise multiply the gradient with the Activation map.</h3>
+                    <p>
+                        This step combines the gradients and the activation maps to highlight important regions.
+                    </p>
+
+                    <h3>5. Remove any negative results by applying the ReLU function over the result.</h3>
+                    <p>
+                        Only interested in the positive influence on the class of interest. (i.e. Pixels whose intensity
+                        should increase in order to increase \( y^{c} \))
+                    </p>
+                    <p class="center-equation">
+                        \( L^c_{Grad-CAM} = ReLU(\sum\limits_{k} \alpha^c_k A^k) \)
+                    </p>
 
                     <div class="social-sharing">
                         <a href="https://x.com/home">
@@ -524,15 +481,17 @@
                     </div>
 
                     <div class="tags">
-                        <span class="tag">Jacobian Matrix</span>
-                        <span class="tag">Determinant</span>
-                        <span class="tag">Change of Variable Theorem</span>
+                        <span class="tag">GradCam</span>
+                        <span class="tag">penultimate layer</span>
+                        <span class="tag">feature visualization</span>
                     </div>
 
-                    <a href="../blog.html" class="back-to-blog">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to Blog
-                    </a>
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <a href="../research.html" class="back-to-blog">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Research
+                        </a>
+                    </div>
                 </div>
 
             </article>
