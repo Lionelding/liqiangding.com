@@ -4,7 +4,7 @@
 :root {
     --primary-color: #1a1a1a;
     --accent-color: #6366f1;
-    --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+    --gradient: linear-gradient(135deg, #ff9800 0%, #ffb74d 50%, #ffc107 100%);
     --glass: rgba(255, 255, 255, 0.9);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }

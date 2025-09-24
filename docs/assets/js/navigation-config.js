@@ -15,8 +15,8 @@ const NAVIGATION_HTML = `
             <li><a href="/docs/professional/professional.html">Professional Experience</a></li>
             <li><a href="/docs/research/research.html">Research</a></li>
             <li><a href="/docs/projects/projects.html">Side Projects</a></li>
-            <li><a href="/docs/entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
             <li><a href="/docs/blogs/blog.html">Blog</a></li>
+            <li><a href="/docs/entrepreneurship/entrepreneurship.html">AudioFlo</a></li>
         </ul>
     </nav>
 `;

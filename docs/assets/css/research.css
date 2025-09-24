@@ -55,20 +55,7 @@
     margin: 0;
 }
 
-.tags {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-}
-
-.tag {
-    background: rgba(59, 130, 246, 0.1);
-    color: #3B82F6;
-    padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
+/* Tag styles moved to common tags.css */
 
 .post-excerpt {
     color: #475569;
@@ -123,10 +110,7 @@
 .section-title {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #1a1a1a;
     line-height: 1.3;
 }
 

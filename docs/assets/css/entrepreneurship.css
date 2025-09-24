@@ -37,10 +37,7 @@
 .company-name {
     font-size: 1.75rem;
     margin-bottom: 0.75rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #1a1a1a;
 }
 
 .company-timeframe {
@@ -135,10 +132,7 @@
 .section-title {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #1a1a1a;
     line-height: 1.3;
 }
 

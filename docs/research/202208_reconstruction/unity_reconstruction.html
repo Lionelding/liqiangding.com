@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Works at Unity</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/tags.css">
     <style>
         :root {
             --primary-color: #1a1a1a;
             --accent-color: #6366f1;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --gradient: linear-gradient(135deg, #ff9800 0%, #ffb74d 50%, #ffc107 100%);
             --glass: rgba(255, 255, 255, 0.9);
             --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
@@ -207,10 +208,7 @@
 
         .article-title {
             font-size: 2.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #1a1a1a;
             line-height: 1.2;
             margin-bottom: 1.5rem;
         }
@@ -272,27 +270,21 @@
             margin: 2rem 0;
         }
 
+        /* Tag styles imported from tags.css */
         .tags {
-            display: flex;
-            gap: 0.75rem;
             margin: 2rem 0;
-            flex-wrap: wrap;
         }
 
         .tag {
-            background: rgba(99, 102, 241, 0.1);
-            color: #6366f1;
             padding: 0.5rem 1rem;
-            border-radius: 999px;
             font-size: 0.9rem;
-            font-weight: 500;
         }
 
         .back-to-blog {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            color: var(--accent-color);
+            color: #3B82F6;
             text-decoration: none;
             font-weight: 500;
             padding: 0.75rem 1.5rem;
@@ -420,21 +412,8 @@
 </head>
 
 <body>
-    <nav>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul id="nav-menu">
-            <li><a href="../../index.html">Home</a></li>
-            <li><a href="../../professional/professional.html">Professional Experience</a></li>
-            <li><a href="../research.html">Research</a></li>
-            <li><a href="../../projects/projects.html">Side Projects</a></li>
-            <li><a href="../../entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
-            <li><a href="../../blogs/blog.html" class="active">Blog</a></li>
-        </ul>
-    </nav>
+    <!-- Navigation will be injected here by navigation-config.js -->
+    <div id="nav-container"></div>
 
     <div class="container">
         <aside class="sidebar">
@@ -559,27 +538,21 @@
                     <figcaption style="text-align: center;">Test losses when 5 views are input to each model
                     </figcaption>
 
-
-                    <div class="social-sharing">
-                        <a href="https://x.com/home">
-                            <i class="fab fa-twitter"></i>
-                            Share on Twitter
-                        </a>
-                        <a href="https://www.linkedin.com/">
-                            <i class="fab fa-linkedin"></i>
-                            Share on LinkedIn
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <a href="../research.html" class="back-to-blog">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Research
                         </a>
                     </div>
-
-                    <a href="../research.html" class="back-to-blog">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to Research
-                    </a>
                 </div>
 
             </article>
         </main>
     </div>
+
+    <!-- External JavaScript -->
+    <script src="../../assets/js/navigation.js"></script>
+    <script src="../../assets/js/navigation-config.js"></script>
 </body>
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
