@@ -191,42 +191,123 @@
         .circle-8 { top: 60px; left: 20px; }
 
         @media (max-width: 768px) {
+            .metrics-section {
+                padding: 30px 15px;
+            }
+
             .hub-spoke-container {
-                width: 400px;
-                height: 400px;
+                width: 320px;
+                height: 320px;
+                max-width: 95vw;
             }
 
             .center-circle {
-                width: 120px;
-                height: 120px;
-            }
-
-            .center-value {
-                font-size: 2rem;
-            }
-
-            .metric-circle {
                 width: 100px;
                 height: 100px;
             }
 
+            .center-value {
+                font-size: 1.8rem;
+            }
+
+            .center-label {
+                font-size: 0.85rem;
+            }
+
+            .metric-circle {
+                width: 80px;
+                height: 80px;
+                padding: 5px;
+            }
+
             .circle-value {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
 
             .circle-label {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
+                line-height: 1.1;
             }
 
-            /* Adjust positions for mobile */
-            .circle-1 { top: 20px; }
-            .circle-2 { top: 70px; right: 40px; }
-            .circle-3 { right: 10px; }
-            .circle-4 { bottom: 70px; right: 40px; }
-            .circle-5 { bottom: 20px; }
-            .circle-6 { bottom: 70px; left: 40px; }
-            .circle-7 { left: 10px; }
-            .circle-8 { top: 70px; left: 40px; }
+            /* Adjust positions for mobile - closer to center */
+            .circle-1 { top: 10px; left: 50%; transform: translateX(-50%); }
+            .circle-2 { top: 50px; right: 15px; }
+            .circle-3 { top: 50%; right: 5px; transform: translateY(-50%); }
+            .circle-4 { bottom: 50px; right: 15px; }
+            .circle-5 { bottom: 10px; left: 50%; transform: translateX(-50%); }
+            .circle-6 { bottom: 50px; left: 15px; }
+            .circle-7 { top: 50%; left: 5px; transform: translateY(-50%); }
+            .circle-8 { top: 50px; left: 15px; }
+        }
+
+        .timeline-section {
+            background: #FFFCFA;
+            padding: 40px 20px;
+        }
+
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .timeline-title {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .timeline-image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .timeline-image {
+            max-width: 85%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-future {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .timeline-future-title {
+            font-size: 1.5rem;
+            color: #ff9800;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .timeline-future-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 30px;
+        }
+
+        .timeline-future-list li {
+            padding: 8px 0;
+            color: #475569;
+            font-size: 1rem;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline-future-list li:before {
+            content: "✓";
+            color: #ff9800;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
         }
 
         .chapters-section {
@@ -243,8 +324,18 @@
             font-size: 2.5rem;
             text-align: center;
             color: #1e293b;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             font-weight: 700;
+        }
+
+        .chapters-intro {
+            font-size: 1.1rem;
+            color: #64748b;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
         }
 
         .chapters-grid {
@@ -347,6 +438,11 @@
                 flex-direction: column;
                 gap: 15px;
             }
+            .logo-container img {
+                height: 120px !important;
+                width: auto !important;
+                max-width: 90% !important;
+            }
             .logo-icon {
                 width: 60px;
                 height: 60px;
@@ -359,6 +455,46 @@
             }
             .metric-value {
                 font-size: 2rem;
+            }
+
+            /* Timeline mobile fixes */
+            .timeline-section {
+                padding: 30px 15px;
+            }
+            .timeline-title {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            .timeline-future-list {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            /* Chapter cards mobile fixes */
+            .chapters-section {
+                padding: 50px 15px;
+            }
+            .chapters-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                max-width: 100%;
+            }
+            .chapter-card {
+                padding: 20px;
+                margin: 0;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .chapter-image {
+                width: 80px;
+                height: 80px;
+            }
+            .chapter-title {
+                font-size: 1.1rem;
+            }
+            .chapter-description {
+                font-size: 0.9rem;
+                line-height: 1.5;
             }
         }
     </style>
@@ -375,7 +511,7 @@
         </div>
         
         <div class="vision-box">
-            <h2 class="vision-title">What is this for?</h2>
+            <h2 class="vision-title">Built a SaaS company within 3 months</h2>
             <p class="vision-text">
                 Building a SaaS company from zero to market has always been my entrepreneurial dream. In March 2025, I seized the opportunity to spend three intensive months founding AudioFlo, an AI-powered platform that helps indie authors produce professional audiobooks. <br><br>
                 
@@ -440,10 +576,32 @@
         </div>
     </section>
 
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="timeline-container">
+            <h2 class="timeline-title">Where is AudioFlo now?</h2>
+            <div class="timeline-image-wrapper">
+                <img src="./timeline.png" alt="AudioFlo Development Timeline" class="timeline-image">
+            </div>
+            <div class="timeline-future">
+                <h3 class="timeline-future-title">2025 August Beyond</h3>
+                <ul class="timeline-future-list">
+                    <li>Full Autonomous Operation</li>
+                    <li>System runs completely hands-off without manual intervention</li>
+                    <li>Self-sustaining revenue model with automated scaling</li>
+                    <li>Organic growth through word-of-mouth and product excellence</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- Chapters Section -->
     <section class="chapters-section">
         <div class="chapters-container">
-            <h2 class="chapters-title">The AudioFlo Story</h2>
+            <h2 class="chapters-title">How I built AudioFlo</h2>
+            <p class="chapters-intro">
+                Each chapter below represents a critical business perspective in the complete journey from customer discovery to marketing campaigns. Together, they form the comprehensive process of how I built AudioFlo.ai from concept to market. Click on any topic to dive into the detailed strategies, methodologies, and insights that shaped this entrepreneurial venture. I hope these real-world experiences will provide valuable guidance for your own startup journey.
+            </p>
             <div class="chapters-grid">
                 <a href="./chapter1/chapter1-vision.html" class="chapter-card">
                     <div class="chapter-top">
