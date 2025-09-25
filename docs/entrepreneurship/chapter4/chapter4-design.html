@@ -226,7 +226,7 @@
     <div class="chapter-header">
         <div class="chapter-number">4</div>
         <h1 class="chapter-title">Product Design</h1>
-        <p class="chapter-subtitle">Building a product that authors actually want to use</p>
+        <p class="chapter-subtitle">Start with an MVP, and build a product that authors actually want to use</p>
     </div>
 
     <!-- Main Content -->
@@ -238,7 +238,7 @@
                 <ul style="list-style: none; padding: 0;">
                     <li style="margin: 15px 0; padding-left: 25px; position: relative;">
                         <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">1.</span>
-                        <strong>Design Principles</strong> - Core UX principles for author-friendly design
+                        <strong>Design Principles & MVP</strong> - Core UX principles for author-friendly design
                     </li>
                     <li style="margin: 15px 0; padding-left: 25px; position: relative;">
                         <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">2.</span>
@@ -266,7 +266,7 @@
 
         <!-- Design Principles Section -->
         <section class="section">
-            <h2 class="section-title">1. Design Principles</h2>
+            <h2 class="section-title">1. Design Principles & Minimal Viable Product</h2>
             
             <p>Understanding that our users are authors spanning ages 30 to 65+, I knew the user experience had to be universally accessible. I developed a design philosophy centered on three core principles that guide every interface decision:</p>
             
@@ -280,6 +280,19 @@
             </div>
             
             <p>These principles aren't just theoretical. I apply them to every feature, ensuring AudioFlo remains accessible to authors regardless of their technical expertise. Whether someone is tech-savvy or just learning to navigate digital tools, the interface should feel intuitive and supportive.</p>
+
+            <h3>Minimal Viable Product (MVP)</h3>
+            <p>Before implementing anything, I wrote down the minimal features required for producing an audiobook. I focused on the essentials that would deliver real value without overwhelming users:</p>
+
+            <div style="background: #f8fafc; padding: 25px; border-radius: 10px; margin: 20px 0;">
+                <ol style="margin: 0; padding-left: 20px; color: #475569; line-height: 1.8;">
+                    <li style="margin: 15px 0;"><strong>Simple Upload Flow</strong> - A straightforward way to upload manuscripts, choose voices, and create audiobooks</li>
+                    <li style="margin: 15px 0;"><strong>Voice Cloning Technology</strong> - Custom voice creation since many authors want to narrate with their own voices</li>
+                    <li style="margin: 15px 0;"><strong>Conversion Dashboard</strong> - Real-time status tracking for all conversion requests</li>
+                    <li style="margin: 15px 0;"><strong>Credit Transparency</strong> - Clear visibility into remaining credits and usage history</li>
+                    <li style="margin: 15px 0;"><strong>Role-Based Access</strong> - Team collaboration features so authors with editors can work together seamlessly</li>
+                </ol>
+            </div>
         </section>
 
         <!-- Progressive Disclosure Section -->
@@ -304,10 +317,11 @@
                     <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Step 3: Explore and choose voices</figcaption>
                 </figure>
             </div>
-            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #64748b;">Hover over an image to zoom in</p>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.95rem; color: #64748b; font-style: italic;">Figure 1: AudioFlo's streamlined three-step upload process for audiobook creation</p>
+            <p style="text-align: center; margin-top: 10px; font-size: 0.9rem; color: #64748b;">Hover over an image to zoom in</p>
 
 
-            <h3>Voice Creation Wizard</h3>
+            <h3>Voice Cloning Wizard</h3>
             <p>The voice cloning feature balances simplicity with security. Users create their custom voice by providing a name and avatar, then reading from our script library. I implemented a verification system that randomly selects from over 100 pre-written scripts and matches the recorded audio against the original text. This approach ensures authenticity while keeping the process straightforward - users can record directly through their browser or phone, whichever feels more comfortable to them.</p>
             <style>
                 .hover-zoom {
@@ -335,6 +349,7 @@
                     <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Step 3: Record</figcaption>
                 </figure>
             </div>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.95rem; color: #64748b; font-style: italic;">Figure 2: AudioFlo's streamlined three-step voice cloning</p>
             <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #64748b;">Hover over an image to zoom in</p>
 
         </section>
@@ -349,18 +364,20 @@
             <p>The conversion dashboard is designed to be a single source of truth for all ongoing projects. Users can see at a glance which books are processing, completed, or need attention. The status indicators use familiar patterns - yellow for pending, blue for active conversions, green for completed ones, and red when something needs fixing. This centralized view reduces anxiety and gives authors full control over their production pipeline.</p>
             <figure style="margin: 0 auto; text-align: center;">
                 <img src="./conversions.png" alt="Conversions" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: block; margin: 0 auto;">
-                <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Request Summary</figcaption>
+                <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Figure 3: Request summary page</figcaption>
             </figure>
 
 
             <div class="feature-showcase">
-                
+
                 <h4 style="margin: 25px 0 15px 0; color: #1e293b;">Multi-Channel Notifications</h4>
                 <ul class="principle-list">
                     <li>In-app toast notifications for immediate feedback</li>
                     <li>Email notifications when conversion requests are submitted, or completed</li>
                 </ul>
             </div>
+            <p>Every operation receives instant feedback, ensuring users always know their actions are having an effect. This multi-layered notification system eliminates the uncertainty that often frustrates users in audio processing platforms. Whether it's a successful upload, a completed conversion, or a system error, users receive clear, actionable feedback through their preferred channels.</p>
+
         </section>
 
         <!-- Credit Transparency Section -->
@@ -374,7 +391,7 @@
 
             <figure style="margin: 0 auto 30px auto; text-align: center;">
                 <img src="./overview.png" alt="Overview" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: block; margin: 0 auto;">
-                <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Account Overview</figcaption>
+                <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Figure 4: Account overview page</figcaption>
             </figure>
 
             <h3>Credit Breakdown</h3>
@@ -382,7 +399,7 @@
 
             <figure style="margin: 0 auto 30px auto; text-align: center;">
                 <img src="./credit_breakdown.png" alt="Overview" style="width: 50%; max-width: 800px; height: auto; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: block; margin: 0 auto;">
-                <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Credit Breakdown</figcaption>
+                <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Figure 5: Credit breakdown pop-up window</figcaption>
             </figure>
 
 
@@ -390,7 +407,7 @@
             <p>Comprehensive cost estimation ensures users never feel blindsided by charges. Before any conversion begins, the system shows both the estimated time and exact credit cost. This transparency ensures users can make confident decisions and builds trust by eliminating billing surprises, which is essential for long-term customer relationships.</p>
             <figure style="margin: 0 auto 30px auto; text-align: center;">
                 <img src="./credit_estimation.png" alt="Overview" style="width: 75%; max-width: 800px; height: auto; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: block; margin: 0 auto;">
-                <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Credit Breakdown</figcaption>
+                <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Figure 6: Credit estimation pop-up window</figcaption>
             </figure>
 
 
@@ -399,7 +416,7 @@
 
             <figure style="margin: 0 auto 30px auto; text-align: center;">
                 <img src="./credit_transcation.png" alt="Overview" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: block; margin: 0 auto;">
-                <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Credit Transcations</figcaption>
+                <figcaption style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Figure 7: Credit transcations page</figcaption>
             </figure>
             
             
@@ -422,6 +439,7 @@
                     <img src="./mobile3.png" alt="Upload Step 3" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                 </figure>
             </div>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.95rem; color: #64748b; font-style: italic;">Figure 8: Mobile setup display</p>
 
 
         </section>
@@ -436,7 +454,7 @@
                 <img src="./role_based_ui.png" alt="Upload Step 1" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
             </figure>
 
-            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #64748b;">Admins see more options, regular users see simplified interface</p>
+            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #64748b;">Figure 9: Admins see more options, regular users see simplified interface</p>
 
 
         </section>
@@ -450,10 +468,10 @@
                     <div class="nav-title">Business Strategy</div>
                 </div>
             </a>
-            <a href="chapter5-technology.html" class="nav-button next">
+            <a href="../chapter5/chapter5-voice.html" class="nav-button next">
                 <div>
                     <div class="nav-label">Next Chapter</div>
-                    <div class="nav-title">Technology Stack</div>
+                    <div class="nav-title">Voiced with Warmth</div>
                 </div>
                 <span>›</span>
             </a>

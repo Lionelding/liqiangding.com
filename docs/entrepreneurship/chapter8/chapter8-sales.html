@@ -357,10 +357,14 @@
                     </li>
                     <li style="margin: 15px 0; padding-left: 25px; position: relative;">
                         <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">4.</span>
-                        <strong>CRM Pipeline</strong> - Seven-step customer engagement timeline
+                        <strong>Traffic Monitoring</strong> - Google Analytics and user behavior tracking
                     </li>
                     <li style="margin: 15px 0; padding-left: 25px; position: relative;">
                         <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">5.</span>
+                        <strong>CRM Pipeline</strong> - Seven-step customer engagement timeline
+                    </li>
+                    <li style="margin: 15px 0; padding-left: 25px; position: relative;">
+                        <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">6.</span>
                         <strong>Sales Funnel</strong> - Six stages from awareness to loyalty
                     </li>
                 </ul>
@@ -369,7 +373,7 @@
 
         <!-- Core Principle -->
         <section class="section">
-            <h2 class="section-title">Core Principle</h2>
+            <h2 class="section-title">1. Core Principle</h2>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
                 <!-- Principle Image Column -->
@@ -386,10 +390,10 @@
 
         <!-- Distribution Channels -->
         <section class="section">
-            <h2 class="section-title">Distribution Channels</h2>
+            <h2 class="section-title">2. Distribution Channels</h2>
 
             <p>
-                Multiple distribution channels exist to attract potential customers, but people enter each channel with different <span class="highlight-text">intentions and mindsets</span>. I discovered that marketing campaigns become significantly more effective when tailored to match the specific mentality and expectations of users within each channel.
+                Multiple distribution channels exist to attract potential customers, but people enter each channel with <span class="highlight-text">different intentions and mindsets</span>. I discovered that marketing campaigns become significantly more effective when tailored to match the specific mentality and expectations of users within each channel.
             </p>
 
             <div class="channel-card">
@@ -424,7 +428,7 @@
                 <div style="display: flex; gap: 30px; margin: 20px 0; align-items: center; flex-wrap: wrap; justify-content: center;">
                     <div style="text-align: center;">
                         <img src="./example1.png" alt="example1" style="width: 650px; height: auto; border-radius: 8px; transition: transform 0.3s ease;">
-                        <p style="margin-top: 10px; font-size: 14px; color: #666;">A post for on the Subreddit r/authors</p>
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">Figure 1: An example of my advertisement post for on the Subreddit r/authors</p>
                     </div>
                 </div>
             </div>
@@ -460,7 +464,7 @@
                 <div style="display: flex; gap: 30px; margin: 20px 0; align-items: center; flex-wrap: wrap; justify-content: center;">
                     <div style="text-align: center;">
                         <img src="./11.jpg" alt="11" style="width: 450px; height: auto; border-radius: 8px; transition: transform 0.3s ease;">
-                        <p style="margin-top: 10px; font-size: 14px; color: #666;">A visual ad on Instagram</p>
+                        <p style="margin-top: 10px; font-size: 14px; color: #666;">Figure 2: One of the ads from AudioFlo that was released on Instagram</p>
                     </div>
                 </div>
             </div>
@@ -505,7 +509,7 @@
 
         <!-- Customer Conversion Strategy -->
         <section class="section">
-            <h2 class="section-title">Customer Conversion Strategy</h2>
+            <h2 class="section-title">3. Customer Conversion Strategy</h2>
 
             <p>
                 Getting users to register is just the beginning of the journey, not the destination. While attracting new sign-ups validates market interest, the real challenge lies in converting these registered users into paying customers. Converting free users to paid subscribers requires building trust, demonstrating clear value, and addressing the specific hesitations that prevent users from upgrading. Through careful analysis of user behavior and strategic conversion tactics, I discovered that successful conversion is less about pushing sales and more about removing barriers that prevent users from seeing the full value of the product.
@@ -562,9 +566,43 @@
             </div>
         </section>
 
+        <!-- Status Monitoring -->
+        <section class="section">
+            <h2 class="section-title">4. Traffic Monitoring</h2>
+
+            <p>Deploying marketing campaigns is never a release-and-forget strategy. <span class="highlight-text">Active monitoring of customer feedback and rapid iterative adaptation are essential</span> for campaign success. Without continuous oversight, even well-designed campaigns can waste significant budget on unqualified traffic or miss optimization opportunities.</p>
+
+            <p>I implemented comprehensive tracking using <span class="highlight-text">Google Analytics combined with Google Tag Manager</span> to monitor real-time campaign performance and user behavior. This approach allows me to track specific user events without code changes, from button clicks and form submissions to video plays and feature usage. I can monitor the entire customer journey, from their first landing page visit through account creation, trial usage, and eventual conversion.</p>
+
+            <div style="margin: 40px 0;">
+                <div style="text-align: center;">
+                    <img src="./traffic2.png" alt="User Behavior Analytics" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <p style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Figure 2: User behavior analytics revealing conversion patterns and engagement metrics</p>
+                </div>
+            </div>
+
+            <p>I chose this monitoring approach because it provides granular insights into campaign effectiveness while maintaining flexibility. Google Tag Manager enables rapid deployment of new tracking events as campaigns evolve, while Google Analytics reveals patterns in user behavior that inform both product improvements and marketing optimizations. This data-driven approach helps identify which distribution channels deliver the highest-quality leads and where potential customers encounter friction.</p>
+
+            <p>Through this monitoring, I discovered a critical issue: <span class="highlight-text">significant bot traffic was consuming my paid advertising budget</span>. Many clicks from paid campaigns showed suspicious patterns - extremely short session durations, unusual geographic distributions, and engagement behaviors that clearly weren't from genuine authors. This bot traffic was wasting both money and time while skewing campaign performance metrics.</p>
+
+            <p>To address this problem, I implemented strict filtering criteria for all paid advertising campaigns. I now target only specific device types (desktop and mobile, excluding tablets with suspicious patterns), narrow age ranges that match our author demographic (30-65), and focus on countries where English-language indie authors are most active. These filters dramatically reduced bot traffic, improved campaign ROI, and ensured our marketing budget reaches genuine potential customers who actually need audiobook creation services.</p>
+
+            <div style="margin: 40px 0;">
+                <div style="text-align: center;">
+                    <img src="./social_signup.png" alt="User Behavior Analytics" style="width: 60%; max-width: 500px; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <p style="margin-top: 10px; font-size: 0.95rem; color: #64748b; font-style: italic;">Figure 3: Social login options that improved registration conversion rates</p>
+                </div>
+            </div>
+
+            <p>The analytics also revealed another conversion bottleneck: <span class="highlight-text">many users spent significant time exploring demos on the landing page but few actually registered</span>. Heat maps showed strong engagement with our voice samples and feature demonstrations, yet the registration rate remained disappointingly low. I soon realized the issue was our email-only registration process, which created unnecessary friction for interested users. I quickly enabled social account login options (Google, and Facebook), and the registration rate spiked immediately. This simple change removed a major barrier and allowed genuinely interested authors to start their AudioFlo journey with minimal effort.</p>
+
+
+
+        </section>
+
         <!-- CRM Pipeline -->
         <section class="section">
-            <h2 class="section-title">CRM Pipeline</h2>
+            <h2 class="section-title">5. CRM Pipeline</h2>
 
             <p>
                 Timing is everything in customer relationship management. I leveraged an existing CRM platform to send personalized messages triggered by specific user activities rather than generic scheduled emails. By tracking key moments like first uploads or pricing page visits, we provide timely support exactly when users need guidance during their AudioFlo journey.
@@ -586,7 +624,7 @@
 
         <!-- Sales Funnel -->
         <section class="section">
-            <h2 class="section-title">Sales Funnel Analysis</h2>
+            <h2 class="section-title">6. Sales Funnel Analysis</h2>
 
             <p>
                 Understanding customer behavior requires systematic categorization of users based on their actions and engagement levels. I categorized all customers into six distinct groups, each representing a specific stage in their journey with AudioFlo. By creating business-specific labels for these customer segments, we can provide highly customized support and targeted interventions that address the unique needs and challenges at each stage of the conversion process.
@@ -657,7 +695,7 @@
                 <span>‹</span>
                 <div>
                     <div class="nav-label">Previous Chapter</div>
-                    <div class="nav-title">AI System</div>
+                    <div class="nav-title">Agentic AI System</div>
                 </div>
             </a>
             <a href="../chapter9/chapter9-lessons.html" class="nav-button next">

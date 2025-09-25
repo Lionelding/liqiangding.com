@@ -13,7 +13,7 @@ const NAVIGATION_HTML = `
         <ul id="nav-menu">
             <li><a href="/docs/index.html">Home</a></li>
             <li><a href="/docs/professional/professional.html">Professional Experience</a></li>
-            <li><a href="/docs/blogs/blogs.html">Blogs</a></li>
+            <li><a href="/docs/blogs/blogs.html">Publications & Blogs</a></li>
             <li><a href="/docs/projects/projects.html">Side Projects</a></li>
             <li><a href="/docs/entrepreneurship/entrepreneurship.html">AudioFlo</a></li>
         </ul>

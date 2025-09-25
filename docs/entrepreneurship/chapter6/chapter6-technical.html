@@ -296,7 +296,7 @@
     <div class="chapter-header">
         <div class="chapter-number">6</div>
         <h1 class="chapter-title">Technical Architecture</h1>
-        <p class="chapter-subtitle">Building a scalable, secure, and modern SaaS platform</p>
+        <p class="chapter-subtitle">Iterating fast and building a scalable, secure, and modern SaaS platform</p>
     </div>
 
     <!-- Main Content -->
@@ -308,7 +308,7 @@
                 <ul style="list-style: none; padding: 0;">
                     <li style="margin: 15px 0; padding-left: 25px; position: relative;">
                         <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">1.</span>
-                        <strong>Executive Summary</strong> - Platform overview and core principles
+                        <strong>Iterating fast</strong> - Platform overview and core principles
                     </li>
                     <li style="margin: 15px 0; padding-left: 25px; position: relative;">
                         <span style="position: absolute; left: 0; color: #ff9800; font-weight: bold;">2.</span>
@@ -340,15 +340,17 @@
 
         <!-- Executive Summary -->
         <section class="section">
-            <h2 class="section-title">Executive Summary</h2>
-            <p>AudioFlo is a modern, scalable SaaS platform that converts books into natural-sounding audio using AI-powered text-to-speech technology. Built with enterprise-grade technologies and best practices, the platform supports <span class="highlight-text">multi-tenant teams, flexible billing models, and high-volume audio processing</span>.</p>
+            <h2 class="section-title">1. Iterating fast</h2>
+
+            <p>Understanding that speed to market was crucial, <span class="highlight-text">I deliberately chose technologies I already knew well rather than chasing the latest trends</span>. While these tools might not have been the absolute "best" according to internet forums, they allowed me to build and iterate rapidly, gathering real user feedback instead of spending months learning new frameworks. This pragmatic approach meant I could ship features in weeks instead of months.</p>
 
             <p>I architected the system with three core principles in mind: performance at scale, developer productivity, and cost efficiency. Every technology choice was evaluated against these criteria to ensure we could grow from hundreds to millions of users without major rewrites.</p>
+
         </section>
 
         <!-- Technology Stack Overview -->
         <section class="section">
-            <h2 class="section-title">Technology Stack Overview</h2>
+            <h2 class="section-title">2. Technology Stack Overview</h2>
 
             <style>
                 .hover-zoom {
@@ -368,11 +370,14 @@
                 <figcaption style="margin-top: 15px; font-size: 0.95rem; color: #64748b; font-style: italic;">Figure 1: AudioFlo's General Tech Stack architecture (Hover over to zoom in)</figcaption>
             </figure>
 
+            <p>The architecture centers around a web-based approach hosted on Vercel, allowing users to access AudioFlo through any browser without needing iOS or Android apps. I leveraged numerous third-party services through APIs to accelerate development, integrating payment processing, authentication, and storage solutions rather than building them from scratch. The one major component I invested significant development time in was the AI processing system on Google Cloud Platform, as this represents the core value proposition of the entire business. This focused approach allowed me to deliver a production-ready platform quickly while ensuring the audio generation quality that meets high standards from authors</p>
+
+
         </section>
 
         <!-- Core Components -->
         <section class="section">
-            <h2 class="section-title">Core Technology Decisions</h2>
+            <h2 class="section-title">3. Core Technology Decisions</h2>
 
             <div class="tech-card">
                 <div style="display: flex; align-items: flex-start; gap: 20px;">
@@ -470,7 +475,7 @@
 
         <!-- Architecture Patterns -->
         <section class="section">
-            <h2 class="section-title">Architecture Features</h2>
+            <h2 class="section-title">4. Architecture Features</h2>
 
             <div class="architecture-box">
                 <h3>Multi-Tenant Architecture</h3>
@@ -502,7 +507,7 @@
 
         <!-- Security & Scale -->
         <section class="section">
-            <h2 class="section-title">Security & Scalability</h2>
+            <h2 class="section-title">5. Security & Scalability</h2>
 
             <p>I implemented a <span class="highlight-text">defense-in-depth security strategy</span> with multiple layers of protection:</p>
 
@@ -515,11 +520,14 @@
 
             <p>
                 AudioFlo achieves scalability through Vercel's serverless architecture, where Next.js functions scale automatically
-                based on demand. The platform maintains no server-side session state, enabling unlimited horizontal scaling. <br>
+                based on demand. The platform maintains no server-side session state, enabling unlimited horizontal scaling. <br><br>
+
                 Vercel's global CDN (powered by Cloudflare) automatically caches and serves static assets, Server Component outputs,
                 and API responses from 100+ edge locations. Database scalability is handled by Supabase's built-in connection
-                pooler (pgBouncer) and read replicas, supporting thousands of concurrent connections without manual configuration.
+                pooler (pgBouncer) and read replicas, supporting thousands of concurrent connections without manual configuration.            
             </p>
+
+            <p>This architecture eliminates the traditional scaling bottlenecks that plague many SaaS platforms. I don't need to provision servers, configure load balancers, or worry about traffic spikes during marketing campaigns. When demand increases, Vercel automatically spins up additional serverless functions, Supabase handles database scaling through its connection pooler, and the CDN serves cached content from the nearest edge location. This means AudioFlo can handle everything from 10 users to 10,000 concurrent users without any manual intervention or infrastructure changes on my part.</p>
 
             <div class="stat-grid">
                 <div class="stat-card">
@@ -539,7 +547,7 @@
 
         <!-- Development Workflow -->
         <section class="section">
-            <h2 class="section-title">Development Excellence</h2>
+            <h2 class="section-title">6. Development Excellence</h2>
 
             <p>I established a robust development workflow that ensures code quality while maintaining rapid iteration speed:</p>
 
@@ -564,11 +572,11 @@
 
         <!-- Future Ready -->
         <section class="section">
-            <h2 class="section-title">Future-Ready Architecture</h2>
+            <h2 class="section-title">7. Future-Ready Architecture</h2>
 
-            <p>The architecture embraces <span class="highlight-text">modular design principles</span> at every level. Each component operates independently with well-defined interfaces, making it simple to swap implementations, add new features, or scale specific services. This API-first approach ensures seamless integration with mobile applications, third-party services, and future platform extensions. Teams can enable or disable features based on their specific needs without affecting the core system.</p>
+            <p>I designed the architecture to embrace <span class="highlight-text">modular design principles</span> at every level, ensuring each component operates independently with well-defined interfaces. This makes it simple for me to swap implementations, add new features, or scale specific services without disrupting the entire system. My API-first approach ensures seamless integration when I eventually build mobile applications, connect third-party services, or develop future platform extensions. I can enable or disable features for different user segments based on their specific needs without affecting the core system functionality.</p>
 
-            <p>This positions AudioFlo as a technical leader in the audio conversion space, ready to scale with business growth and evolve with customer needs. The combination of cutting-edge technologies and proven architectural patterns provides a solid foundation for long-term success.</p>
+            <p>This thoughtful architecture positions AudioFlo as a technical leader in the audio conversion space, ready to scale with my business growth and evolve with changing customer needs. I've built a solid foundation using cutting-edge technologies combined with proven architectural patterns, giving me confidence that the platform can handle whatever challenges and opportunities lie ahead. The flexibility I've built into the system means I can respond quickly to market feedback and pivot features without major rewrites.</p>
         </section>
 
 
@@ -585,7 +593,7 @@
             <a href="../chapter7/chapter7-ai.html" class="nav-button next">
                 <div>
                     <div class="nav-label">Next Chapter</div>
-                    <div class="nav-title">AI & Machine Learning</div>
+                    <div class="nav-title">Agentic AI System</div>
                 </div>
                 <span>›</span>
             </a>
