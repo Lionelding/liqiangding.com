@@ -1,0 +1,158 @@
+/* Blog Page Specific Styles */
+
+/* Blog content area */
+.blog-content {
+    flex: 1;
+    max-width: 800px;
+}
+
+.blog-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.blog-post {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+}
+
+.featured-image {
+    width: 250px;
+    height: 200px;
+    border-radius: 0.75rem;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-left: 1.5rem;
+}
+
+.post-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.project-duration {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.post-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+/* Tag styles moved to common tags.css */
+
+.post-excerpt {
+    color: #475569;
+    line-height: 1.7;
+    margin: 0.5rem 0;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.project-links a {
+    color: #3B82F6;
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.project-links a:hover {
+    color: #2563EB;
+    transform: translateY(-2px);
+}
+
+.project-links a i {
+    transition: transform 0.3s ease;
+}
+
+.project-links a:hover i {
+    transform: translateY(3px);
+}
+
+.about-entrepreneurship {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.about-entrepreneurship:hover {
+    transform: translateY(-3px);
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+.section-content .motivation-text {
+    color: #475569;
+    line-height: 1.8;
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+/* Responsive adjustments for blog page */
+@media (max-width: 768px) {
+    .blog-post {
+        flex-direction: column;
+        padding: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .featured-image {
+        width: 100%;
+        height: 200px;
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
+
+    .post-title {
+        font-size: 1.25rem;
+    }
+
+    .about-entrepreneurship {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .profile-pic-container {
+        width: 300px;
+        height: 300px;
+    }
+}

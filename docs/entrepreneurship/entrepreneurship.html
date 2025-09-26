@@ -4,550 +4,803 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entrepreneurship - Your Name</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Shared styles from previous pages */
-        :root {
-            --primary-color: #1a1a1a;
-            --accent-color: #6366f1;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-            --glass: rgba(255, 255, 255, 0.9);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
+    <title>AudioFlo - AI-Powered Audiobook Production</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23ff9800'/><text x='50' y='60' font-family='Arial, sans-serif' font-size='32' font-weight='bold' text-anchor='middle' fill='white'>LD</text></svg>">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/css/main.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/analytics.js"></script>
+
+    
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background: #f8fafc;
-            color: #334155;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
+            color: #1e293b;
+            background: #f8f8f8;
+            min-height: 100vh;
         }
 
-        nav {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile navigation */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                gap: 1rem;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--glass);
-                backdrop-filter: blur(10px);
-                padding: 1rem;
-                box-shadow: var(--shadow);
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-        }
-
-        .container {
-            display: flex;
-            margin: 6rem 5% 2rem;
-            gap: 3rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .sidebar {
-            width: 300px;
+        .hero-section {
+            background: white;
+            padding: 60px 20px;
             text-align: center;
-            position: sticky;
-            top: 6rem;
-            height: fit-content;
-        }
-
-
-        /* Updated profile image styles */
-        .profile-pic-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 1.5rem;
-        }
-
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-pic-container::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .profile-pic-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--glass);
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: var(--shadow);
-        }
-
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background: var(--glass);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-        }
-
-        .social-icons a:hover {
-            background: var(--gradient);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Updated company cards styling */
-        .company-grid {
-            display: grid;
-            gap: 2rem;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .company-card {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .company-card:hover {
-            transform: translateY(-5px);
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        .company-header {
-            margin-bottom: 1.5rem;
-        }
 
-        .company-name {
-            font-size: 1.75rem;
-            margin-bottom: 0.75rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .company-timeframe {
-            color: #64748b;
-            font-size: 0.95rem;
-        }
-
-        .company-description {
-            color: #475569;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .company-industries {
+        .logo-container {
             display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .industry-tag {
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--accent-color);
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .company-website {
-            display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
         }
 
-        .company-website:hover {
-            color: #4f46e5;
-            transform: translateX(5px);
+        .logo-icon {
+            width: 80px;
+            height: 80px;
         }
 
-        .status-badge {
+        .logo-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: #2c2c2c;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -2px;
+        }
+
+        .logo-title .flo {
+            color: #ff9800;
+            font-weight: 300;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: #757575;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .vision-box {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            padding: 40px;
+            background: #fff9f0;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(255, 152, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            border: 1px solid #ffe4cc;
+        }
+
+        .vision-title {
+            font-size: 2rem;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .vision-text {
+            font-size: 1.1rem;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .metrics-section {
+            background: linear-gradient(135deg, #fff9f0, #ffe4cc);
+            padding: 50px 20px;
+        }
+
+        .hub-spoke-container {
+            position: relative;
+            width: 650px;
+            height: 500px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .center-circle {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #ff9800, #ff6b35);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 8px 30px rgba(255, 152, 0, 0.3);
+            z-index: 2;
         }
 
-        .active {
-            background: rgba(99, 102, 241, 0.15);
-            color: #6366f1;
+        .center-value {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
         }
 
-        .acquired {
-            background: rgba(168, 85, 247, 0.15);
-            color: #a855f7;
+        .center-label {
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
         }
 
-        .closed {
-            background: rgba(236, 72, 153, 0.15);
-            color: #ec4899;
+        .metric-circle {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #2c2c2c;
+            box-shadow: 0 4px 20px rgba(255, 152, 0, 0.15);
+            border: 2px solid #ff9800;
+            text-align: center;
+            padding: 10px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .circle-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 2px;
         }
+
+        .circle-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+            line-height: 1.1;
+            margin-top: 2px;
+        }
+
+        /* Positioning each circle around the center */
+        .circle-1 { top: 15px; left: 50%; transform: translateX(-50%); }
+        .circle-2 { top: 60px; right: 20px; }
+        .circle-3 { top: 50%; right: 0px; transform: translateY(-50%); }
+        .circle-4 { bottom: 60px; right: 20px; }
+        .circle-5 { bottom: 15px; left: 50%; transform: translateX(-50%); }
+        .circle-6 { bottom: 60px; left: 20px; }
+        .circle-7 { top: 50%; left: 0px; transform: translateY(-50%); }
+        .circle-8 { top: 60px; left: 20px; }
 
         @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                margin-top: 4rem;
+            .metrics-section {
+                padding: 30px 15px;
             }
 
-            .sidebar {
-                width: 100%;
-                position: static;
+            .hub-spoke-container {
+                width: 320px;
+                height: 320px;
+                max-width: 95vw;
             }
 
-            .profile-pic {
-                width: 150px;
-                height: 150px;
+            .center-circle {
+                width: 100px;
+                height: 100px;
             }
 
-            .company-card {
-                padding: 1.5rem;
+            .center-value {
+                font-size: 1.8rem;
             }
 
-            .company-name {
-                font-size: 1.5rem;
+            .center-label {
+                font-size: 0.85rem;
             }
 
-            .status-badge {
-                top: 1rem;
-                right: 1rem;
-                padding: 0.5rem 0.75rem;
+            .metric-circle {
+                width: 80px;
+                height: 80px;
+                padding: 5px;
             }
+
+            .circle-value {
+                font-size: 0.9rem;
+            }
+
+            .circle-label {
+                font-size: 0.65rem;
+                line-height: 1.1;
+            }
+
+            /* Adjust positions for mobile - closer to center */
+            .circle-1 { top: 10px; left: 50%; transform: translateX(-50%); }
+            .circle-2 { top: 50px; right: 15px; }
+            .circle-3 { top: 50%; right: 5px; transform: translateY(-50%); }
+            .circle-4 { bottom: 50px; right: 15px; }
+            .circle-5 { bottom: 10px; left: 50%; transform: translateX(-50%); }
+            .circle-6 { bottom: 50px; left: 15px; }
+            .circle-7 { top: 50%; left: 5px; transform: translateY(-50%); }
+            .circle-8 { top: 50px; left: 15px; }
         }
 
-        .about-entrepreneurship {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border-radius: 1.5rem;
-            padding: 2.5rem;
-            margin-bottom: 3rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-            animation: fadeIn 0.6s ease-out;
+        .timeline-section {
+            background: #FFFCFA;
+            padding: 40px 20px;
         }
 
-        .about-entrepreneurship:hover {
-            transform: translateY(-3px);
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        .timeline-title {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .timeline-image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .timeline-image {
+            max-width: 85%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-future {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .timeline-future-title {
+            font-size: 1.5rem;
+            color: #ff9800;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .timeline-future-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px 30px;
+        }
+
+        .timeline-future-list li {
+            padding: 8px 0;
+            color: #475569;
+            font-size: 1rem;
+            line-height: 1.5;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline-future-list li:before {
+            content: "✓";
+            color: #ff9800;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .chapters-section {
+            background: white;
+            padding: 80px 20px;
+        }
+
+        .chapters-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .chapters-title {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .chapters-intro {
+            font-size: 1.1rem;
+            color: #64748b;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .chapter-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chapter-content {
+            flex: 1;
+        }
+
+        .chapter-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chapter-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .chapter-header-content {
+            flex: 1;
+        }
+
+        .chapter-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .chapter-image.placeholder {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+        }
+
+        .chapter-image-placeholder {
+            color: #adb5bd;
+            font-size: 0.8rem;
+            text-align: center;
             line-height: 1.3;
         }
 
-        .motivation-text {
-            color: #475569;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+        .chapter-card:hover {
+            border-color: #ff9800;
+            box-shadow: 0 10px 30px rgba(255, 152, 0, 0.15);
+            transform: translateY(-5px);
         }
 
-        .motivation-text:last-child {
-            margin-bottom: 0;
+        .chapter-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            background: #ff9800;
+            color: white;
+            border-radius: 50%;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .chapter-title {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .chapter-description {
+            color: #64748b;
+            line-height: 1.6;
         }
 
         @media (max-width: 768px) {
-            .about-entrepreneurship {
-                padding: 1.5rem;
-                margin-bottom: 2rem;
+            .logo-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .logo-container img {
+                height: 120px !important;
+                width: auto !important;
+                max-width: 90% !important;
+            }
+            .logo-icon {
+                width: 60px;
+                height: 60px;
+            }
+            .logo-title {
+                font-size: 2.5rem;
+            }
+            .tagline {
+                font-size: 1.1rem;
+            }
+            .metric-value {
+                font-size: 2rem;
             }
 
-            .section-title {
-                font-size: 1.75rem;
+            /* Timeline mobile fixes */
+            .timeline-section {
+                padding: 30px 15px;
+            }
+            .timeline-title {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+            .timeline-future-list {
+                grid-template-columns: 1fr;
+                gap: 5px;
             }
 
-            .profile-pic {
-                width: 300px;
-                height: 300px;
+            /* Chapter cards mobile fixes */
+            .chapters-section {
+                padding: 50px 15px;
+            }
+            .chapters-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                max-width: 100%;
+            }
+            .chapter-card {
+                padding: 20px;
+                margin: 0;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .chapter-image {
+                width: 80px;
+                height: 80px;
+            }
+            .chapter-title {
+                font-size: 1.1rem;
+            }
+            .chapter-description {
+                font-size: 0.9rem;
+                line-height: 1.5;
             }
         }
     </style>
 </head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-3Z01HR33VG');
-</script>
 
 <body>
-    <nav>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
+    <!-- Navigation will be injected here by navigation-config.js -->
+    <div id="nav-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="logo-container">
+            <img src="./AudioFlo_banner_small.png" alt="AudioFlo Banner" style="height: 240px; width: auto; max-width: 100%;">
         </div>
-        <ul id="nav-menu">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../professional/professional.html">Professional Experience</a></li>
-            <li><a href="../research/research.html">Research</a></li>
-            <li><a href="../projects/projects.html">Side Projects</a></li>
-            <li><a href="./entrepreneurship.html">Entrepreneurship</a></li>
-            <li><a href="../blogs/blog.html">Blog</a></li>
-        </ul>
-    </nav>
 
-    <div class="container">
-        <aside class="sidebar">
-            <div class="profile-pic-container">
-                <img src="../assets/images/profile.jpg" alt="Your Name" class="profile-pic">
-            </div>
-            <div class="social-icons">
-                <a href="https://x.com/liqiang_ding" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.youtube.com/@947973" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i
-                        class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Lionelding" target="_blank"><i class="fab fa-github"></i></a>
-            </div>
-        </aside>
+        <h1 style="font-size: 3rem; font-weight: 700; color: #1e293b; margin: 30px 0 10px 0; text-align: center;">I Built <a href="https://www.audioflo.ai" target="_blank" style="color: #ff9800; text-decoration: none;">AudioFlo.ai</a> From Concept to Profitability in 90 Days</h1>
+        <p style="font-size: 1.3rem; color: #64748b; margin-bottom: 40px; text-align: center; font-weight: 500; letter-spacing: 1px;">A Complete SaaS Case Study</p>
 
-        <main class="blog-content">
-            <!-- New Why Entrepreneurship Section -->
-            <section class="about-entrepreneurship">
-                <h2 class="section-title">Why I Love Entrepreneurship</h2>
-                <div class="section-content">
-                    <p class="motivation-text">
-                        I love running a side business in my spare time because it lets me channel my creativity and
-                        passions into something tangible.
-                    </p>
-                    <p class="motivation-text">
-                        Entrepreneurship is more than just building companies - it's about solving real-world problems
-                        through innovation and persistence. For me, it combines the thrill of creative freedom with
-                        the satisfaction of creating tangible impact.
-                    </p>
-                    <p class="motivation-text">
-                        I'm passionate about the entire lifecycle: from validating early concepts and prototyping
-                        solutions,
-                        to scaling teams and navigating complex challenges. Each venture teaches invaluable lessons
-                        about
-                        leadership, resilience, and technological innovation.
-                    </p>
+        <div class="vision-box">
+            <p class="vision-text">
+                An honest look at the metrics, strategies, and lessons learned while building a SaaS company in 90 days. This case study shares the decisions that worked, the challenges faced, and the approach that eventually led to profitability.<br><br>
+
+                <strong>For:</strong> Entrepreneurs, founders, and business leaders seeking data-driven insights into rapid SaaS validation and growth execution.
+            </p>
+        </div>
+    </section>
+
+    <!-- Book Covers Section -->
+    <section style="background: #f8f9fa; padding: 30px 20px;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h3 style="color: #1e293b; margin-bottom: 20px; font-size: 1.2rem; font-weight: 600;">Recent Audiobooks Produced by AudioFlo.ai</h3>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <img src="./books/1_cover.jpg" alt="Book Cover 1" style="height: 120px; width: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <img src="./books/3_cover.jpg" alt="Book Cover 3" style="height: 120px; width: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <img src="./books/5_cover.jpg" alt="Book Cover 5" style="height: 120px; width: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <img src="./books/6_cover.jpg" alt="Book Cover 12" style="height: 120px; width: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <img src="./books/15_cover.jpg" alt="Book Cover 15" style="height: 120px; width: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section class="metrics-section">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h3 style="text-align: center; color: #2c2c2c; margin-bottom: 40px; font-size: 2rem;">Key Performance Metrics</h3>
+
+            <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; justify-content: center;">
+                <!-- Table on the left -->
+                <div style="flex: 1; min-width: 350px; max-width: 500px;">
+                    <h4 style="color: #1e293b; margin-bottom: 20px; font-size: 1.2rem; text-align: center;">Business Performance</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <thead>
+                                <tr style="background: #ff9800; color: white;">
+                                    <th style="padding: 15px; text-align: left; font-weight: 600;">Metric</th>
+                                    <th style="padding: 15px; text-align: center; font-weight: 600;">Industry</th>
+                                    <th style="padding: 15px; text-align: center; font-weight: 600;">AudioFlo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 25px 15px; font-weight: 600;">LTV:CAC</td>
+                                    <td style="padding: 25px 15px; text-align: center;">3:1</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">7:1</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 25px 15px; font-weight: 600;">Trial-to-Paid</td>
+                                    <td style="padding: 25px 15px; text-align: center;">15-25%</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">35.71%</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 25px 15px; font-weight: 600;">Reg-to-Paid</td>
+                                    <td style="padding: 25px 15px; text-align: center;">1.5-3%</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">3%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </section>
 
-            <div class="company-grid">
-                <!-- Company 1 -->
-                <article class="company-card">
-                    <span class="status-badge active">Active</span>
-                    <div class="company-header">
-                        <h2 class="company-name">Client Express</h2>
-                        <div class="company-timeframe">2023 - Present</div>
+                <!-- Growth Metrics on the right -->
+                <div style="flex: 1; min-width: 350px; max-width: 500px;">
+                    <h4 style="color: #1e293b; margin-bottom: 20px; font-size: 1.2rem; text-align: center;">Growth & Efficiency</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <thead>
+                                <tr style="background: #ff9800; color: white;">
+                                    <th style="padding: 15px; text-align: center; font-weight: 600;" colspan="2">Customer & Revenue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 25px 15px; font-weight: 600;">Payback Period</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">First Transaction</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 25px 15px; font-weight: 600;">Customer Growth</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">42% Monthly</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 25px 15px; font-weight: 600;">Customer Lifetime</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">3 months+</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="company-industries">
-                        <span class="industry-tag">SaaS</span>
-                        <span class="industry-tag">CRM</span>
-                        <span class="industry-tag">Cloud Computing</span>
-                    </div>
-                    <p class="company-description">
-                        An agile customer relationship management (CRM) system to connect costumers and business.
-                    </p>
-                </article>
-
-                <!-- Company 2 -->
-                <article class="company-card">
-                    <span class="status-badge acquired">Active</span>
-                    <div class="company-header">
-                        <h2 class="company-name">Global AI Education</h2>
-                        <div class="company-timeframe">2024 - Present</div>
-                    </div>
-                    <div class="company-industries">
-                        <span class="industry-tag">Education</span>
-                        <span class="industry-tag">Gen AI</span>
-                        <span class="industry-tag">Online learning school</span>
-                    </div>
-                    <p class="company-description">
-                        The global learning institution
-                        focused on spreading ML and generative AI knowledge.
-                        As a co-founder, I lead the curriculum design and mentor students.
-                    </p>
-                    <a href="https://www.globalaieducation.com" class="company-website" target="_blank">
-                        Visit it at www.globalaieducation.com
-                        <i class="fas fa-external-link-alt"></i>
-                    </a>
-                </article>
-
-                <!-- Company 3 -->
-                <article class="company-card">
-                    <span class="status-badge closed">Closed (2016)</span>
-                    <div class="company-header">
-                        <h2 class="company-name">Beat Exams</h2>
-                        <div class="company-timeframe">2012 - 2016</div>
-                    </div>
-                    <div class="company-industries">
-                        <span class="industry-tag">Online bookstore</span>
-                        <span class="industry-tag">Second-hand textbook exchange</span>
-
-                    </div>
-                    <p class="company-description">
-                        Implemented marketing strategies and set up promotion plans for attracting potential customers.
-                        Managed the overall resource of products and supervised the designs of covers of products and
-                        creativities of advertisements, and ran it profitable within one month
-                    </p>
-                </article>
+                </div>
             </div>
-        </main>
-    </div>
-    <script>
-        // Mobile menu toggle
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
 
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-    </script>
+            <p style="text-align: center; margin: 40px auto 20px auto; max-width: 800px; color: #475569; line-height: 1.8; font-size: 1.1rem;">In March 2025, I spent three intensive months building <a href="https://www.audioflo.ai" target="_blank" style="color: #ff9800; text-decoration: none; font-weight: 600;">AudioFlo.ai</a> after discovering firsthand how complicated and expensive it is for indie authors to create audiobooks.</p>
+
+            <p style="text-align: center; margin: 20px auto 20px auto; max-width: 800px; color: #475569; line-height: 1.8; font-size: 1.1rem;">Since launching in July 2025, I've had the privilege of helping <span style="color: #ff9800; font-weight: 600;">70+ indie authors</span> bring their stories to audio, producing over <span style="color: #ff9800; font-weight: 600;">500 hours</span> of audiobook content. Their feedback, along with insights from publishing industry professionals, has been invaluable in shaping the platform. Through continuous iteration based on real user needs, AudioFlo has evolved into a <span style="color: #ff9800; font-weight: 600;">self-sustaining business</span> that delivers meaningful value to authors while maintaining healthy metrics.</p>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="timeline-container">
+            <h2 class="timeline-title">Our Progress & What's Next</h2>
+            <div class="timeline-image-wrapper">
+                <img src="./timeline.png" alt="AudioFlo Development Timeline" class="timeline-image">
+            </div>
+            <div class="timeline-future">
+                <h3 class="timeline-future-title">2025 August Beyond</h3>
+                <ul class="timeline-future-list">
+                    <li>Full Autonomous Operation</li>
+                    <li>Self-sustaining revenue model with automated scaling</li>
+                    <li>Organic growth through word-of-mouth and product excellence</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapters Section -->
+    <section class="chapters-section">
+        <div class="chapters-container">
+            <h2 class="chapters-title">The Journey Behind the Metrics</h2>
+            <p class="chapters-intro">
+                Each chapter below represents a critical business perspective in the complete journey from customer discovery to marketing campaigns. Together, they form the comprehensive process of how I built AudioFlo.ai from concept to market. Click on any topic to dive into the detailed strategies, methodologies, and insights that shaped this entrepreneurial venture. I hope these real-world experiences will provide valuable guidance for your own startup journey.
+            </p>
+            <div class="chapters-grid">
+                <a href="./chapter1/chapter1-vision.html" class="chapter-card">
+                    <div class="chapter-top">
+                        <div class="chapter-header-content">
+                            <div class="chapter-header">
+                                <div class="chapter-number">1</div>
+                                <h3 class="chapter-title">Discovery & Vision</h3>
+                            </div>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="./chapter1/cover.jpg" alt="Vision Chapter Cover" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        </div>
+                    </div>
+                    <p class="chapter-description">
+                        How I discovered the audiobook production problem through personal experience and validated it with 24 author interviews?
+                    </p>
+                    <p style="color: #ff9800; font-weight: 600; font-size: 0.9rem; margin-top: 15px;">Read more...</p>
+                </a>
+                <a href="./chapter2/chapter2-market.html" class="chapter-card">
+                    <div class="chapter-top">
+                        <div class="chapter-header-content">
+                            <div class="chapter-header">
+                                <div class="chapter-number">2</div>
+                                <h3 class="chapter-title">Market Analysis</h3>
+                            </div>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="./chapter2/segment_genre.png" alt="segment_genre" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        </div>
+                    </div>
+                    <p class="chapter-description">
+                        How to position AudioFlo by identifying the market gap where 95% of authors can't afford audiobook production?
+                    </p>
+                    <p style="color: #ff9800; font-weight: 600; font-size: 0.9rem; margin-top: 15px;">Read more...</p>
+                </a>
+                <a href="./chapter3/chapter3-business.html" class="chapter-card">
+                    <div class="chapter-top">
+                        <div class="chapter-header-content">
+                            <div class="chapter-header">
+                                <div class="chapter-number">3</div>
+                                <h3 class="chapter-title">Business Strategy</h3>
+                            </div>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="./chapter3/competition.png" alt="segment_genre" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        </div>
+                    </div>
+                    <p class="chapter-description">
+                        How to survive as a business and make a meaningful impact in today’s competitive market?
+                    </p>
+                    <p style="color: #ff9800; font-weight: 600; font-size: 0.9rem; margin-top: 15px;">Read more...</p>
+                </a>
+                <a href="./chapter4/chapter4-design.html" class="chapter-card">
+                    <div class="chapter-top">
+                        <div class="chapter-header-content">
+                            <div class="chapter-header">
+                                <div class="chapter-number">4</div>
+                                <h3 class="chapter-title">Product Design</h3>
+                            </div>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="./chapter4/c4_preview.png" alt="c4_preview" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        </div>
+                    </div>
+                    <p class="chapter-description">
+                        How to design an intuitive product with progressive disclosure that all-age users can benefit from?
+                    </p>
+                    <p style="color: #ff9800; font-weight: 600; font-size: 0.9rem; margin-top: 15px;">Read more...</p>
+                </a>
+                <a href="./chapter5/chapter5-voice.html" class="chapter-card">
+                    <div class="chapter-top">
+                        <div class="chapter-header-content">
+                            <div class="chapter-header">
+                                <div class="chapter-number">5</div>
+                                <h3 class="chapter-title">Voiced with Warmth</h3>
+                            </div>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="https://audioflo.github.io/assets/ai_characters/professional/3_aether.jpg" alt="ai_characters" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        </div>
+                    </div>
+                    <p class="chapter-description">
+                        How to build emotional connections between users and AI through personalized characters and backstoires?
+                    </p>
+                    <p style="color: #ff9800; font-weight: 600; font-size: 0.9rem; margin-top: 15px;">Read more...</p>
+                </a>
+                <a href="./chapter6/chapter6-technical.html" class="chapter-card">
+                    <div class="chapter-top">
+                        <div class="chapter-header-content">
+                            <div class="chapter-header">
+                                <div class="chapter-number">6</div>
+                                <h3 class="chapter-title">Technical Architecture</h3>
+                            </div>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="./chapter6/overview.png" alt="tech stack overview" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        </div>
+                    </div>
+                    <p class="chapter-description">
+                        How to develop a scalable SaaS platform that handles millions of users with enterprise-grade performance?
+                    </p>
+                    <p style="color: #ff9800; font-weight: 600; font-size: 0.9rem; margin-top: 15px;">Read more...</p>
+                </a>
+                <a href="./chapter7/chapter7-ai.html" class="chapter-card">
+                    <div class="chapter-top">
+                        <div class="chapter-header-content">
+                            <div class="chapter-header">
+                                <div class="chapter-number">7</div>
+                                <h3 class="chapter-title">Agentic AI System</h3>
+                            </div>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="./chapter7/audioflo_ml_architecture.png" alt="audioflo_ml_architecture" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        </div>
+                    </div>
+                    <p class="chapter-description">
+                        How to engineer a multi-agent AI system that intelligently transforms a book into a studio-quality audiobook?
+                    </p>
+                    <p style="color: #ff9800; font-weight: 600; font-size: 0.9rem; margin-top: 15px;">Read more...</p>
+                </a>
+                <a href="./chapter8/chapter8-sales.html" class="chapter-card">
+                    <div class="chapter-top">
+                        <div class="chapter-header-content">
+                            <div class="chapter-header">
+                                <div class="chapter-number">8</div>
+                                <h3 class="chapter-title">Marketing Campagins</h3>
+                            </div>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="./chapter8/11.jpg" alt="marketing campaign" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        </div>
+                    </div>
+                    <p class="chapter-description">
+                        How to be profitable within a month of launch through strategic CRM pipelines that achieves 35.75% conversion rate?
+                    </p>
+                    <p style="color: #ff9800; font-weight: 600; font-size: 0.9rem; margin-top: 15px;">Read more...</p>
+                </a>
+                <a href="./chapter9/chapter9-revenue.html" class="chapter-card">
+                    <div class="chapter-top">
+                        <div class="chapter-header-content">
+                            <div class="chapter-header">
+                                <div class="chapter-number">9</div>
+                                <h3 class="chapter-title">Sales & Revenue</h3>
+                            </div>
+                        </div>
+                        <div class="chapter-image">
+                            <img src="./chapter9/sales-funnel-stages.jpg" alt="marketing campaign" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                        </div>
+                    </div>
+                    <p class="chapter-description">
+                        How AudioFlo's key business metrics demonstrate exceptional market fit and sustainable unit economics?
+                    </p>
+                    <p style="color: #ff9800; font-weight: 600; font-size: 0.9rem; margin-top: 15px;">Read more...</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- External JavaScript -->
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/navigation.js"></script>
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/navigation-config.js"></script>
 </body>
 
 </html>

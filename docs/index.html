@@ -4,321 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Blog</title>
+    <title>Liqiang Ding- Personal Blog</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23ff9800'/><text x='50' y='60' font-family='Arial, sans-serif' font-size='32' font-weight='bold' text-anchor='middle' fill='white'>LD</text></svg>">
+
+    <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #1a1a1a;
-            --accent-color: #6366f1;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-            --glass: rgba(255, 255, 255, 0.9);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        }
-
-        body {
-            background: #f8fafc;
-            color: #334155;
-            line-height: 1.6;
-        }
-
-        /* Modern navigation */
-        nav {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile navigation */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                gap: 1rem;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--glass);
-                backdrop-filter: blur(10px);
-                padding: 1rem;
-                box-shadow: var(--shadow);
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-        }
-
-        /* Main layout */
-        .container {
-            display: flex;
-            margin: 6rem 5% 2rem;
-            gap: 3rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Modern sidebar */
-        .sidebar {
-            width: 300px;
-            text-align: center;
-            position: sticky;
-            top: 6rem;
-            height: fit-content;
-        }
-
-        /* Updated profile image styles */
-        .profile-pic-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 1.5rem;
-        }
-
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-pic-container::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .profile-pic-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--glass);
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: var(--shadow);
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background: var(--glass);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-        }
-
-        .social-icons a:hover {
-            background: var(--gradient);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Modern bio section */
-        .bio {
-            flex: 1;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 1.5rem;
-            box-shadow: var(--shadow);
-        }
-
-        .bio h1 {
-            font-size: 2.75rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.2;
-        }
-
-        .bio p {
-            font-size: 1.1rem;
-            color: #475569;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .container {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                margin-top: 4rem;
-            }
-
-            .sidebar {
-                width: 100%;
-                position: static;
-            }
-
-            .profile-pic {
-                width: 300px;
-                height: 300px;
-            }
-
-            .bio {
-                padding: 1.5rem;
-            }
-
-            .bio h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/css/main.css">
+    <link rel="stylesheet" href="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/css/index.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/analytics.js"></script>
 </head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-3Z01HR33VG');
-</script>
 
 <body>
-    <nav>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul id="nav-menu">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="professional/professional.html">Professional Experience</a></li>
-            <li><a href="research/research.html">Research</a></li>
-            <li><a href="projects/projects.html">Side Projects</a></li>
-            <li><a href="entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
-            <li><a href="blogs/blog.html">Blog</a></li>
-        </ul>
-    </nav>
+    <!-- Navigation will be injected here by navigation-config.js -->
+    <div id="nav-container"></div>
 
     <div class="container">
         <aside class="sidebar">
             <div class="profile-pic-container">
-                <img src="assets/images/profile.jpg" alt="Your Name" class="profile-pic">
+                <img src="assets/images/profile.jpg" alt="Liqiang Ding" class="profile-pic">
             </div>
             <div class="social-icons">
                 <a href="https://x.com/liqiang_ding" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.youtube.com/@947973" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i
-                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/Lionelding" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </aside>
@@ -341,21 +54,14 @@
                 the quiet balance that these curious companions bring to my life.</p>
 
             <p>Driven by an insatiable curiosity to explore the world—both through technology and beyond—I am committed
-                to continuous learning, and innovation. Let’s connect and
+                to continuous learning, and innovation. Let's connect and
                 discover new possibilities together.</p>
         </main>
     </div>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
-
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-    </script>
+    <!-- External JavaScript -->
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/navigation.js"></script>
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/navigation-config.js"></script>
 </body>
 
 </html>

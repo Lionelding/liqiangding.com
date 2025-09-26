@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works at Unity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/tags.css">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #6366f1;
+            --gradient: linear-gradient(135deg, #ff9800 0%, #ffb74d 50%, #ffc107 100%);
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        nav {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile navigation */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--glass);
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+                box-shadow: var(--shadow);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+
+        .container {
+            display: flex;
+            margin: 6rem 5% 2rem;
+            gap: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .sidebar {
+            width: 300px;
+            text-align: center;
+            position: sticky;
+            top: 6rem;
+            height: fit-content;
+        }
+
+        /* Updated profile image styles */
+        .profile-pic-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-icons a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Updated article styles to match blog listing */
+        .blog-content {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .blog-article {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+        }
+
+        .article-title {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-subtitle {
+            background: #1E90FF;
+            /* Change to a blue color */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .article-meta {
+            color: #64748b;
+            font-size: 0.95rem;
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            border: 3px solid transparent;
+            mask-composite: exclude;
+        }
+
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #475569;
+        }
+
+        .article-content h2 {
+            margin: 2.5rem 0 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.75rem;
+        }
+
+        .article-content code {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 0.3em 0.5em;
+            border-radius: 0.3em;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .article-content pre {
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.8rem;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        /* Tag styles imported from tags.css */
+        .tags {
+            margin: 2rem 0;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #3B82F6;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            background: var(--glass);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-blog:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        .social-sharing {
+            display: flex;
+            gap: 1rem;
+            margin: 3rem 0 2rem;
+        }
+
+        .social-sharing a {
+            padding: 0.8rem 1.5rem;
+            border-radius: 999px;
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .social-sharing a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .center-equation {
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gif-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gif-container img {
+            width: 32%;
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .sub-line {
+            font-size: 0.9rem;
+            color: #64748b;
+            /* A lighter color for the sub-line */
+            margin-top: 0.5rem;
+            /* Add some spacing between the main text and sub-line */
+        }
+
+        .math {
+            font-family: "Times New Roman", serif;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                margin-top: 4rem;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+            }
+
+            .profile-pic {
+                width: 300px;
+                height: 300px;
+            }
+
+            .blog-article {
+                padding: 2rem;
+            }
+
+            .article-title {
+                font-size: 2rem;
+            }
+
+            .article-image {
+                height: 350px;
+                margin: 1.5rem 0;
+            }
+
+            .social-sharing {
+                flex-direction: column;
+            }
+
+            .gif-container {
+                flex-direction: column;
+            }
+
+            .gif-container img {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation will be injected here by navigation-config.js -->
+    <div id="nav-container"></div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-pic-container">
+                <img src="../../assets/images/profile.jpg" alt="Liqiang" class="profile-pic">
+            </div>
+            <div class="social-icons">
+                <a href="https://x.com/liqiang_ding" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@947973" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Lionelding" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </aside>
+
+        <main class="blog-content">
+            <article class="blog-article">
+                <header class="article-header">
+                    <div class="article-meta">
+                        <span>Published: August 16, 2022</span>
+                    </div>
+                    <h1 class="article-title">Metacast: Multi-View 3D Human Reconstruction</h1>
+                    <h2>Attention PiFU: Multi-View 3D Reconstruction of Crowded Multi-Person Interactions
+                    </h2>
+
+                </header>
+
+                <div class="tags">
+                    <span class="tag">3D Human Reconstruction</span>
+                    <span class="tag">Multi-view</span>
+                    <span class="tag">Multi-person</span>
+                </div>
+
+                <div
+                    style="background-color: #e1f6ea; border-left: 4px solid #ccc; padding: 25px; margin: 10px 0; font-style: italic;">
+                    <p>A technical research I led at Unity. For technical details, please see our paper.</p>
+                </div>
+
+                <div class="article-content">
+
+                    <h3 class="article-subtitle">Objective</h3>
+
+                    <p> To design and implement a robust deep learning framework for 3D dynamic scene reconstruction,
+                        leveraging multi-view camera systems, to model complex human interactions in densely populated
+                        environments. </p>
+
+                    <h3 class="article-subtitle">Dataset</h3>
+
+                    <img src="./ufc_train.png" alt="ufc_train" class="article-image">
+                    <figcaption style="text-align: center;">Figure: An example of the inputs at training.</figcaption>
+
+                    <img src="./ufc_test.png" alt="ufc_test" class="article-image">
+                    <figcaption style="text-align: center;">Figure: An example of the inputs at testing.</figcaption>
+                    <h4> UFC Dataset </h4>
+                    <li> Internally captured with two professional UFC athletes. All 2D views are generated with
+                        orthogonal projection.</li>
+                    <li> train set: 3600 scenes in 3D mesh</li>
+                    <li> valid set: 600 scenes in 3D mesh</li>
+                    <li> At training, every 3D scene is decomposed into
+                        \(k \) 2D
+                        RGB views, \(k \) 2D binary masks, a texture map, and a normal map. All of them are forwarded to
+                        the model.</li>
+                    <li> At testing, every 3D scene is decomposed into
+                        \(k \) 2D
+                        RGB views, and \(k \) 2D binary masks. Only RGB views and masks are forwarded to the model.</li>
+
+                    <h3 class="article-subtitle">Result Demonstration</h3>
+                    <img src="./test_input.png" alt="test_input" class="article-image">
+                    <figcaption style="text-align: center;">Figure: Multi-view RGB images as input</figcaption>
+
+                    <img src="./test_output.png" alt="test_output" class="article-image">
+                    <figcaption style="text-align: center;">Figure: A 3D mesh as output</figcaption>
+
+                    <p>Prediction on a unseen scene</p>
+                    <li> Input: \(k \) (\(k \)=5) RGB images + \(k \) (\(k \)=5) binary masks</li>
+                    <li> Output: a 3D mesh</li>
+                    <li> Inference time: 50 seconds on a single Nvidia T4 GPU</li>
+
+
+
+
+                    <h3 class="article-subtitle">Method</h3>
+                    <p>The following diagrams illustrate the geometry branch of our model.</p>
+                    <img src="./Metacast_PiFU_step1.jpg" alt="Metacast_PiFU_step1" class="article-image">
+                    <figcaption style="text-align: center;">Step 1: Project an input 3D mesh to four 2D-planes
+                    </figcaption>
+
+                    <img src="./Metacast_PiFU_step2.jpg" alt="Metacast_PiFU_step2" class="article-image">
+                    <figcaption style="text-align: center;">Step 2: Sample n points around the 3D mesh surface and the
+                        space</figcaption>
+
+                    <img src="./Metacast_PiFU_step3.jpg" alt="Metacast_PiFU_step3" class="article-image">
+                    <figcaption style="text-align: center;">Step 3: Orthogonally project 3D sampled points to each view
+                        image</figcaption>
+
+                    <img src="./Metacast_PiFU_step4.jpg" alt="Metacast_PiFU_step4" class="article-image">
+                    <figcaption style="text-align: center;">Step 4: Obtain each projected 2D pixel’s image features from
+                        Image Feature Encoder.</figcaption>
+
+                    <img src="./step5_c.jpg" alt="step5_c" class="article-image">
+                    <figcaption style="text-align: center;">Step 5: Introduce a dummy feature
+                        (token) to each feature encoder, leverage a self-attention encoder to
+                        encode the fused image and
+                        point cloud features.</figcaption>
+
+                    <img src="./Metacast_PiFU_step6.jpg" alt="Metacast_PiFU_step6" class="article-image">
+                    <figcaption style="text-align: center;">Step 6: Averaged features are fed into a classifier to
+                        classify if each point is inside/outside the 3D mesh.</figcaption>
+
+                    <h3 class="article-subtitle">Experiments</h3>
+                    <img src="./4views.png" alt="4views" class="article-image">
+                    <figcaption style="text-align: center;">Fig: Test results when 4 views are input to each model
+                    </figcaption>
+                    <img src="./onemoreview.png" alt="onemoreview" class="article-image">
+                    <figcaption style="text-align: center;">Fig: Add one more view to the model during training and
+                        testing</figcaption>
+                    </figcaption>
+                    <img src="./5views.png" alt="5views" class="article-image">
+                    <figcaption style="text-align: center;">Test results when 5 views are input to each model
+                    </figcaption>
+                    <img src="./5views_geometry.png" alt="5views_geometry" class="article-image">
+                    <figcaption style="text-align: center;">Test losses when 5 views are input to each model
+                    </figcaption>
+
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <a href="../blogs.html" class="back-to-blog">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Blogs
+                        </a>
+                    </div>
+                </div>
+
+            </article>
+        </main>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="../../assets/js/navigation.js"></script>
+    <script src="../../assets/js/navigation-config.js"></script>
+</body>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+
+    mobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+</script>
+
+</html>

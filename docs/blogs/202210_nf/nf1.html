@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Normalizing Flows and Its Friends (Part 1)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/tags.css">
     <style>
         :root {
             --primary-color: #1a1a1a;
             --accent-color: #6366f1;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --gradient: linear-gradient(135deg, #ff9800 0%, #ffb74d 50%, #ffc107 100%);
             --glass: rgba(255, 255, 255, 0.9);
             --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
@@ -207,10 +208,7 @@
 
         .article-title {
             font-size: 2.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: #1a1a1a;
             line-height: 1.2;
             margin-bottom: 1.5rem;
         }
@@ -268,14 +266,6 @@
             flex-wrap: wrap;
         }
 
-        .tag {
-            background: rgba(99, 102, 241, 0.1);
-            color: #6366f1;
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
 
         .back-to-blog {
             display: inline-flex;
@@ -373,6 +363,7 @@
         }
     </style>
 </head>
+<script src="../../assets/js/navigation-config.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -383,21 +374,7 @@
 </script>
 
 <body>
-    <nav>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul id="nav-menu">
-            <li><a href="../../index.html">Home</a></li>
-            <li><a href="../../professional/professional.html">Professional Experience</a></li>
-            <li><a href="../../research/research.html">Research</a></li>
-            <li><a href="../../projects/projects.html">Side Projects</a></li>
-            <li><a href="../../entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
-            <li><a href="../blog.html" class="active">Blog</a></li>
-        </ul>
-    </nav>
+    <div id="nav-container"></div>
 
     <div class="container">
         <aside class="sidebar">
@@ -426,6 +403,12 @@
                 </header>
 
                 <div class="article-content">
+                    <div class="tags">
+                        <span class="tag">Jacobian Matrix</span>
+                        <span class="tag">Determinant</span>
+                        <span class="tag">Change of Variable Theorem</span>
+                    </div>
+
                     <p>Here is some pre-requisite knowledge required before we move to Normalizing Flows.</p>
 
                     <h2><strong>1. Jacobian Matrix</strong></h2>
@@ -511,27 +494,12 @@
                         </li>
                     </ol>
 
-                    <div class="social-sharing">
-                        <a href="https://x.com/home">
-                            <i class="fab fa-twitter"></i>
-                            Share on Twitter
-                        </a>
-                        <a href="https://www.linkedin.com/">
-                            <i class="fab fa-linkedin"></i>
-                            Share on LinkedIn
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <a href="../blogs.html" class="back-to-blog">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Blogs
                         </a>
                     </div>
-
-                    <div class="tags">
-                        <span class="tag">Jacobian Matrix</span>
-                        <span class="tag">Determinant</span>
-                        <span class="tag">Change of Variable Theorem</span>
-                    </div>
-
-                    <a href="../blog.html" class="back-to-blog">
-                        <i class="fas fa-arrow-left"></i>
-                        Back to Blog
-                    </a>
                 </div>
 
             </article>

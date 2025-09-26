@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs - Liqiang Ding</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23ff9800'/><text x='50' y='60' font-family='Arial, sans-serif' font-size='32' font-weight='bold' text-anchor='middle' fill='white'>LD</text></svg>">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/tags.css">
+    <link rel="stylesheet" href="../assets/css/blogs.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
+    <script src="../assets/js/analytics.js"></script>
+</head>
+
+<body>
+    <!-- Navigation will be injected here by navigation-config.js -->
+    <div id="nav-container"></div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-pic-container">
+                <img src="../assets/images/profile.jpg" alt="Your Name" class="profile-pic">
+            </div>
+            <div class="social-icons">
+                <a href="https://x.com/liqiang_ding" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@947973" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Lionelding" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </aside>
+
+        <main class="blog-content">
+            <section class="about-entrepreneurship">
+                <h2 class="section-title">Publications & Technical Blogs</h2>
+                <div class="section-content">
+                    <p class="motivation-text">My expertise lies at the intersection of applied research and product engineering. I’m passionate about solving real-world problems by translating cutting-edge research into practical, scalable solutions. My work spans across 3D representation learning, 2D video generation, and self-supervised learning, areas where I combine deep technical insight with hands-on implementation.
+                        
+                        <br><br>I thrive in roles that require both rigorous research thinking and strong engineering execution. Beyond building systems, I enjoy writing technical blogs to deepen my understanding of new concepts and share knowledge with the broader community.
+                    </p>
+                </div>
+            </section>
+
+            <div class="blog-posts">
+                <!-- Blog Post 1: 2024 2-Stage -->
+                <article class="blog-post" id="2024-2stage">
+                    <img src="./202409_2stage/example_0.gif" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2024 • Technical Blog</div>
+                        <h2 class="post-title">Recursive Temporal-Consistent Video Generation on Latent Variables via
+                            Alpha Diffusion Framework: Integrating Global and Local Contextual Modeling for 30-Second Sequences
+                        </h2>
+                        <div class="tags">
+                            <span class="tag">Temporal-consistent</span>
+                            <span class="tag">Alpha blend diffusion</span>
+                            <span class="tag">Recursive generation</span>
+                        </div>
+                        <p class="post-excerpt">
+                            This paper introduces a novel framework for recursively generating temporally consistent
+                            content sequences of 30-second duration using an Alpha Diffusion architecture. By integrating global
+                            and local contextual modeling, our approach ensures coherence across temporal scales while
+                            maintaining high fidelity in content generation. The global context captures overarching
+                            structural patterns, while the local context refines fine-grained details, enabling seamless
+                            transitions and long-term consistency...
+                        </p>
+                        <div class="project-links">
+                            <a href="./202409_2stage/lab_2stage.html" class="download-link" target="_blank">
+                                <i class="fas fa-arrow-right"></i>
+                                Read more
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2: 2023 PGTAV -->
+                <article class="blog-post" id="2023-pgtav">
+                    <img src="./202310_pgtav/00004_result_r5t5.png" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2023 • Technical Blog</div>
+                        <h2 class="post-title">Diffusion-Based One-Shot Video Generation via Pose-Guided Alignment</h2>
+                        <div class="tags">
+                            <span class="tag">DDIM</span>
+                            <span class="tag">PGT-AV</span>
+                            <span class="tag">Video Generation</span>
+                        </div>
+                        <p class="post-excerpt">
+                            This paper presents a novel approach to generate videos conditioned on a single input frame
+                            using pose-guided trajectory alignment. Our method integrates diffusion models with motion
+                            priors to synthesize temporally coherent video sequences while preserving the identity and
+                            appearance of the input subject. By leveraging human pose as an intermediate representation,
+                            we achieve precise control over motion dynamics...
+                        </p>
+                        <div class="project-links">
+                            <a href="./202310_pgtav/lab_pgtav.html" class="download-link" target="_blank">
+                                <i class="fas fa-arrow-right"></i>
+                                Read more
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3: 2022 MetaCast App -->
+                <article class="blog-post" id="2022-metacastapp">
+                    <img src="./202210_metacastapp/metacast_preview.png" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2022 • Product</div>
+                        <h2 class="post-title">MetaCast App: Democratizing Real-Time 3D Human Capture</h2>
+                        <div class="tags">
+                            <span class="tag">3D MoCap</span>
+                            <span class="tag">Diffusion Avatar</span>
+                            <span class="tag">Monocular Video Input</span>
+                        </div>
+                        <p class="post-excerpt">
+                            MetaCast is a revolutionary iOS application that transforms any iPhone into a professional
+                            motion capture studio. Using advanced computer vision and machine learning, it captures
+                            full-body 3D human motion from a single camera in real-time. The app democratizes motion
+                            capture technology, making it accessible to content creators, game developers, and fitness
+                            enthusiasts without expensive equipment...
+                        </p>
+                        <div class="project-links">
+                            <a href="./202210_metacastapp/unity_metacastapp.html" class="download-link" target="_blank">
+                                <i class="fas fa-arrow-right"></i>
+                                Read more
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 5: 2022 Pose -->
+                <article class="blog-post" id="2022-pose">
+                    <img src="./202204_pose/wireframe2.gif" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2022 • Technical Blog</div>
+                        <h2 class="post-title">Metacast: 3D Human Pose Estimation</h2>
+                        <div class="tags">
+                            <span class="tag">3D Pose</span>
+                            <span class="tag">Sports</span>
+                        </div>
+                        <p class="post-excerpt">
+                            This research presents a specialized 3D pose estimation system optimized for sports
+                            performance analysis. Our approach combines multi-view geometry with deep learning to
+                            accurately capture complex athletic movements in real-time. By training on sport-specific
+                            datasets, we achieve superior accuracy in tracking rapid motions, occlusions, and unusual
+                            body configurations common in athletic activities...
+                        </p>
+                        <div class="project-links">
+                            <a href="./202204_pose/unity_pose.html" class="download-link" target="_blank">
+                                <i class="fas fa-arrow-right"></i>
+                                Read more
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4: 2022 Reconstruction -->
+                <article class="blog-post" id="2022-reconstruction">
+                    <img src="./202208_reconstruction/test_output.png" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2022 • Technical Blog</div>
+                        <h2 class="post-title">Metacast: Multi-View 3D Human Reconstruction</h2>
+                        <div class="tags">
+                            <span class="tag">Sensor Fusion</span>
+                            <span class="tag">3D Moiton Capture</span>
+                        </div>
+                        <p class="post-excerpt">
+                            This work addresses the critical challenge of synchronizing visual and inertial data for
+                            accurate 3D human motion tracking. We propose an improved synchronization framework that
+                            aligns camera frames with IMU measurements at the microsecond level, significantly reducing
+                            temporal misalignment artifacts. Our method employs a novel timestamp calibration algorithm...
+                        </p>
+                        <div class="project-links">
+                            <a href="./202208_reconstruction/unity_reconstruction.html" class="download-link" target="_blank">
+                                <i class="fas fa-arrow-right"></i>
+                                Read more
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- Blog Post 4: 2022 Reconstruction -->
+                <article class="blog-post" id="2022-rle">
+                    <img src="./202211_rle/rle_frontpage.png" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2022 • Technical Blog</div>
+                        <h2 class="post-title">Paper reading: Human Pose Regression with Residual Log-likelihood Estimation</h2>
+                        <div class="tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Human Pose</span>
+                            <span class="tag">Regression</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Regression problem can be reviewed from the maximum likelihood estimation perspective.
+                            The learning process of a model is to optimize its learnable parameters \(\phi\) that makes
+                            labels \(\mu_{g}\) most probable. This comprehensive analysis explores the mathematical
+                            foundations and practical applications of residual log-likelihood estimation in pose regression.
+                        </p>
+                        <div class="project-links">
+                            <a href="./202211_rle/rle.html" class="download-link" target="_blank">
+                                <i class="fas fa-arrow-right"></i>
+                                Read more
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- Blog Post 4: 2022 Reconstruction -->
+                <article class="blog-post" id="2022-nf2">
+                    <img src="./202210_nf/nf.png" alt="Normalizing Flows" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2022 • Technical Blog</div>
+                        <h2 class="post-title">Normalizing Flows and Its Friends (Part 2)</h2>
+                        <div class="tags">
+                            <span class="tag">flow-based model</span>
+                            <span class="tag">RealNVP</span>
+                            <span class="tag">Deep Learning</span>
+                        </div>
+                        <p class="post-excerpt">
+                            What is Normalizing Flows? In this second part, we dive deeper into the practical implementations
+                            and advanced techniques of normalizing flows, exploring RealNVP architectures and their applications
+                            in generative modeling and density estimation.
+                        </p>
+                        <div class="project-links">
+                            <a href="./202210_nf/nf2.html" class="download-link" target="_blank">
+                                <i class="fas fa-arrow-right"></i>
+                                Read more
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post" id="2022-nf1">
+                    <img src="./202210_nf/nf.png" alt="Normalizing Flows Fundamentals" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2022 • Technical Blog</div>
+                        <h2 class="post-title">Normalizing Flows and Its Friends (Part 1)</h2>
+                        <div class="tags">
+                           <span class="tag">Jacobian Matrix</span>
+                            <span class="tag">Determinant</span>
+                            <span class="tag">Change of Variable Theorem</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Here is some pre-requisite knowledge required before we move to Normalizing Flows.
+                            We'll explore the mathematical foundations including Jacobian matrices, determinants,
+                            and the change of variable theorem that form the backbone of flow-based models.
+                        </p>
+                        <div class="project-links">
+                            <a href="./202210_nf/nf1.html" class="download-link" target="_blank">
+                                <i class="fas fa-arrow-right"></i>
+                                Read more
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post" id="2022-nf1">
+                    <img src="./202006_gradcam/img0.png" alt="Grad-CAM Visualization" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2020 • Technical Blog</div>
+                        <h2 class="post-title">Gradient Class Activation Map (Grad-CAM) Summary</h2>
+                        <div class="tags">
+                            <span class="tag">GradCam</span>
+                            <span class="tag">penultimate layer</span>
+                            <span class="tag">feature visualization</span>
+                        </div>
+                        <p class="post-excerpt">
+                            The following note demonstrates the logic procedure of how a GradCam is computed.
+                            We'll explore the mathematical derivation and implementation details of this powerful
+                            technique for visualizing what convolutional neural networks learn and focus on.
+                        </p>
+                        <div class="project-links">
+                            <a href="./202006_gradcam/gradcam.html" class="download-link" target="_blank">
+                                <i class="fas fa-arrow-right"></i>
+                                Read more
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- Blog Post 6: 2021 ESMO -->
+                <article class="blog-post" id="2021-esmo">
+                    <img src="./2021_esmo/img0.png" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2021 • 2021 ESMO World Congress on Lung Cancer</div>
+                        <h2 class="post-title">A deep radiomics approach to assess PD-L1 expression and clinical outcomes</h2>
+                        <div class="tags">
+                            <span class="tag">Medical AI</span>
+                            <span class="tag">Radiomics</span>
+                            <span class="tag">Lung Cancer</span>
+                        </div>
+                        <p class="post-excerpt">
+                            We developed a deep radiomics framework that predicts PD-L1 expression levels from CT scans,
+                            enabling non-invasive biomarker assessment for immunotherapy planning. Our approach combines
+                            convolutional neural networks with handcrafted radiomic features to capture both semantic
+                            and textural patterns associated with tumor biology. The model achieves high accuracy in
+                            stratifying patients...
+                        </p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/12JKt98O0nbP9evj6S2i5do2kQv-EOkV7/view?usp=sharing" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Paper
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 7: 2019 Patent -->
+                <article class="blog-post" id="2019-patent">
+                    <img src="./2019_patent/img0.png" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2019 • Patent</div>
+                        <h2 class="post-title">Apparatus and method for detecting, classifying and tracking road users on frames of video data</h2>
+                        <div class="tags">
+                            <span class="tag">Patent</span>
+                            <span class="tag">Object Detection</span>
+                            <span class="tag">Traffic Surveillance</span>
+                        </div>
+                        <p class="post-excerpt">
+                            This patent describes an innovative system for real-time detection, classification, and
+                            tracking of multiple road users including vehicles, pedestrians, and cyclists. The method
+                            employs a hierarchical deep learning architecture that processes video streams to provide
+                            accurate trajectory prediction and behavior analysis. The system is designed for deployment
+                            in smart city infrastructure...
+                        </p>
+                        <div class="project-links">
+                            <a href="https://patents.google.com/patent/US20200050870A1/en" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                                View Patent
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 8: 2019 MICCAI -->
+                <article class="blog-post" id="2019-miccai">
+                    <img src="./2019_miccai/img0.png" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2019 • 22nd International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI)</div>
+                        <h2 class="post-title">Task Adaptive Metric Space for Medium-Shot Medical Image Classification</h2>
+                        <div class="tags">
+                            <span class="tag">Metric Learning</span>
+                            <span class="tag">Few-shot Learning</span>
+                            <span class="tag">Medical Imaging</span>
+                        </div>
+                        <p class="post-excerpt">
+                            We present a novel metric learning framework specifically designed for medical image
+                            classification with limited training samples. Our approach learns task-adaptive embedding
+                            spaces that maximize inter-class distances while preserving clinically relevant features.
+                            The method addresses the challenge of medium-shot learning scenarios common in medical
+                            imaging where only 10-50 samples per class are available...
+                        </p>
+                        <div class="project-links">
+                            <a href="https://link.springer.com/chapter/10.1007/978-3-030-32239-7_17" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Paper
+                            </a>
+                            <a href="https://drive.google.com/file/d/1r2X77euy1spJDXuVIKr-rUivVH72Pq7K/view" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Poster
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 9: 2019 Gastroenterology -->
+                <article class="blog-post" id="2019-gastroenterology">
+                    <img src="./2019_gastroenterology/img0.png" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2019 • Gastroenterology - American Gastroenterological Association</div>
+                        <h2 class="post-title">Artificial Intelligence for Real-Time Multiple Polyp Detection</h2>
+                        <div class="tags">
+                            <span class="tag">Medical AI</span>
+                            <span class="tag">Colonoscopy</span>
+                            <span class="tag">Real-time Detection</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Our work introduces a real-time AI system for detecting multiple polyps during colonoscopy
+                            procedures. The system achieves 95% sensitivity while maintaining low false positive rates,
+                            significantly outperforming existing methods. By processing video streams at 30 FPS, our
+                            solution provides immediate feedback to endoscopists, improving polyp detection rates and
+                            reducing miss rates...
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.researchgate.net/publication/332884708_256_-_Artificial_Intelligence_for_Real-Time_Multiple_Polyp_Detection_with_Identification_Tracking_and_Optical_Biopsy_During_Colonoscopy" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Paper
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 10: 2018 MAIS -->
+                <article class="blog-post" id="2018-mais">
+                    <img src="./2018_mais/img0.png" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2018 • Montreal AI Symposium (MAIS)</div>
+                        <h2 class="post-title">A Single Framework for Domain Adaptation and Generalization in Medical Image Analysis</h2>
+                        <div class="tags">
+                            <span class="tag">Domain Adaptation</span>
+                            <span class="tag">Medical AI</span>
+                            <span class="tag">Transfer Learning</span>
+                        </div>
+                        <p class="post-excerpt">
+                            This research presents a unified framework that addresses both domain adaptation and
+                            generalization challenges in medical imaging. Our approach uses adversarial training
+                            combined with feature disentanglement to learn domain-invariant representations. The
+                            framework successfully transfers knowledge across different imaging modalities, scanner
+                            manufacturers, and patient populations...
+                        </p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/1qWOu52SfOSqm_zHZ2xg-f_Jlsx-6Z2CA/view?usp=sharing" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Poster
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 11: 2018 Thesis -->
+                <article class="blog-post" id="2018-thesis">
+                    <img src="./2017_thesis/img0.png" alt="Blog Article" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2018 • McGill M.Eng. Thesis</div>
+                        <h2 class="post-title">Deep-learning-based Multiple Object Tracking in Traffic Surveillance Video</h2>
+                        <div class="tags">
+                            <span class="tag">Optical Flow</span>
+                            <span class="tag">Tracking</span>
+                            <span class="tag">Kalman Filter</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Multiple object tracking (MOT) is an important topic in the computer vision. One of its
+                            important applications is in traffic surveillance for examining potential risks for traffic
+                            intersections and providing analysis of road usages. In this thesis, we propose a powerful
+                            and efficient model for solving MOT problems under traffic surveillance environments...
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.youtube.com/embed/jqO_s2WKYjQ" target="_blank">
+                                <i class="fab fa-youtube"></i>
+                                Demo
+                            </a>
+                            <a href="https://escholarship.mcgill.ca/concern/theses/sj139437f" class="download-link" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Paper
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 12: 2016 CRV -->
+                <article class="blog-post" id="2016-crv">
+                    <img src="./2016_crv/img0.jpg" alt="Quantum Computing" class="featured-image">
+                    <div class="post-content">
+                        <div class="project-duration">2016 • 13th Conference on Computer and Robot Vision (CRV)</div>
+                        <h2 class="post-title">Generation of Spatial-temporal Panoramas with a Single Moving Camera</h2>
+                        <div class="tags">
+                            <span class="tag">Image Stitching</span>
+                            <span class="tag">Panorama</span>
+                            <span class="tag">VR</span>
+                        </div>
+                        <p class="post-excerpt">
+                            Development of image stitching techniques, which take multiple images and stitch them
+                            together to make natural looking panoramas, is an integral part of the new wave in visual
+                            media - the 360 surround displays, such as the Oculus Rift. However...
+                        </p>
+                        <div class="project-links">
+                            <a href="https://www.youtube.com/watch?v=tUYozU_NIIk" target="_blank">
+                                <i class="fab fa-youtube"></i>
+                                Demo
+                            </a>
+                            <a href="https://ieeexplore.ieee.org/document/7801534" class="download-link" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Paper
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="../assets/js/navigation.js"></script>
+    <script src="../assets/js/navigation-config.js"></script>
+</body>
+
+</html>

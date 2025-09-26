@@ -5,437 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23ff9800'/><text x='50' y='60' font-family='Arial, sans-serif' font-size='32' font-weight='bold' text-anchor='middle' fill='white'>LD</text></svg>">
+
+    <!-- External CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #1a1a1a;
-            --accent-color: #6366f1;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
-            --glass: rgba(255, 255, 255, 0.9);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        }
-
-        body {
-            background: #f8fafc;
-            color: #334155;
-            line-height: 1.6;
-        }
-
-        /* Modern navigation */
-        nav {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Mobile navigation */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-color);
-            transition: all 0.3s ease;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                gap: 1rem;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--glass);
-                backdrop-filter: blur(10px);
-                padding: 1rem;
-                box-shadow: var(--shadow);
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-        }
-
-        /* Main layout */
-        .container {
-            display: flex;
-            margin: 6rem 5% 2rem;
-            gap: 3rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Modern sidebar */
-        .sidebar {
-            width: 300px;
-            text-align: center;
-            position: sticky;
-            top: 6rem;
-            height: fit-content;
-        }
-
-        /* Updated profile image styles */
-        .profile-pic-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            margin: 0 auto 1.5rem;
-        }
-
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-pic-container::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-
-        .profile-pic-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--glass);
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: var(--shadow);
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            background: var(--glass);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
-        }
-
-        .social-icons a:hover {
-            background: var(--gradient);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Modern bio section */
-        .bio {
-            flex: 1;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 1.5rem;
-            box-shadow: var(--shadow);
-        }
-
-        .bio h1 {
-            font-size: 2.75rem;
-            margin-bottom: 1.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.2;
-        }
-
-        .bio p {
-            font-size: 1.1rem;
-            color: #475569;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .container {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                margin-top: 4rem;
-            }
-
-            .sidebar {
-                width: 100%;
-                position: static;
-            }
-
-            .profile-pic {
-                width: 150px;
-                height: 150px;
-            }
-
-            .bio {
-                padding: 1.5rem;
-            }
-
-            .bio h1 {
-                font-size: 2rem;
-            }
-        }
-
-        /* New Blog Styles */
-        .blog-content {
-            flex: 1;
-            max-width: 800px;
-        }
-
-        .blog-posts {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .blog-post {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-            /* Center items vertically */
-        }
-
-        .blog-post:hover {
-            transform: translateY(-5px);
-        }
-
-        .featured-image {
-            width: 250px;
-            height: 200px;
-            border-radius: 0.75rem;
-            object-fit: cover;
-            flex-shrink: 0;
-            margin-left: 1.5rem;
-            /* Add left margin for spacing */
-        }
-
-        .post-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .post-date {
-            font-size: 0.9rem;
-            color: #64748b;
-        }
-
-        .post-title {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin: 0;
-        }
-
-        .tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: rgba(99, 102, 241, 0.1);
-            color: #6366f1;
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .post-excerpt {
-            color: #475569;
-            line-height: 1.7;
-            margin: 0.5rem 0;
-        }
-
-        .read-more {
-            color: #6366f1;
-            text-decoration: none;
-            font-weight: 500;
-            align-self: flex-start;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: auto;
-        }
-
-        .read-more:hover {
-            color: #4f46e5;
-        }
-
-        .read-more i {
-            transition: transform 0.3s ease;
-        }
-
-        .read-more:hover i {
-            transform: translateX(3px);
-        }
-
-        @media (max-width: 768px) {
-            .blog-post {
-                flex-direction: column;
-                padding: 1.5rem;
-                align-items: flex-start;
-                /* Align items to the start on mobile */
-            }
-
-            .profile-pic {
-                width: 300px;
-                height: 300px;
-            }
-
-            .featured-image {
-                width: 100%;
-                height: 200px;
-                margin-left: 0;
-                /* Remove left margin on mobile */
-                margin-bottom: 1rem;
-                /* Add bottom margin for spacing */
-            }
-
-            .post-title {
-                font-size: 1.25rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/css/main.css">
+    <link rel="stylesheet" href="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/css/tags.css">
+    <link rel="stylesheet" href="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/css/projects.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/analytics.js"></script>
 </head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z01HR33VG"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-3Z01HR33VG');
-</script>
 
 <body>
-    <nav>
-        <div class="menu-toggle" id="mobile-menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <ul id="nav-menu">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../professional/professional.html">Professional Experience</a></li>
-            <li><a href="../research/research.html">Research</a></li>
-            <li><a href="./projects.html" class="active">Side Projects</a></li>
-            <li><a href="../entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
-            <li><a href="../blogs/blog.html">Blog</a></li>
-        </ul>
-    </nav>
+    <!-- Navigation will be injected here by navigation-config.js -->
+    <div id="nav-container"></div>
 
     <div class="container">
         <aside class="sidebar">
@@ -445,18 +32,64 @@
             <div class="social-icons">
                 <a href="https://x.com/liqiang_ding" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.youtube.com/@947973" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i
-                        class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/liqiang-ding-0431" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/Lionelding" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </aside>
 
         <main class="blog-content">
             <div class="blog-posts">
-
-                <!-- Project 3 -->
+                <!-- Project 1: My Finance Assistant -->
                 <article class="blog-post">
-                    <img src="202003_EffectivePython/img0.jpeg" alt="Mobile App" class="featured-image">
+                    <img src="202404_MyFinanceAssistant/img0.jpg" alt="Finance Assistant" class="featured-image">
+                    <div class="post-content">
+                        <div class="post-date">Spring 2024 • Python Application</div>
+                        <h2 class="post-title">My Finance Assistant</h2>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Finance</span>
+                            <span class="tag">Portfolio Management</span>
+                        </div>
+                        <p class="post-excerpt">
+                            A personal Python tool for comprehensive financial management. Features include automated bookkeeping, 
+                            daily transaction recording from multiple accounts, and financial portfolio risk analysis. This local 
+                            application is designed for personal use, providing detailed insights into spending patterns, investment 
+                            performance, and financial health through data analysis and visualization.
+                        </p>
+                        <a href="https://github.com/Lionelding/MyFinanceAssistant" target="_blank" class="read-more">
+                            View on GitHub
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 2: Music Metadata Editor -->
+                <article class="blog-post">
+                    <img src="202501_MusicMetadataEditor/img0.jpeg" alt="Music Metadata Editor" class="featured-image">
+                    <div class="post-content">
+                        <div class="post-date">Winter 2025 • Desktop Application</div>
+                        <h2 class="post-title">Music Metadata Editor</h2>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Music</span>
+                            <span class="tag">Metadata</span>
+                        </div>
+                        <p class="post-excerpt">
+                            A powerful desktop application for editing music metadata in batch. Supports multiple audio formats
+                            including MP3, FLAC, M4A, and more. Features include automatic metadata fetching from online databases,
+                            batch processing, artwork management, and file organization. Built with Python and tkinter for
+                            cross-platform compatibility.
+                        </p>
+                        <a href="https://github.com/Lionelding/MusicMetadataEditor" target="_blank" class="read-more">
+                            View on GitHub
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 3: Effective Python -->
+                <article class="blog-post">
+                    <img src="202003_EffectivePython/img0.jpeg" alt="Effective Python" target="_blank" class="featured-image">
                     <div class="post-content">
                         <div class="post-date">Spring 2020 • Reading Notes</div>
                         <h2 class="post-title">Effective Python</h2>
@@ -467,7 +100,6 @@
                         </div>
                         <p class="post-excerpt">
                             This repository contains notes that I took while reading this book.
-
                             In general, this is a very fruitful journey.
                             The author covers eight major areas about python programming,
                             which are super interesting and especially helpful for my daily work as a machine learning
@@ -483,16 +115,16 @@
                             just have some fun reading them. Please feel free to send me an email if you find a mistake
                             or you don't agree with my interpretations.
                         </p>
-                        <a href="https://github.com/Lionelding/EfficientPython" class="read-more">
-                            View on Github
+                        <a href="https://github.com/Lionelding/EfficientPython" target="_blank" class="read-more">
+                            View on GitHub
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- Project 3 -->
+                <!-- Project 4: PythonWOW -->
                 <article class="blog-post">
-                    <img src="201801_PythonWOW/img0.jpeg" alt="Mobile App" class="featured-image">
+                    <img src="201801_PythonWOW/img0.jpeg" alt="PythonWOW" class="featured-image">
                     <div class="post-content">
                         <div class="post-date">Spring 2018 • PythonWOW</div>
                         <h2 class="post-title">PythonWOW</h2>
@@ -509,20 +141,19 @@
                             This repository serves as my notes to track of these questions. I usually start from the
                             problem statement raised from a real world example, and goes to the reasons behind it.
                             I would be also very happy if this can help you.
-
                         </p>
-                        <a href="https://github.com/Lionelding/PythonWOW" class="read-more">
-                            View on Github
+                        <a href="https://github.com/Lionelding/PythonWOW" target="_blank" class="read-more">
+                            View on GitHub
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- Project 3 -->
+                <!-- Project 5: Frequency -->
                 <article class="blog-post">
-                    <img src="201601_Frequency/img0.png" alt="Mobile App" class="featured-image">
+                    <img src="201601_Frequency/img0.png" alt="Frequency Radio" class="featured-image">
                     <div class="post-content">
-                        <div class="post-date">Winter 2016 • Analgue Circuit Design</div>
+                        <div class="post-date">Winter 2016 • Analog Circuit Design</div>
                         <h2 class="post-title">Frequency</h2>
                         <div class="tags">
                             <span class="tag">Filtering</span>
@@ -533,16 +164,16 @@
                             A radio receiver with analog circuits. Wait till the end for an easter egg (if you are big a
                             fun of the movie `Inception`)
                         </p>
-                        <a href="https://www.youtube.com/watch?v=An_lbQUgL_c&ab_channel=LiqiangDing" class="read-more">
+                        <a href="https://www.youtube.com/watch?v=An_lbQUgL_c&ab_channel=LiqiangDing" target="_blank" class="read-more">
                             View on YouTube
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- Project 3 -->
+                <!-- Project 6: When Beethoven Meets VHDL -->
                 <article class="blog-post">
-                    <img src="201501_DSD/img0.png" alt="Mobile App" class="featured-image">
+                    <img src="201501_DSD/img0.png" alt="Digital Music Box" class="featured-image">
                     <div class="post-content">
                         <div class="post-date">Winter 2015 • Digital Circuit Design</div>
                         <h2 class="post-title">When Beethoven Meets VHDL</h2>
@@ -554,30 +185,30 @@
                         <p class="post-excerpt">
                             A music box with digital circuits.
                         </p>
-                        <a href="https://www.youtube.com/watch?v=4oVpbwW00Ok&ab_channel=LiqiangDing" class="read-more">
+                        <a href="https://www.youtube.com/watch?v=4oVpbwW00Ok&ab_channel=LiqiangDing" target="_blank" class="read-more">
                             View on YouTube
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- Project 3 -->
+                <!-- Project 7: McGill Gear Solid -->
                 <article class="blog-post">
-                    <img src="./201409_McGillSolidGear/IMG_0426.jpg" alt="Mobile App" class="featured-image">
+                    <img src="./201409_McGillSolidGear/IMG_0426.jpg" alt="McGill Gear Solid Robot" class="featured-image">
                     <div class="post-content">
                         <div class="post-date">Fall 2014 • Robotics Development</div>
                         <h2 class="post-title">McGill Gear Solid</h2>
                         <div class="tags">
                             <span class="tag">Java LEGO SDK</span>
                             <span class="tag">Robotics</span>
-                            <span class="tag">Mechnical design</span>
+                            <span class="tag">Mechanical design</span>
                         </div>
                         <p class="post-excerpt">
                             Led a team of 6 from different engineering faculties to design a robot in 7 weeks.
                             The robot is able to localize, navigate, avoid obstacles and rescue blocks on 365*365 cm
                             maps by using a single processor and sensors...
                         </p>
-                        <a href="https://youtu.be/xH0ywySv5kc" class="read-more">
+                        <a href="https://youtu.be/xH0ywySv5kc" target="_blank" class="read-more">
                             View on YouTube
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -587,17 +218,9 @@
         </main>
     </div>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
-
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-    </script>
+    <!-- External JavaScript -->
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/navigation.js"></script>
+    <script src="/Users/liqiangding/Code/MyCodes/liqiangding.com/docs/assets/js/navigation-config.js"></script>
 </body>
-
 
 </html>
