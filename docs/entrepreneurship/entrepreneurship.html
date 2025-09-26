@@ -43,6 +43,7 @@
             to { transform: rotate(360deg); }
         }
 
+
         .logo-container {
             display: flex;
             align-items: center;
@@ -272,7 +273,7 @@
         }
 
         .timeline-future {
-            max-width: 600px;
+            max-width: 1000px;
             margin: 0 auto;
             text-align: left;
         }
@@ -289,7 +290,7 @@
             list-style: none;
             padding: 0;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 10px 30px;
         }
 
@@ -509,77 +510,111 @@
         <div class="logo-container">
             <img src="./AudioFlo_banner_small.png" alt="AudioFlo Banner" style="height: 240px; width: auto; max-width: 100%;">
         </div>
-        
-        <div class="vision-box">
-            <h2 class="vision-title">Built a SaaS company within 3 months</h2>
-            <p class="vision-text">
-                Building a SaaS company from zero to market has always been my entrepreneurial dream. In March 2025, I seized the opportunity to spend three intensive months founding AudioFlo, an AI-powered platform that helps indie authors produce professional audiobooks. <br><br>
-                
-                This comprehensive case study documents my complete founder journey across every critical business function: from initial market analysis and product design to full-stack development, strategic marketing, and business development.<br><br>
 
-                I'm sharing these real-world insights and methodologies with fellow entrepreneurs and startup leaders who understand the challenges of building something from nothing. This documentation showcases the strategic thinking and execution capabilities that drive successful product ventures.
+        <h1 style="font-size: 3rem; font-weight: 700; color: #1e293b; margin: 30px 0 10px 0; text-align: center;">I Built <a href="https://www.audioflo.ai" target="_blank" style="color: #ff9800; text-decoration: none;">AudioFlo.ai</a> From Concept to Profitability in 90 Days</h1>
+        <p style="font-size: 1.3rem; color: #64748b; margin-bottom: 40px; text-align: center; font-weight: 500; letter-spacing: 1px;">A Complete SaaS Case Study</p>
+
+        <div class="vision-box">
+            <p class="vision-text">
+                An honest look at the metrics, strategies, and lessons learned while building a SaaS company in 90 days. This case study shares the decisions that worked, the challenges faced, and the approach that eventually led to profitability.<br><br>
+
+                <strong>For:</strong> Entrepreneurs, founders, and business leaders seeking data-driven insights into rapid SaaS validation and growth execution.
             </p>
+        </div>
+    </section>
+
+    <!-- Book Covers Section -->
+    <section style="background: #f8f9fa; padding: 30px 20px;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <h3 style="color: #1e293b; margin-bottom: 20px; font-size: 1.2rem; font-weight: 600;">Recent Audiobooks Produced by AudioFlo.ai</h3>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <img src="./books/1_cover.jpg" alt="Book Cover 1" style="height: 120px; width: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <img src="./books/3_cover.jpg" alt="Book Cover 3" style="height: 120px; width: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <img src="./books/5_cover.jpg" alt="Book Cover 5" style="height: 120px; width: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <img src="./books/6_cover.jpg" alt="Book Cover 12" style="height: 120px; width: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <img src="./books/15_cover.jpg" alt="Book Cover 15" style="height: 120px; width: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            </div>
         </div>
     </section>
 
     <!-- Metrics Section -->
     <section class="metrics-section">
-        <h3 style="text-align: center; color: #2c2c2c; margin-bottom: 50px; font-size: 2rem;">Key Metrics</h3>
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <h3 style="text-align: center; color: #2c2c2c; margin-bottom: 40px; font-size: 2rem;">Key Performance Metrics</h3>
 
-        <div class="hub-spoke-container">
-            <!-- Center Circle -->
-            <div class="center-circle">
-                <div class="center-value">2</div>
-                <div class="center-label">Person Team</div>
+            <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; justify-content: center;">
+                <!-- Table on the left -->
+                <div style="flex: 1; min-width: 350px; max-width: 500px;">
+                    <h4 style="color: #1e293b; margin-bottom: 20px; font-size: 1.2rem; text-align: center;">Business Performance</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <thead>
+                                <tr style="background: #ff9800; color: white;">
+                                    <th style="padding: 15px; text-align: left; font-weight: 600;">Metric</th>
+                                    <th style="padding: 15px; text-align: center; font-weight: 600;">Industry</th>
+                                    <th style="padding: 15px; text-align: center; font-weight: 600;">AudioFlo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 25px 15px; font-weight: 600;">LTV:CAC</td>
+                                    <td style="padding: 25px 15px; text-align: center;">3:1</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">7:1</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 25px 15px; font-weight: 600;">Trial-to-Paid</td>
+                                    <td style="padding: 25px 15px; text-align: center;">15-25%</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">35.71%</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 25px 15px; font-weight: 600;">Reg-to-Paid</td>
+                                    <td style="padding: 25px 15px; text-align: center;">1.5-3%</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">3%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Growth Metrics on the right -->
+                <div style="flex: 1; min-width: 350px; max-width: 500px;">
+                    <h4 style="color: #1e293b; margin-bottom: 20px; font-size: 1.2rem; text-align: center;">Growth & Efficiency</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <thead>
+                                <tr style="background: #ff9800; color: white;">
+                                    <th style="padding: 15px; text-align: center; font-weight: 600;" colspan="2">Customer & Revenue</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 25px 15px; font-weight: 600;">Payback Period</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">First Transaction</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #e2e8f0;">
+                                    <td style="padding: 25px 15px; font-weight: 600;">Customer Growth</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">42% Monthly</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 25px 15px; font-weight: 600;">Customer Lifetime</td>
+                                    <td style="padding: 25px 15px; text-align: center; color: #ff9800; font-weight: 600;">3 months+</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
-            <!-- Surrounding Circles -->
-            <div class="metric-circle circle-1">
-                <div class="circle-value">June 28th</div>
-                <div class="circle-label">Launch<br>Date</div>
-            </div>
+            <p style="text-align: center; margin: 40px auto 20px auto; max-width: 800px; color: #475569; line-height: 1.8; font-size: 1.1rem;">In March 2025, I spent three intensive months building <a href="https://www.audioflo.ai" target="_blank" style="color: #ff9800; text-decoration: none; font-weight: 600;">AudioFlo.ai</a> after discovering firsthand how complicated and expensive it is for indie authors to create audiobooks.</p>
 
-            <div class="metric-circle circle-2">
-                <div class="circle-value">$550</div>
-                <div class="circle-label">Monthly<br>Revenue</div>
-            </div>
-
-            <div class="metric-circle circle-3">
-                <div class="circle-value">65+</div>
-                <div class="circle-label">Users</div>
-            </div>
-
-            <div class="metric-circle circle-4">
-                <div class="circle-value">35.75%</div>
-                <div class="circle-label">Payment Conversion<br>Rate</div>
-            </div>
-
-            <div class="metric-circle circle-5">
-                <div class="circle-value">30 mins</div>
-                <div class="circle-label">Time to<br>Value</div>
-            </div>
-
-            <div class="metric-circle circle-6">
-                <div class="circle-value">57</div>
-                <div class="circle-label">Features<br>Shipped</div>
-            </div>
-
-            <div class="metric-circle circle-7">
-                <div class="circle-value">24</div>
-                <div class="circle-label">User Interviews</div>
-            </div>
-
-            <div class="metric-circle circle-8">
-                <div class="circle-value">99%</div>
-                <div class="circle-label">Uptime</div>
-            </div>
+            <p style="text-align: center; margin: 20px auto 20px auto; max-width: 800px; color: #475569; line-height: 1.8; font-size: 1.1rem;">Since launching in July 2025, I've had the privilege of helping <span style="color: #ff9800; font-weight: 600;">70+ indie authors</span> bring their stories to audio, producing over <span style="color: #ff9800; font-weight: 600;">500 hours</span> of audiobook content. Their feedback, along with insights from publishing industry professionals, has been invaluable in shaping the platform. Through continuous iteration based on real user needs, AudioFlo has evolved into a <span style="color: #ff9800; font-weight: 600;">self-sustaining business</span> that delivers meaningful value to authors while maintaining healthy metrics.</p>
         </div>
     </section>
 
     <!-- Timeline Section -->
     <section class="timeline-section">
         <div class="timeline-container">
-            <h2 class="timeline-title">Where is AudioFlo now?</h2>
+            <h2 class="timeline-title">Our Progress & What's Next</h2>
             <div class="timeline-image-wrapper">
                 <img src="./timeline.png" alt="AudioFlo Development Timeline" class="timeline-image">
             </div>
@@ -587,7 +622,6 @@
                 <h3 class="timeline-future-title">2025 August Beyond</h3>
                 <ul class="timeline-future-list">
                     <li>Full Autonomous Operation</li>
-                    <li>System runs completely hands-off without manual intervention</li>
                     <li>Self-sustaining revenue model with automated scaling</li>
                     <li>Organic growth through word-of-mouth and product excellence</li>
                 </ul>
@@ -598,7 +632,7 @@
     <!-- Chapters Section -->
     <section class="chapters-section">
         <div class="chapters-container">
-            <h2 class="chapters-title">How I built AudioFlo</h2>
+            <h2 class="chapters-title">The Journey Behind the Metrics</h2>
             <p class="chapters-intro">
                 Each chapter below represents a critical business perspective in the complete journey from customer discovery to marketing campaigns. Together, they form the comprehensive process of how I built AudioFlo.ai from concept to market. Click on any topic to dive into the detailed strategies, methodologies, and insights that shaped this entrepreneurial venture. I hope these real-world experiences will provide valuable guidance for your own startup journey.
             </p>
@@ -748,7 +782,7 @@
                             </div>
                         </div>
                         <div class="chapter-image">
-                            <img src="./chapter8/11.jpg" alt="marketing campaign" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+                            <img src="./chapter9/sales-funnel-stages.jpg" alt="marketing campaign" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
                         </div>
                     </div>
                     <p class="chapter-description">
