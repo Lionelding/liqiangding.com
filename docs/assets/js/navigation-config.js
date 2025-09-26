@@ -1,6 +1,37 @@
 // Navigation Configuration
-// Set the base URL for all navigation links
-const BASE_URL = '/Users/liqiangding/Code/MyCodes/liqiangding.com/docs';
+// Detect environment and calculate proper base path
+function getNavigationConfig() {
+    const protocol = window.location.protocol;
+    const hostname = window.location.hostname;
+    const pathname = window.location.pathname;
+
+    // For local file:// protocol
+    if (protocol === 'file:') {
+        // Get the directory of the current file
+        const currentDir = pathname.substring(0, pathname.lastIndexOf('/') + 1);
+        return {
+            baseURL: currentDir,
+            isLocal: true
+        };
+    }
+
+    // For HTTP/HTTPS (Live Server or GitHub Pages)
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+        // Live Server
+        return {
+            baseURL: '/docs/',
+            isLocal: true
+        };
+    }
+
+    // GitHub Pages
+    return {
+        baseURL: '/',
+        isLocal: false
+    };
+}
+
+const navConfig = getNavigationConfig();
 
 // Navigation HTML Template
 const NAVIGATION_HTML = `
@@ -11,11 +42,11 @@ const NAVIGATION_HTML = `
             <span></span>
         </div>
         <ul id="nav-menu">
-            <li><a href="/docs/index.html">Home</a></li>
-            <li><a href="/docs/professional/professional.html">Professional Experience</a></li>
-            <li><a href="/docs/blogs/blogs.html">Publications & Blogs</a></li>
-            <li><a href="/docs/projects/projects.html">Side Projects</a></li>
-            <li><a href="/docs/entrepreneurship/entrepreneurship.html">AudioFlo</a></li>
+            <li><a href="#" data-target="index.html">Home</a></li>
+            <li><a href="#" data-target="professional/professional.html">Professional Experience</a></li>
+            <li><a href="#" data-target="blogs/blogs.html">Publications & Blogs</a></li>
+            <li><a href="#" data-target="projects/projects.html">Side Projects</a></li>
+            <li><a href="#" data-target="entrepreneurship/entrepreneurship.html">AudioFlo</a></li>
         </ul>
     </nav>
 `;
@@ -28,20 +59,38 @@ document.addEventListener('DOMContentLoaded', function() {
         navContainer.innerHTML = NAVIGATION_HTML;
     }
     
-    // Update navigation links with base URL
-    const navLinks = document.querySelectorAll('#nav-menu a');
+    // Set up navigation links based on environment
+    const navLinks = document.querySelectorAll('#nav-menu a[data-target]');
     navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href.startsWith('/docs/')) {
-            link.setAttribute('href', BASE_URL + href.substring(5));
+        const target = link.getAttribute('data-target');
+        let finalURL;
+
+        if (navConfig.isLocal && window.location.protocol === 'file:') {
+            // For file:// protocol, calculate relative path
+            const currentPath = window.location.pathname;
+            const currentDepth = (currentPath.match(/\//g) || []).length - 1;
+            const docsDepth = currentPath.includes('/docs/') ?
+                currentPath.split('/docs/')[1].split('/').length - 1 : 0;
+
+            if (docsDepth > 0) {
+                finalURL = '../'.repeat(docsDepth) + target;
+            } else {
+                finalURL = target;
+            }
+        } else {
+            // For HTTP/HTTPS, use baseURL
+            finalURL = navConfig.baseURL + target;
         }
+
+        link.setAttribute('href', finalURL);
+        link.removeAttribute('data-target');
     });
     
     // Set active navigation item based on current page
     setActiveNavigation();
     
     // Optional: Add console log for debugging
-    console.log('Navigation configured with BASE_URL:', BASE_URL);
+    console.log('Navigation configured:', navConfig);
 });
 
 // Function to set active navigation item
