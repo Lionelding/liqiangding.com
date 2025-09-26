@@ -65,10 +65,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const target = link.getAttribute('data-target');
         let finalURL;
 
-        if (navConfig.isLocal && window.location.protocol === 'file:') {
-            // For file:// protocol, calculate relative path
+        if (window.location.protocol === 'file:') {
+            // For file:// protocol only, calculate relative path
             const currentPath = window.location.pathname;
-            const currentDepth = (currentPath.match(/\//g) || []).length - 1;
             const docsDepth = currentPath.includes('/docs/') ?
                 currentPath.split('/docs/')[1].split('/').length - 1 : 0;
 
@@ -78,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 finalURL = target;
             }
         } else {
-            // For HTTP/HTTPS, use baseURL
+            // For HTTP/HTTPS (Live Server and GitHub Pages), use baseURL
             finalURL = navConfig.baseURL + target;
         }
 
