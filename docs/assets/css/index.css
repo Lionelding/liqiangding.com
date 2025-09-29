@@ -52,11 +52,22 @@
     box-shadow: 0 2px 8px rgba(74, 144, 226, 0.15);
 }
 
-.nav-tile:hover {
+.nav-tile:hover,
+.nav-tile:active,
+.nav-tile:focus {
     transform: translateY(-5px);
     background: #D6E3FF;
     box-shadow: 0 6px 20px rgba(74, 144, 226, 0.25);
     border-left-width: 5px;
+}
+
+/* Touch feedback for mobile */
+@media (hover: none) and (pointer: coarse) {
+    .nav-tile:active {
+        transform: translateY(-3px);
+        background: #D6E3FF;
+        box-shadow: 0 6px 20px rgba(74, 144, 226, 0.25);
+    }
 }
 
 .nav-tile i {
@@ -100,6 +111,13 @@
 
     .nav-tile {
         padding: 1.25rem;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .nav-tile:active {
+        transform: scale(0.98);
+        background: #D6E3FF;
     }
 
     .nav-tile i {
