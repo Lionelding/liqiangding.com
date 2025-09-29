@@ -46,7 +46,7 @@ const NAVIGATION_HTML = `
             <li><a href="#" data-target="professional/professional.html">Professional Experience</a></li>
             <li><a href="#" data-target="blogs/blogs.html">Publications & Blogs</a></li>
             <li><a href="#" data-target="projects/projects.html">Side Projects</a></li>
-            <li><a href="#" data-target="entrepreneurship/entrepreneurship.html">AudioFlo</a></li>
+            <li><a href="#" data-target="entrepreneurship/entrepreneurship.html">Entrepreneurship</a></li>
         </ul>
     </nav>
 `;
