@@ -75,6 +75,7 @@ nav a:hover::after {
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
+    padding: 5px;
 }
 
 .menu-toggle span {
@@ -220,10 +221,18 @@ nav a:hover::after {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    nav {
+        padding: 0.75rem 1rem;
+        align-items: center;
+        min-height: 60px;
+    }
+
     .menu-toggle {
         display: flex;
         position: absolute;
         left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     nav ul {
